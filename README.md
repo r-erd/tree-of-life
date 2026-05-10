@@ -6,7 +6,8 @@ A visual passion tree tracker built with Svelte 5. Keep track of your real-life 
 
 - **Visual Canvas:** Interactive, pannable, and zoomable SVG tree view.
 - **Progressive Disclosure:** See your current frontier of passions without being overwhelmed. The tree automatically expands to reveal any unlocked passions.
-- **Illuminated Paths:** The structural categories and connection lines light up to trace a path directly from the root to your unlocked passions.
+- **Illuminated & Tapering Paths:** The structural categories and connection lines light up to trace a path directly from the root to your unlocked passions. Path thickness dynamically tapers based on the proportion of unlocked passions in that branch.
+- **Dynamic Formatting:** Node text automatically wraps to ensure long passion names fit perfectly inside the SVG layout.
 - **Theming:** Full support for both Light and Dark modes with an Apple-style toggle that respects system preferences.
 - **YAML Driven:** Passion definitions are managed in a simple `src/data/skills.yaml` file, organized cleanly into structural subcategories.
 - **Import / Export:** Generate and share base62 encoded strings of your current passion tree progress.

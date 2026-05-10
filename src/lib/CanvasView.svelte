@@ -7,7 +7,7 @@
   import { categories, activeCategory, displaySkilled, skilled, viewMode } from '../lib/store.js'
   import {
     buildVisualTree, computeLayout, flatten,
-    filterSkilled, pruneTree, NODE_W, NODE_H, LEVEL_H, hasSkilledDescendant
+    filterSkilled, pruneTree, NODE_W, NODE_H, LEVEL_H, hasSkilledDescendant, countSkilledDescendants
   } from '../lib/layout.js'
 
   // ── State ──
@@ -130,6 +130,23 @@
   function canCollapse(node) {
     return (node.children && node.children.length > 0) &&
       !node.isRoot
+  }
+
+  // ── Text Wrapping ──
+  function wrapText(text, maxChars) {
+    const words = text.split(' ')
+    const lines = []
+    let currentLine = ''
+    for (const word of words) {
+      if ((currentLine + word).length > maxChars && currentLine.length > 0) {
+        lines.push(currentLine.trim())
+        currentLine = word + ' '
+      } else {
+        currentLine += word + ' '
+      }
+    }
+    if (currentLine) lines.push(currentLine.trim())
+    return lines
   }
 
   // ── Zoom ──
@@ -264,10 +281,14 @@
         ((n.isCategory || n.isGroup) && hasSkilledDescendant(n, $displaySkilled))
       }
       {@const bothSkilled = isNodeActive(edge.from) && isNodeActive(edge.to)}
+      {@const weight = bothSkilled ? countSkilledDescendants(edge.to, $displaySkilled) : 0}
+      {@const ratio = bothSkilled && $displaySkilled.size > 0 ? weight / $displaySkilled.size : 0}
+      {@const thickness = bothSkilled ? 1.5 + (ratio * 6.5) : 1.5}
       <path
         d={edgePath(edge.from, edge.to)}
         class="edge"
         class:edge-active={bothSkilled}
+        style="stroke-width: {thickness}px"
         fill="none"
       />
     {/each}
@@ -277,6 +298,7 @@
       {@const state = nodeState(node)}
       {@const isClickable = !node.isRoot && !node.isCategory && !node.isGroup && state !== 'locked'}
       {@const hasVisibleChildren = node.children && node.children.length > 0}
+      {@const textLines = wrapText(node.name, node.isRoot || node.isCategory || node.isGroup ? 24 : 18)}
 
       <g
         class="node-g"
@@ -330,11 +352,18 @@
         <!-- Label -->
         <text
           x={node.isRoot || node.isCategory || node.isGroup ? NODE_W / 2 : 30}
-          y={NODE_H / 2 + 4}
+          y={NODE_H / 2}
           text-anchor={node.isRoot || node.isCategory || node.isGroup ? 'middle' : 'start'}
           class="node-label"
           class:node-label-dim={state === 'locked'}
-        >{node.name}</text>
+        >
+          {#each textLines as line, i}
+            <tspan
+              x={node.isRoot || node.isCategory || node.isGroup ? NODE_W / 2 : 30}
+              dy={i === 0 ? `-${(textLines.length - 1) * 6}px` : '12px'}
+            >{line}</tspan>
+          {/each}
+        </text>
       </g>
 
       <!-- Expand button (rendered outside node-g to avoid click conflict) -->

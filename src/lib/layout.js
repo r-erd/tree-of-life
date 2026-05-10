@@ -8,7 +8,7 @@
 
 export const NODE_W = 160
 export const NODE_H = 44
-export const LEVEL_H = 110
+export const LEVEL_H = 150
 export const SIBLING_GAP = 24
 
 // ── 1. Build visual tree ──────────────────────────────────────────────────────
@@ -185,6 +185,17 @@ export function hasSkilledDescendant(node, skilledSet) {
   if (skilledSet.has(node.id)) return true
   if (!node.children) return false
   return node.children.some(c => hasSkilledDescendant(c, skilledSet))
+}
+
+export function countSkilledDescendants(node, skilledSet) {
+  let count = 0
+  if (skilledSet.has(node.id)) count += 1
+  if (node.children) {
+    for (const c of node.children) {
+      count += countSkilledDescendants(c, skilledSet)
+    }
+  }
+  return count
 }
 
 export function pruneTree(node, skilledSet, expandedSet, depth = 0) {
