@@ -12,7 +12,7 @@ import { writable, derived, get } from 'svelte/store'
 import { encode, decode } from './encoder.js'
 
 const LS_KEY = 'tol_state'
-export const TREE_VERSION = 1 // must match skills.yaml version
+export const TREE_VERSION = 2 // must match passions.yaml version
 
 // ── Skill tree definition (loaded once from YAML) ──
 export const categories = writable([])
@@ -85,6 +85,8 @@ export const skilled = createSkilledStore()
 
 // ── Active category filter ──
 export const activeCategory = writable('all')
+// ── Search Focus ──
+export const searchFocus = writable(null)
 // ── Import/view mode: when user enters someone else's code ──
 export const viewMode = writable(null) // null = own tree, Set = viewing imported tree
 
@@ -136,9 +138,8 @@ export function buildNodeIndex(cats) {
     }
   }
   for (const cat of cats) {
-    for (const skill of cat.skills) {
-      walk([skill])
-    }
+    idx.set(cat.id, cat)
+    if (cat.skills) walk(cat.skills)
   }
   nodeIndex.set(idx)
 }

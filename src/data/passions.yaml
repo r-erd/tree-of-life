@@ -1,0 +1,827 @@
+# Tree of Life — Passion Tree Definition
+# Version must be incremented whenever nodes are added, removed, or reordered.
+# Node IDs are PERMANENT — renaming 'name' is safe; changing 'id' breaks share codes.
+
+version: 2
+
+categories:
+
+  # ─────────────────────────────────────────
+  # BODY — Physical fitness, sport, movement
+  # ─────────────────────────────────────────
+  - id: body
+    name: BODY
+    icon: "🏋️"
+    skills:
+
+      - id: running
+        name: RUNNING
+        icon: "🏃"
+        children:
+          - id: run_100km
+            name: 100KM TOTAL
+            description: Accumulated 100km of running
+          - id: run_500km
+            name: 500KM TOTAL
+            description: Accumulated 500km of running
+            requires: run_100km
+          - id: run_1000km
+            name: 1,000KM TOTAL
+            description: Accumulated 1,000km of running
+            requires: run_500km
+          - id: run_5000km
+            name: 5,000KM TOTAL
+            description: Accumulated 5,000km of running — a true lifestyle
+            requires: run_1000km
+
+      - id: swimming
+        name: SWIMMING
+        icon: "🏊"
+        children:
+          - id: swim_10h
+            name: 10 HOURS
+            description: Spent 10 hours actively swimming
+          - id: swim_50h
+            name: 50 HOURS
+            description: Spent 50 hours actively swimming
+            requires: swim_10h
+          - id: swim_250h
+            name: 250 HOURS
+            description: Spent 250 hours actively swimming
+            requires: swim_50h
+          - id: swim_1000h
+            name: 1,000 HOURS
+            description: Spent 1,000 hours actively swimming
+            requires: swim_250h
+
+      - id: cycling
+        name: CYCLING
+        icon: "🚴"
+        children:
+          - id: cycle_500km
+            name: 500KM TOTAL
+            description: Accumulated 500km in the saddle
+          - id: cycle_2000km
+            name: 2,000KM TOTAL
+            description: Accumulated 2,000km of cycling
+            requires: cycle_500km
+          - id: cycle_10000km
+            name: 10,000KM TOTAL
+            description: Accumulated 10,000km of cycling
+            requires: cycle_2000km
+          - id: cycle_25000km
+            name: 25,000KM TOTAL
+            description: Accumulated 25,000km — practically circumnavigated the globe
+            requires: cycle_10000km
+
+      - id: bouldering
+        name: BOULDERING
+        icon: "🧗‍♂️"
+        children:
+          - id: boulder_50h
+            name: 50 HOURS
+            description: Spent 50 hours solving boulder problems
+          - id: boulder_250h
+            name: 250 HOURS
+            description: Spent 250 hours bouldering
+            requires: boulder_50h
+          - id: boulder_1000h
+            name: 1,000 HOURS
+            description: Spent 1,000 hours bouldering
+            requires: boulder_250h
+          - id: boulder_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours bouldering — incredible finger strength
+            requires: boulder_1000h
+
+      - id: rope_climbing
+        name: ROPE CLIMBING
+        icon: "🧗"
+        children:
+          - id: rope_50h
+            name: 50 HOURS
+            description: Spent 50 hours climbing on ropes (top-rope, lead, trad)
+          - id: rope_250h
+            name: 250 HOURS
+            description: Spent 250 hours climbing on ropes
+            requires: rope_50h
+          - id: rope_1000h
+            name: 1,000 HOURS
+            description: Spent 1,000 hours climbing on ropes
+            requires: rope_250h
+          - id: rope_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours climbing on ropes — a true alpinist
+            requires: rope_1000h
+
+      - id: striking
+        name: STRIKING ARTS
+        icon: "🥊"
+        children:
+          - id: strike_50h
+            name: 50 HOURS
+            description: Spent 50 hours training striking (boxing, muay thai, karate)
+          - id: strike_250h
+            name: 250 HOURS
+            description: Spent 250 hours training striking
+            requires: strike_50h
+          - id: strike_1000h
+            name: 1,000 HOURS
+            description: Spent 1,000 hours training striking
+            requires: strike_250h
+          - id: strike_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours training striking — mastery of eight limbs
+            requires: strike_1000h
+
+      - id: grappling
+        name: GRAPPLING ARTS
+        icon: "🥋"
+        children:
+          - id: grap_50h
+            name: 50 HOURS
+            description: Spent 50 hours training grappling (BJJ, wrestling, judo)
+          - id: grap_250h
+            name: 250 HOURS
+            description: Spent 250 hours training grappling
+            requires: grap_50h
+          - id: grap_1000h
+            name: 1,000 HOURS
+            description: Spent 1,000 hours training grappling
+            requires: grap_250h
+          - id: grap_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours training grappling — a true black belt
+            requires: grap_1000h
+
+      - id: yoga
+        name: YOGA
+        icon: "🧘"
+        children:
+          - id: yoga_50h
+            name: 50 HOURS
+            description: Spent 50 hours practicing yoga
+          - id: yoga_250h
+            name: 250 HOURS
+            description: Spent 250 hours practicing yoga
+            requires: yoga_50h
+          - id: yoga_1000h
+            name: 1,000 HOURS
+            description: Spent 1,000 hours practicing yoga
+            requires: yoga_250h
+          - id: yoga_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours practicing yoga
+            requires: yoga_1000h
+
+      - id: strength
+        name: STRENGTH TRAINING
+        icon: "💪"
+        children:
+          - id: str_50h
+            name: 50 HOURS
+            description: Spent 50 hours lifting weights or bodyweight training
+          - id: str_250h
+            name: 250 HOURS
+            description: Spent 250 hours strength training
+            requires: str_50h
+          - id: str_1000h
+            name: 1,000 HOURS
+            description: Spent 1,000 hours strength training
+            requires: str_250h
+          - id: str_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours strength training
+            requires: str_1000h
+
+  # ─────────────────────────────────────────
+  # MIND — Knowledge, learning, mental skills
+  # ─────────────────────────────────────────
+  - id: mind
+    name: MIND
+    icon: "🧠"
+    skills:
+
+      - id: media
+        name: MEDIA & STORIES
+        icon: "🍿"
+        children:
+          - id: media_500h
+            name: 500 HOURS
+            description: Spent 500 hours immersed in movies, TV, or narrative podcasts
+          - id: media_2000h
+            name: 2,000 HOURS
+            description: Spent 2,000 hours immersed in media
+            requires: media_500h
+          - id: media_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours immersed in media
+            requires: media_2000h
+          - id: media_10000h
+            name: 10,000 HOURS
+            description: Spent 10,000 hours immersed in media — a true connoisseur
+            requires: media_5000h
+
+      - id: reading
+        name: READING
+        icon: "📚"
+        children:
+          - id: read_50
+            name: 50 BOOKS
+            description: Read 50 books cover to cover
+          - id: read_100
+            name: 100 BOOKS
+            description: Read 100 books cover to cover
+            requires: read_50
+          - id: read_500
+            name: 500 BOOKS
+            description: Read 500 books cover to cover
+            requires: read_100
+          - id: read_1000
+            name: 1,000 BOOKS
+            description: Read 1,000 books cover to cover — a lifelong library
+            requires: read_500
+
+      - id: languages
+        name: LANGUAGES
+        icon: "🗣️"
+        children:
+          - id: lang_500h
+            name: 500 HOURS
+            description: Spent 500 hours actively studying foreign languages
+          - id: lang_2000h
+            name: 2,000 HOURS
+            description: Spent 2,000 hours studying foreign languages
+            requires: lang_500h
+          - id: lang_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours studying foreign languages
+            requires: lang_2000h
+          - id: lang_10000h
+            name: 10,000 HOURS
+            description: Spent 10,000 hours studying foreign languages
+            requires: lang_5000h
+
+      - id: chess
+        name: CHESS
+        icon: "♟️"
+        children:
+          - id: chess_50h
+            name: 50 HOURS
+            description: Spent 50 hours studying and playing chess
+          - id: chess_250h
+            name: 250 HOURS
+            description: Spent 250 hours playing chess
+            requires: chess_50h
+          - id: chess_1000h
+            name: 1,000 HOURS
+            description: Spent 1,000 hours playing chess
+            requires: chess_250h
+          - id: chess_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours playing chess — grandmaster dedication
+            requires: chess_1000h
+
+      - id: meditation
+        name: MEDITATION
+        icon: "🕯️"
+        children:
+          - id: med_50h
+            name: 50 HOURS
+            description: Spent 50 hours in meditation
+          - id: med_250h
+            name: 250 HOURS
+            description: Spent 250 hours in meditation
+            requires: med_50h
+          - id: med_1000h
+            name: 1,000 HOURS
+            description: Spent 1,000 hours in meditation
+            requires: med_250h
+          - id: med_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours in meditation — profound stillness
+            requires: med_1000h
+
+      - id: coding
+        name: CODING
+        icon: "💻"
+        children:
+          - id: code_50h
+            name: 50 HOURS
+            description: Spent 50 hours programming
+          - id: code_250h
+            name: 250 HOURS
+            description: Spent 250 hours programming
+            requires: code_50h
+          - id: code_1000h
+            name: 1,000 HOURS
+            description: Spent 1,000 hours programming
+            requires: code_250h
+          - id: code_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours programming
+            requires: code_1000h
+          - id: code_10000h
+            name: 10,000 HOURS
+            description: Spent 10,000 hours programming — true engineering mastery
+            requires: code_5000h
+
+      - id: mathematics
+        name: MATHEMATICS
+        icon: "📐"
+        children:
+          - id: math_50h
+            name: 50 HOURS
+            description: Spent 50 hours studying advanced mathematics
+          - id: math_250h
+            name: 250 HOURS
+            description: Spent 250 hours studying mathematics
+            requires: math_50h
+          - id: math_1000h
+            name: 1,000 HOURS
+            description: Spent 1,000 hours studying mathematics
+            requires: math_250h
+          - id: math_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours studying mathematics
+            requires: math_1000h
+
+  # ─────────────────────────────────────────
+  # CREATIVE — Arts, craft, expression
+  # ─────────────────────────────────────────
+  - id: creative
+    name: CREATIVE
+    icon: "🎨"
+    skills:
+
+      - id: drawing
+        name: DRAWING
+        icon: "✏️"
+        children:
+          - id: draw_50h
+            name: 50 HOURS
+            description: Spent 50 hours drawing or illustrating
+          - id: draw_250h
+            name: 250 HOURS
+            description: Spent 250 hours drawing
+            requires: draw_50h
+          - id: draw_1000h
+            name: 1,000 HOURS
+            description: Spent 1,000 hours drawing
+            requires: draw_250h
+          - id: draw_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours drawing
+            requires: draw_1000h
+
+      - id: music_instrument
+        name: MUSIC — INSTRUMENT
+        icon: "🎸"
+        children:
+          - id: music_50h
+            name: 50 HOURS
+            description: Spent 50 hours practicing a musical instrument
+          - id: music_250h
+            name: 250 HOURS
+            description: Spent 250 hours practicing an instrument
+            requires: music_50h
+          - id: music_1000h
+            name: 1,000 HOURS
+            description: Spent 1,000 hours practicing an instrument
+            requires: music_250h
+          - id: music_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours practicing an instrument
+            requires: music_1000h
+
+      - id: music_production
+        name: MUSIC PRODUCTION
+        icon: "🎧"
+        children:
+          - id: prod_50h
+            name: 50 HOURS
+            description: Spent 50 hours producing music in a DAW
+          - id: prod_250h
+            name: 250 HOURS
+            description: Spent 250 hours producing music
+            requires: prod_50h
+          - id: prod_1000h
+            name: 1,000 HOURS
+            description: Spent 1,000 hours producing music
+            requires: prod_250h
+          - id: prod_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours producing music
+            requires: prod_1000h
+
+      - id: photography
+        name: PHOTOGRAPHY
+        icon: "📷"
+        children:
+          - id: photo_50h
+            name: 50 HOURS
+            description: Spent 50 hours shooting and editing photos
+          - id: photo_250h
+            name: 250 HOURS
+            description: Spent 250 hours on photography
+            requires: photo_50h
+          - id: photo_1000h
+            name: 1,000 HOURS
+            description: Spent 1,000 hours on photography
+            requires: photo_250h
+          - id: photo_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours on photography
+            requires: photo_1000h
+
+      - id: writing
+        name: WRITING
+        icon: "✍️"
+        children:
+          - id: write_50h
+            name: 50 HOURS
+            description: Spent 50 hours writing fiction, articles, or journals
+          - id: write_250h
+            name: 250 HOURS
+            description: Spent 250 hours writing
+            requires: write_50h
+          - id: write_1000h
+            name: 1,000 HOURS
+            description: Spent 1,000 hours writing
+            requires: write_250h
+          - id: write_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours writing — thousands of pages
+            requires: write_1000h
+
+      - id: cooking
+        name: COOKING
+        icon: "🍳"
+        children:
+          - id: cook_100m
+            name: 100 MEALS
+            description: Cooked 100 meals from scratch
+          - id: cook_500m
+            name: 500 MEALS
+            description: Cooked 500 meals from scratch
+            requires: cook_100m
+          - id: cook_2000m
+            name: 2,000 MEALS
+            description: Cooked 2,000 meals from scratch
+            requires: cook_500m
+          - id: cook_5000m
+            name: 5,000 MEALS
+            description: Cooked 5,000 meals from scratch — a lifetime in the kitchen
+            requires: cook_2000m
+
+  # ─────────────────────────────────────────
+  # CRAFT — Technical & practical skills
+  # ─────────────────────────────────────────
+  - id: craft
+    name: CRAFT
+    icon: "🔧"
+    skills:
+
+      - id: woodworking
+        name: WOODWORKING
+        icon: "🪵"
+        children:
+          - id: wood_50h
+            name: 50 HOURS
+            description: Spent 50 hours crafting with wood
+          - id: wood_250h
+            name: 250 HOURS
+            description: Spent 250 hours woodworking
+            requires: wood_50h
+          - id: wood_1000h
+            name: 1,000 HOURS
+            description: Spent 1,000 hours woodworking
+            requires: wood_250h
+          - id: wood_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours woodworking
+            requires: wood_1000h
+
+      - id: electronics
+        name: ELECTRONICS
+        icon: "⚡"
+        children:
+          - id: elec_50h
+            name: 50 HOURS
+            description: Spent 50 hours building circuits and soldering
+          - id: elec_250h
+            name: 250 HOURS
+            description: Spent 250 hours working with electronics
+            requires: elec_50h
+          - id: elec_1000h
+            name: 1,000 HOURS
+            description: Spent 1,000 hours working with electronics
+            requires: elec_250h
+          - id: elec_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours working with electronics
+            requires: elec_1000h
+
+      - id: first_aid
+        name: FIRST AID
+        icon: "🩹"
+        children:
+          - id: fa_10h
+            name: 10 HOURS
+            description: Spent 10 hours studying and practicing first aid
+          - id: fa_50h
+            name: 50 HOURS
+            description: Spent 50 hours studying first aid
+            requires: fa_10h
+          - id: fa_100h
+            name: 100 HOURS
+            description: Spent 100 hours studying first aid
+            requires: fa_50h
+
+      - id: mechanics
+        name: MECHANICS
+        icon: "🔩"
+        children:
+          - id: mech_50h
+            name: 50 HOURS
+            description: Spent 50 hours working on vehicles or engines
+          - id: mech_250h
+            name: 250 HOURS
+            description: Spent 250 hours working as a mechanic
+            requires: mech_50h
+          - id: mech_1000h
+            name: 1,000 HOURS
+            description: Spent 1,000 hours working as a mechanic
+            requires: mech_250h
+          - id: mech_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours working as a mechanic
+            requires: mech_1000h
+
+      - id: sewing
+        name: SEWING & TEXTILES
+        icon: "🧵"
+        children:
+          - id: sew_50h
+            name: 50 HOURS
+            description: Spent 50 hours sewing or working with textiles
+          - id: sew_250h
+            name: 250 HOURS
+            description: Spent 250 hours sewing
+            requires: sew_50h
+          - id: sew_1000h
+            name: 1,000 HOURS
+            description: Spent 1,000 hours sewing
+            requires: sew_250h
+          - id: sew_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours sewing
+            requires: sew_1000h
+
+  # ─────────────────────────────────────────
+  # EXPLORER — Travel, adventure, outdoors
+  # ─────────────────────────────────────────
+  - id: explorer
+    name: EXPLORER
+    icon: "🌍"
+    skills:
+
+      - id: countries
+        name: COUNTRIES VISITED
+        icon: "✈️"
+        children:
+          - id: country_5
+            name: 5 COUNTRIES
+            description: Visit 5 different countries
+          - id: country_15
+            name: 15 COUNTRIES
+            description: Visit 15 different countries
+            requires: country_5
+          - id: country_30
+            name: 30 COUNTRIES
+            description: Visit 30 different countries
+            requires: country_15
+          - id: country_50
+            name: 50 COUNTRIES
+            description: Visit 50 different countries — seasoned traveller
+            requires: country_30
+          - id: country_100
+            name: 100 COUNTRIES
+            description: Visit 100 different countries — extreme traveller
+            requires: country_50
+
+      - id: continents
+        name: CONTINENTS
+        icon: "🗺️"
+        children:
+          - id: cont_3
+            name: 3 CONTINENTS
+            description: Set foot on 3 different continents
+          - id: cont_5
+            name: 5 CONTINENTS
+            description: Set foot on 5 different continents
+            requires: cont_3
+          - id: cont_7
+            name: ALL 7 CONTINENTS
+            description: Set foot on all seven continents including Antarctica
+            requires: cont_5
+
+      - id: diving
+        name: DIVING
+        icon: "🤿"
+        children:
+          - id: dive_10h
+            name: 10 HOURS
+            description: Logged 10 hours underwater
+          - id: dive_50h
+            name: 50 HOURS
+            description: Logged 50 hours underwater
+            requires: dive_10h
+          - id: dive_250h
+            name: 250 HOURS
+            description: Logged 250 hours underwater
+            requires: dive_50h
+          - id: dive_1000h
+            name: 1,000 HOURS
+            description: Logged 1,000 hours underwater
+            requires: dive_250h
+
+      - id: hiking
+        name: HIKING & CAMPING
+        icon: "⛺"
+        children:
+          - id: hike_100km
+            name: 100KM TOTAL
+            description: Accumulated 100km of trail hiking
+          - id: hike_500km
+            name: 500KM TOTAL
+            description: Accumulated 500km of trail hiking
+            requires: hike_100km
+          - id: hike_1000km
+            name: 1,000KM TOTAL
+            description: Accumulated 1,000km of trail hiking
+            requires: hike_500km
+          - id: hike_5000km
+            name: 5,000KM TOTAL
+            description: Accumulated 5,000km of trail hiking
+            requires: hike_1000km
+
+      - id: skiing
+        name: SKIING
+        icon: "⛷️"
+        children:
+          - id: ski_50h
+            name: 50 HOURS
+            description: Spent 50 hours skiing on the mountain
+          - id: ski_250h
+            name: 250 HOURS
+            description: Spent 250 hours skiing
+            requires: ski_50h
+          - id: ski_1000h
+            name: 1,000 HOURS
+            description: Spent 1,000 hours skiing
+            requires: ski_250h
+          - id: ski_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours skiing
+            requires: ski_1000h
+
+      - id: snowboarding
+        name: SNOWBOARDING
+        icon: "🏂"
+        children:
+          - id: snow_50h
+            name: 50 HOURS
+            description: Spent 50 hours snowboarding on the mountain
+          - id: snow_250h
+            name: 250 HOURS
+            description: Spent 250 hours snowboarding
+            requires: snow_50h
+          - id: snow_1000h
+            name: 1,000 HOURS
+            description: Spent 1,000 hours snowboarding
+            requires: snow_250h
+          - id: snow_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours snowboarding
+            requires: snow_1000h
+
+      - id: driving
+        name: DRIVING
+        icon: "🚗"
+        children:
+          - id: drive_500h
+            name: 500 HOURS
+            description: Spent 500 hours actively driving
+          - id: drive_2000h
+            name: 2,000 HOURS
+            description: Spent 2,000 hours driving
+            requires: drive_500h
+          - id: drive_5000h
+            name: 5,000 HOURS
+            description: Spent 5,000 hours driving
+            requires: drive_2000h
+
+      - id: flying
+        name: FLYING
+        icon: "✈️"
+        children:
+          - id: fly_50h
+            name: 50 FLIGHT HOURS
+            description: Logged 50 hours of piloting time
+          - id: fly_250h
+            name: 250 FLIGHT HOURS
+            description: Logged 250 hours of piloting time
+            requires: fly_50h
+          - id: fly_1000h
+            name: 1,000 FLIGHT HOURS
+            description: Logged 1,000 hours of piloting time
+            requires: fly_250h
+
+  # ─────────────────────────────────────────
+  # COLLECTOR — Accumulation, archiving, curating
+  # ─────────────────────────────────────────
+  - id: collector
+    name: COLLECTOR
+    icon: "📦"
+    skills:
+
+      - id: action_figures
+        name: ACTION FIGURES
+        icon: "🦸‍♂️"
+        children:
+          - id: figure_10
+            name: 10 FIGURES
+            description: Curated a collection of 10 figures
+          - id: figure_50
+            name: 50 FIGURES
+            description: Curated a collection of 50 figures
+            requires: figure_10
+          - id: figure_200
+            name: 200 FIGURES
+            description: Curated an extensive collection of 200 figures
+            requires: figure_50
+          - id: figure_500
+            name: 500 FIGURES
+            description: Curated a massive collection of 500 figures
+            requires: figure_200
+
+      - id: stamps
+        name: STAMPS
+        icon: "✉️"
+        children:
+          - id: stamp_100
+            name: 100 STAMPS
+            description: Curated a collection of 100 unique stamps
+          - id: stamp_500
+            name: 500 STAMPS
+            description: Curated 500 unique stamps
+            requires: stamp_100
+          - id: stamp_2000
+            name: 2,000 STAMPS
+            description: Curated 2,000 unique stamps
+            requires: stamp_500
+          - id: stamp_5000
+            name: 5,000 STAMPS
+            description: Curated 5,000 unique stamps
+            requires: stamp_2000
+
+      - id: coins
+        name: COINS & NUMISMATICS
+        icon: "🪙"
+        children:
+          - id: coin_100
+            name: 100 COINS
+            description: Curated a collection of 100 unique coins
+          - id: coin_500
+            name: 500 COINS
+            description: Curated 500 unique coins
+            requires: coin_100
+          - id: coin_2000
+            name: 2,000 COINS
+            description: Curated 2,000 unique coins
+            requires: coin_500
+          - id: coin_5000
+            name: 5,000 COINS
+            description: Curated 5,000 unique coins
+            requires: coin_2000
+
+      - id: vintage_tech
+        name: VINTAGE TECH
+        icon: "📻"
+        children:
+          - id: tech_5
+            name: 5 PIECES
+            description: Restored or curated 5 pieces of vintage tech
+          - id: tech_20
+            name: 20 PIECES
+            description: Curated 20 pieces of vintage tech
+            requires: tech_5
+          - id: tech_50
+            name: 50 PIECES
+            description: Curated 50 pieces of vintage tech
+            requires: tech_20
+          - id: tech_100
+            name: 100 PIECES
+            description: Curated 100 pieces of vintage tech
+            requires: tech_50

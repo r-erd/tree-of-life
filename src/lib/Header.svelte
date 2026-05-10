@@ -1,5 +1,5 @@
 <script>
-  import { viewMode, skilled } from '../lib/store.js'
+  import { viewMode, skilled, nodeIndex, searchFocus } from '../lib/store.js'
 
   let { onShare, onImport } = $props()
 
@@ -21,6 +21,53 @@
     localStorage.setItem('tol_theme', theme)
     document.documentElement.setAttribute('data-theme', theme)
   }
+
+  let query = $state('')
+  let suggestions = $state([])
+  let selectedIndex = $state(-1)
+  let searchInput = $state(null)
+
+  $effect(() => {
+    if (query.trim() === '') {
+      suggestions = []
+      selectedIndex = -1
+      return
+    }
+    const q = query.toLowerCase()
+    const results = []
+    for (const [id, node] of $nodeIndex.entries()) {
+      if (node.name.toLowerCase().includes(q)) {
+        results.push(node)
+      }
+    }
+    results.sort((a, b) => a.name.length - b.name.length)
+    suggestions = results.slice(0, 8)
+    selectedIndex = suggestions.length > 0 ? 0 : -1
+  })
+
+  function handleSearchKeydown(e) {
+    if (suggestions.length === 0) return
+    if (e.key === 'ArrowDown') {
+      e.preventDefault()
+      selectedIndex = (selectedIndex + 1) % suggestions.length
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault()
+      selectedIndex = (selectedIndex - 1 + suggestions.length) % suggestions.length
+    } else if (e.key === 'Enter') {
+      e.preventDefault()
+      selectSuggestion(suggestions[selectedIndex])
+    } else if (e.key === 'Escape') {
+      query = ''
+      searchInput?.blur()
+    }
+  }
+
+  function selectSuggestion(node) {
+    if (!node) return
+    searchFocus.set(node.id)
+    query = ''
+    searchInput?.blur()
+  }
 </script>
 
 <nav class="navbar">
@@ -28,6 +75,33 @@
     <a href="." class="wordmark" aria-label="Tree of Life">
       TREE<span class="wordmark-sep">OF</span>LIFE
     </a>
+
+    <div class="search-container">
+      <input 
+        bind:this={searchInput}
+        type="text" 
+        class="search-input" 
+        placeholder="Search passions..." 
+        bind:value={query}
+        onkeydown={handleSearchKeydown}
+      />
+      {#if suggestions.length > 0}
+        <div class="suggestions-dropdown">
+          {#each suggestions as s, i}
+            <!-- svelte-ignore a11y_click_events_have_key_events -->
+            <!-- svelte-ignore a11y_no_static_element_interactions -->
+            <div 
+              class="suggestion-item" 
+              class:selected={i === selectedIndex}
+              onclick={() => selectSuggestion(s)}
+            >
+              <span class="suggestion-icon">{s.icon || ''}</span>
+              <span class="suggestion-name">{s.name}</span>
+            </div>
+          {/each}
+        </div>
+      {/if}
+    </div>
 
     <div class="spacer"></div>
 
@@ -83,6 +157,56 @@
     line-height: 1;
   }
   .wordmark-sep { color: var(--text-dim); margin: 0 2px; }
+
+  /* ── Search Bar ── */
+  .search-container {
+    position: relative;
+    flex: 1;
+    max-width: 320px;
+    margin-left: var(--sp-lg);
+  }
+  .search-input {
+    width: 100%;
+    background: var(--canvas-inset);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 8px 12px;
+    border-radius: var(--r-pill);
+    font-family: var(--font-ui);
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-input:focus { border-color: var(--text-primary); }
+  .search-input::placeholder { color: var(--text-dim); }
+
+  .suggestions-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    overflow: hidden;
+    z-index: 200;
+  }
+  .suggestion-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: var(--font-ui);
+    color: var(--text-primary);
+  }
+  .suggestion-item:hover, .suggestion-item.selected {
+    background: var(--canvas-inset);
+  }
+  .suggestion-icon { font-size: 14px; }
+  .suggestion-name { font-weight: 500; }
 
   .spacer { flex: 1; }
 

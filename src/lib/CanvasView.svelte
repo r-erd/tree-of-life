@@ -4,7 +4,8 @@
    * Progressive disclosure: shows one level past the skilled frontier by default.
    * Users can expand/collapse individual branches.
    */
-  import { categories, activeCategory, displaySkilled, skilled, viewMode } from '../lib/store.js'
+  import { categories, activeCategory, displaySkilled, skilled, viewMode, searchFocus } from '../lib/store.js'
+  import { tick } from 'svelte'
   import {
     buildVisualTree, computeLayout, flatten,
     filterSkilled, pruneTree, NODE_W, NODE_H, LEVEL_H, hasSkilledDescendant, countSkilledDescendants
@@ -80,6 +81,52 @@
   $effect(() => {
     $activeCategory
     centered = false
+  })
+
+  // ── Ancestry map for search auto-expansion ──
+  const parentMap = $derived.by(() => {
+    const root = buildVisualTree($categories, 'all')
+    const map = new Map()
+    function walk(n) {
+      if (n.children) {
+        for (const c of n.children) {
+          map.set(c.id, n.id)
+          walk(c)
+        }
+      }
+    }
+    walk(root)
+    return map
+  })
+
+  // ── Handle Search Focus ──
+  $effect(() => {
+    if ($searchFocus) {
+      const targetId = $searchFocus
+      searchFocus.set(null) // clear immediately
+      
+      const nextExpanded = new Set(expandedNodes)
+      const nextCollapsed = new Set(collapsedNodes)
+      let currentId = parentMap.get(targetId)
+      while (currentId) {
+        nextExpanded.add(currentId)
+        nextCollapsed.delete(currentId)
+        currentId = parentMap.get(currentId)
+      }
+      expandedNodes = nextExpanded
+      collapsedNodes = nextCollapsed
+
+      tick().then(() => {
+        const targetNode = layoutData.nodes.find(n => n.id === targetId)
+        if (targetNode && svgEl) {
+          const rect = svgEl.getBoundingClientRect()
+          const newScale = Math.max(scale, 1) // ensure we are zoomed in enough to see it
+          scale = Math.min(MAX_SCALE, newScale)
+          tx = rect.width / 2 - (targetNode.x + NODE_W / 2) * scale
+          ty = rect.height / 2 - (targetNode.y + NODE_H / 2) * scale
+        }
+      })
+    }
   })
 
   // ── Node state ──
