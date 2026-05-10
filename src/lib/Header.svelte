@@ -37,6 +37,7 @@
         <button class="btn-ghost btn-ghost-dim" onclick={() => viewMode.set(null)}>MY TREE</button>
       {/if}
       <label class="apple-toggle" title="Toggle Theme" aria-label="Toggle Light Mode">
+        <span class="theme-icon" aria-hidden="true">{theme === 'light' ? '☀️' : '🌙'}</span>
         <input type="checkbox" class="sr-only" checked={theme === 'light'} onchange={toggleTheme}>
         <div class="toggle-track">
           <div class="toggle-thumb"></div>
@@ -110,6 +111,12 @@
     align-items: center;
     cursor: pointer;
     margin-right: var(--sp-sm);
+  }
+  .theme-icon {
+    font-size: 14px;
+    margin-right: 8px;
+    user-select: none;
+    line-height: 1;
   }
   .toggle-track {
     position: relative;

@@ -1,7 +1,7 @@
-# Tree of Life — Skill Tree Definition
+# Tree of Life — Passion Tree Definition
 # Version must be incremented whenever nodes are added, removed, or reordered.
 # Node IDs are PERMANENT — renaming 'name' is safe; changing 'id' breaks share codes.
-# To add skills: open a GitHub PR editing this file.
+# To add passions: open a GitHub PR editing this file.
 
 version: 1
 
@@ -241,6 +241,23 @@ categories:
     name: MIND
     icon: "🧠"
     skills:
+
+      - id: media
+        name: MEDIA & STORIES
+        icon: "🍿"
+        children:
+          - id: media_cinephile
+            name: CINEPHILE
+            description: Watch and log 100+ movies
+          - id: media_binge
+            name: TV ENTHUSIAST
+            description: Complete 20+ TV series
+          - id: media_genre
+            name: GENRE EXPLORER
+            description: Deep dive into a specific genre (Horror, Anime, Sci-Fi)
+          - id: media_podcast
+            name: PODCAST JUNKIE
+            description: Subscribe to and regularly listen to 5+ podcasts
 
       - id: reading
         name: READING
@@ -696,11 +713,14 @@ categories:
           - id: hike_10km
             name: 10KM DAY HIKE
             description: Complete a 10+ km day hike
-            requires: camp_overnight
+          - id: hike_20km
+            name: 20KM DAY HIKE
+            description: Complete a 20+ km day hike
+            requires: hike_10km
           - id: hike_multiday
             name: MULTI-DAY TRAIL
             description: Complete a multi-day hike carrying all gear
-            requires: hike_10km
+            requires: hike_20km
           - id: hike_100km
             name: 100KM TRAIL
             description: Complete a 100+ km long-distance trail
@@ -871,3 +891,42 @@ categories:
             name: RAISED £10,000
             description: Raise £10,000+ through fundraising
             requires: fund_1k
+
+  # ─────────────────────────────────────────
+  # COLLECTOR — Accumulating and curating
+  # ─────────────────────────────────────────
+  - id: collector
+    name: COLLECTOR
+    icon: "💎"
+    skills:
+
+      - id: col_figures
+        name: ACTION FIGURES & TOYS
+        icon: "🤖"
+        children:
+          - id: col_figures_starter
+            name: STARTER COLLECTION
+            description: Start a collection of action figures
+          - id: col_figures_100
+            name: THE SHOWROOM
+            description: Curate a collection of over 100 figures
+            requires: col_figures_starter
+
+      - id: col_media
+        name: VINTAGE MEDIA
+        icon: "📼"
+        children:
+          - id: col_vinyl
+            name: VINYL RECORDS
+            description: Build a solid vinyl collection
+          - id: col_retro_games
+            name: RETRO GAMES
+            description: Collect physical retro games and consoles
+
+      - id: col_art
+        name: ART & PRINTS
+        icon: "🖼️"
+        children:
+          - id: col_art_gallery
+            name: HOME GALLERY
+            description: Fill your walls with curated art prints and originals

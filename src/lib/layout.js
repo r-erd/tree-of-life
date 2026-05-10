@@ -36,17 +36,18 @@ function makeCatNode(cat) {
     name: cat.name,
     icon: cat.icon || '',
     isCategory: true,
-    children: (cat.skills || []).map(s => makeSkillNode(s)),
+    children: (cat.skills || []).map(s => makeSkillNode(s, true)),
   }
 }
 
-function makeSkillNode(skill) {
+function makeSkillNode(skill, isGroup = false) {
   return {
     id: skill.id,
     name: skill.name,
     icon: skill.icon || '',
     description: skill.description || '',
     requires: skill.requires || null,
+    isGroup: isGroup,
     children: restructureChildren(skill.children || []),
   }
 }
@@ -83,6 +84,7 @@ function restructureChildren(yamlChildren) {
       icon: yaml.icon || '',
       description: yaml.description || '',
       requires: yaml.requires || null,
+      isGroup: false,
       children: [...ownChildren, ...chainedChildren],
     }
   }
@@ -175,10 +177,16 @@ const DEFAULT_VISIBLE_DEPTH = 1
 
 /**
  * Prune the visual tree for progressive disclosure.
- * Children are included if: depth < DEFAULT_VISIBLE_DEPTH, parent is skilled,
- * or parent is in expandedSet (manually expanded by user).
+ * Children are included if: depth < DEFAULT_VISIBLE_DEPTH, 
+ * parent is in expandedSet, or parent has a skilled descendant.
  * Collapsed nodes get { _hasHidden: true, _hiddenCount: N }.
  */
+export function hasSkilledDescendant(node, skilledSet) {
+  if (skilledSet.has(node.id)) return true
+  if (!node.children) return false
+  return node.children.some(c => hasSkilledDescendant(c, skilledSet))
+}
+
 export function pruneTree(node, skilledSet, expandedSet, depth = 0) {
   if (!node.children || node.children.length === 0) {
     return { ...node, _hasHidden: false, _hiddenCount: 0 }
@@ -186,8 +194,8 @@ export function pruneTree(node, skilledSet, expandedSet, depth = 0) {
 
   const shouldExpand =
     depth < DEFAULT_VISIBLE_DEPTH ||
-    skilledSet.has(node.id) ||
-    expandedSet.has(node.id)
+    expandedSet.has(node.id) ||
+    hasSkilledDescendant(node, skilledSet)
 
   if (shouldExpand) {
     const prunedChildren = node.children.map(c =>

@@ -7,7 +7,7 @@
   import { categories, activeCategory, displaySkilled, skilled, viewMode } from '../lib/store.js'
   import {
     buildVisualTree, computeLayout, flatten,
-    filterSkilled, pruneTree, NODE_W, NODE_H, LEVEL_H
+    filterSkilled, pruneTree, NODE_W, NODE_H, LEVEL_H, hasSkilledDescendant
   } from '../lib/layout.js'
 
   // ── State ──
@@ -84,14 +84,17 @@
 
   // ── Node state ──
   function nodeState(node) {
-    if (node.isRoot || node.isCategory) return 'meta'
+    if (node.isRoot || node.isCategory || node.isGroup) {
+      if (hasSkilledDescendant(node, $displaySkilled)) return 'meta-active'
+      return 'meta'
+    }
     if ($displaySkilled.has(node.id)) return 'skilled'
     if (node.requires && !$displaySkilled.has(node.requires)) return 'locked'
     return 'unskilled'
   }
 
   function toggleNode(node) {
-    if (isViewMode || node.isRoot || node.isCategory) return
+    if (isViewMode || node.isRoot || node.isCategory || node.isGroup) return
     if (nodeState(node) === 'locked') return
     skilled.toggle(node.id)
   }
@@ -221,9 +224,9 @@
     class="btn-ghost btn-ghost-dim toolbar-btn"
     class:active={focusMode}
     onclick={() => { focusMode = !focusMode }}
-    title="Show only skilled branches"
+    title="Show only active branches"
   >
-    {focusMode ? '✦ SKILLED ONLY' : '◇ ALL SKILLS'}
+    {focusMode ? '✦ PASSIONS ONLY' : '◇ ALL PASSIONS'}
   </button>
   <button
     class="btn-ghost btn-ghost-dim toolbar-btn"
@@ -241,7 +244,7 @@
   class:dragging={isDragging}
   bind:this={svgEl}
   role="img"
-  aria-label="Skill tree canvas"
+  aria-label="Passion tree canvas"
   onwheel={onWheel}
   onmousedown={onMouseDown}
   onmousemove={onMouseMove}
@@ -255,9 +258,12 @@
 
     <!-- Edges -->
     {#each layoutData.edges as edge (edge.from.id + '-' + edge.to.id)}
-      {@const bothSkilled =
-        ($displaySkilled.has(edge.from.id) || edge.from.isRoot || edge.from.isCategory) &&
-        $displaySkilled.has(edge.to.id)}
+      {@const isNodeActive = (n) =>
+        n.isRoot ||
+        $displaySkilled.has(n.id) ||
+        ((n.isCategory || n.isGroup) && hasSkilledDescendant(n, $displaySkilled))
+      }
+      {@const bothSkilled = isNodeActive(edge.from) && isNodeActive(edge.to)}
       <path
         d={edgePath(edge.from, edge.to)}
         class="edge"
@@ -269,7 +275,7 @@
     <!-- Nodes -->
     {#each layoutData.nodes as node (node.id)}
       {@const state = nodeState(node)}
-      {@const isClickable = !node.isRoot && !node.isCategory && state !== 'locked'}
+      {@const isClickable = !node.isRoot && !node.isCategory && !node.isGroup && state !== 'locked'}
       {@const hasVisibleChildren = node.children && node.children.length > 0}
 
       <g
@@ -278,12 +284,12 @@
         transform="translate({node.x},{node.y})"
         onclick={() => toggleNode(node)}
         onkeydown={(e) => (e.key === 'Enter' || e.key === ' ') && toggleNode(node)}
-        role={node.isRoot || node.isCategory ? 'presentation' : 'button'}
+        role={node.isRoot || node.isCategory || node.isGroup ? 'presentation' : 'button'}
         aria-pressed={isClickable ? state === 'skilled' : undefined}
         tabindex={isClickable ? 0 : undefined}
       >
         <!-- Glow -->
-        {#if state === 'skilled'}
+        {#if state === 'skilled' || state === 'meta-active'}
           <rect x={-4} y={-4} width={NODE_W + 8} height={NODE_H + 8}
             rx="12" ry="12" class="node-glow" />
         {/if}
@@ -291,7 +297,7 @@
         <!-- Body -->
         <rect x={0} y={0} width={NODE_W} height={NODE_H} rx="8" ry="8"
           class="node-rect"
-          class:node-skilled={state === 'skilled'}
+          class:node-skilled={state === 'skilled' || state === 'meta-active'}
           class:node-unskilled={state === 'unskilled'}
           class:node-locked={state === 'locked'}
           class:node-meta={state === 'meta'}
@@ -301,7 +307,7 @@
         {#if state === 'skilled'}
           <circle cx={16} cy={NODE_H / 2} r={6} class="check-bg" />
           <text x={16} y={NODE_H / 2 + 4} text-anchor="middle" class="check-mark">✓</text>
-        {:else if !node.isRoot && !node.isCategory}
+        {:else if !node.isRoot && !node.isCategory && !node.isGroup}
           <circle cx={16} cy={NODE_H / 2} r={5} class="dot-empty"
             class:dot-locked={state === 'locked'} />
         {/if}
@@ -323,9 +329,9 @@
 
         <!-- Label -->
         <text
-          x={node.isRoot || node.isCategory ? NODE_W / 2 : 30}
+          x={node.isRoot || node.isCategory || node.isGroup ? NODE_W / 2 : 30}
           y={NODE_H / 2 + 4}
-          text-anchor={node.isRoot || node.isCategory ? 'middle' : 'start'}
+          text-anchor={node.isRoot || node.isCategory || node.isGroup ? 'middle' : 'start'}
           class="node-label"
           class:node-label-dim={state === 'locked'}
         >{node.name}</text>
@@ -347,7 +353,7 @@
           onclick={(e) => expandNode(e, node)}
           role="button"
           tabindex="0"
-          aria-label="Expand {node._hiddenCount} hidden skills"
+          aria-label="Expand {node._hiddenCount} hidden passions"
           onkeydown={(e) => e.key === 'Enter' && expandNode(e, node)}
         >
           <rect x={0} y={0} width={EXP_BTN_W} height={EXP_BTN_H} rx="11" class="expand-bg" />

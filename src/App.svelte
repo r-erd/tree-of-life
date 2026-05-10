@@ -36,12 +36,12 @@
 
 {#if loading}
   <div class="loading-screen">
-    <div class="loader" aria-label="Loading skill tree…"></div>
-    <p class="label-caps" style="margin-top: 24px; color: var(--text-dim)">LOADING SKILL TREE</p>
+    <div class="loader" aria-label="Loading passion tree…"></div>
+    <p class="label-caps" style="margin-top: 24px; color: var(--text-dim)">LOADING PASSION TREE</p>
   </div>
 {:else if error}
   <div class="loading-screen">
-    <p class="label-caps" style="color: var(--color-error)">ERROR LOADING SKILLS</p>
+    <p class="label-caps" style="color: var(--color-error)">ERROR LOADING PASSIONS</p>
     <p style="color: var(--text-mute); font-size: 13px; margin-top: 8px">{error}</p>
   </div>
 {:else}
@@ -49,7 +49,7 @@
   <CanvasView />
   
   <div class="app-footer">
-    v{TREE_VERSION} · {$stats.total} skills
+    v{TREE_VERSION} · {$stats.total} passions
   </div>
 {/if}
 
