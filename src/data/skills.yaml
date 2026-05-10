@@ -1,0 +1,873 @@
+# Tree of Life — Skill Tree Definition
+# Version must be incremented whenever nodes are added, removed, or reordered.
+# Node IDs are PERMANENT — renaming 'name' is safe; changing 'id' breaks share codes.
+# To add skills: open a GitHub PR editing this file.
+
+version: 1
+
+categories:
+
+  # ─────────────────────────────────────────
+  # BODY — Physical fitness, sport, movement
+  # ─────────────────────────────────────────
+  - id: body
+    name: BODY
+    icon: "🏋️"
+    skills:
+
+      - id: running
+        name: RUNNING
+        icon: "🏃"
+        children:
+          - id: run_5k
+            name: 5K
+            description: Run 5 kilometres without stopping
+          - id: run_10k
+            name: 10K
+            description: Run 10 kilometres
+            requires: run_5k
+          - id: run_half
+            name: HALF MARATHON
+            description: Run 21.1 km
+            requires: run_10k
+          - id: run_marathon
+            name: MARATHON
+            description: Run 42.2 km — the full distance
+            requires: run_half
+          - id: run_ultra
+            name: ULTRAMARATHON
+            description: Run 50 km or more in a single event
+            requires: run_marathon
+
+      - id: swimming
+        name: SWIMMING
+        icon: "🏊"
+        children:
+          - id: swim_25m
+            name: 25M
+            description: Swim one pool length unassisted
+          - id: swim_500m
+            name: 500M
+            description: Swim 500 metres continuously
+            requires: swim_25m
+          - id: swim_1km
+            name: 1KM
+            description: Swim 1 kilometre without stopping
+            requires: swim_500m
+          - id: swim_openwater
+            name: OPEN WATER
+            description: Complete an open water swim (lake, sea)
+            requires: swim_500m
+          - id: swim_10km
+            name: 10KM MARATHON SWIM
+            description: Complete a 10 km open water swim
+            requires: swim_openwater
+
+      - id: cycling
+        name: CYCLING
+        icon: "🚴"
+        children:
+          - id: cycle_30km
+            name: 30KM RIDE
+            description: Complete a 30 km ride
+          - id: cycle_100km
+            name: CENTURY (100KM)
+            description: Complete a 100 km ride in a day
+            requires: cycle_30km
+          - id: cycle_200km
+            name: 200KM AUDAX
+            description: Complete a 200 km audax / sportive
+            requires: cycle_100km
+          - id: cycle_commuter
+            name: DAILY COMMUTER
+            description: Cycle to work/school for 30+ consecutive days
+            requires: cycle_30km
+          - id: cycle_mtb
+            name: MOUNTAIN BIKING
+            description: Complete an off-road trail ride
+            requires: cycle_30km
+            children:
+              - id: mtb_enduro
+                name: ENDURO TRAIL
+                description: Ride a full enduro-graded trail
+                requires: cycle_mtb
+
+      - id: climbing
+        name: CLIMBING
+        icon: "🧗"
+        children:
+          - id: climb_indoor
+            name: INDOOR TOP-ROPE
+            description: Complete a beginner route at an indoor wall
+            children:
+              - id: climb_lead
+                name: LEAD CLIMBING
+                description: Lead climb on a rope at an indoor wall
+                requires: climb_indoor
+                children:
+                  - id: climb_outdoor_sport
+                    name: OUTDOOR SPORT CLIMB
+                    description: Lead climb on natural rock outdoors
+                    requires: climb_lead
+                  - id: climb_multipitch
+                    name: MULTI-PITCH
+                    description: Complete a multi-pitch route requiring belay stations
+                    requires: climb_outdoor_sport
+                  - id: climb_trad
+                    name: TRAD CLIMBING
+                    description: Place your own gear on a traditional route
+                    requires: climb_multipitch
+              - id: climb_boulder
+                name: BOULDERING
+                description: Boulder without a rope at V0–V2 level
+                requires: climb_indoor
+                children:
+                  - id: boulder_v4
+                    name: V4
+                    description: Complete a V4 boulder problem
+                    requires: climb_boulder
+                  - id: boulder_v6
+                    name: V6
+                    description: Complete a V6 boulder problem
+                    requires: boulder_v4
+                  - id: boulder_v8
+                    name: V8
+                    description: Complete a V8 boulder problem — advanced
+                    requires: boulder_v6
+
+      - id: martial_arts
+        name: MARTIAL ARTS
+        icon: "🥋"
+        children:
+          - id: ma_white_belt
+            name: WHITE BELT
+            description: Begin formal training in any martial art
+            children:
+              - id: ma_striking
+                name: STRIKING
+                description: Train striking arts (Boxing, Muay Thai, Karate, Kickboxing)
+                requires: ma_white_belt
+                children:
+                  - id: ma_first_spar
+                    name: FIRST SPARRING
+                    description: Complete a live sparring session
+                    requires: ma_striking
+                  - id: ma_first_fight
+                    name: FIRST COMPETITION
+                    description: Enter an amateur fight or tournament
+                    requires: ma_first_spar
+              - id: ma_grappling
+                name: GRAPPLING
+                description: Train grappling arts (BJJ, Judo, Wrestling, Sambo)
+                requires: ma_white_belt
+                children:
+                  - id: ma_blue_belt
+                    name: BLUE BELT (BJJ)
+                    description: Earn a blue belt or equivalent intermediate rank
+                    requires: ma_grappling
+                  - id: ma_purple_belt
+                    name: PURPLE BELT (BJJ)
+                    description: Earn a purple belt — considered advanced
+                    requires: ma_blue_belt
+
+      - id: yoga
+        name: YOGA
+        icon: "🧘"
+        children:
+          - id: yoga_first_class
+            name: FIRST CLASS
+            description: Complete your first yoga class
+          - id: yoga_30days
+            name: 30-DAY STREAK
+            description: Practice yoga every day for 30 days
+            requires: yoga_first_class
+          - id: yoga_headstand
+            name: HEADSTAND
+            description: Hold a headstand unsupported for 10 seconds
+            requires: yoga_first_class
+          - id: yoga_handstand
+            name: HANDSTAND
+            description: Hold a freestanding handstand for 5 seconds
+            requires: yoga_headstand
+          - id: yoga_splits
+            name: FULL SPLITS
+            description: Achieve full front or middle splits
+            requires: yoga_30days
+
+      - id: strength
+        name: STRENGTH TRAINING
+        icon: "💪"
+        children:
+          - id: str_first_gym
+            name: FIRST GYM SESSION
+            description: Complete your first structured strength training session
+          - id: str_bodyweight
+            name: BODYWEIGHT MASTERY
+            description: 10 pull-ups, 20 push-ups, 20 dips — unbroken
+            requires: str_first_gym
+          - id: str_1pl8
+            name: 1-PLATE SQUAT
+            description: Squat 60 kg (1 plate each side)
+            requires: str_first_gym
+          - id: str_2pl8
+            name: 2-PLATE SQUAT
+            description: Squat 100 kg (2 plates each side)
+            requires: str_1pl8
+          - id: str_3pl8
+            name: 3-PLATE SQUAT
+            description: Squat 140 kg (3 plates each side)
+            requires: str_2pl8
+          - id: str_bench_1pl8
+            name: 1-PLATE BENCH
+            description: Bench press 60 kg
+            requires: str_first_gym
+          - id: str_bench_2pl8
+            name: 2-PLATE BENCH
+            description: Bench press 100 kg
+            requires: str_bench_1pl8
+          - id: str_deadlift_2pl8
+            name: 2-PLATE DEADLIFT
+            description: Deadlift 100 kg
+            requires: str_first_gym
+          - id: str_deadlift_3pl8
+            name: 3-PLATE DEADLIFT
+            description: Deadlift 140 kg
+            requires: str_deadlift_2pl8
+
+  # ─────────────────────────────────────────
+  # MIND — Knowledge, learning, mental skills
+  # ─────────────────────────────────────────
+  - id: mind
+    name: MIND
+    icon: "🧠"
+    skills:
+
+      - id: reading
+        name: READING
+        icon: "📚"
+        children:
+          - id: read_1
+            name: 1 BOOK
+            description: Read your first book cover to cover
+          - id: read_10
+            name: 10 BOOKS
+            description: Complete 10 books
+            requires: read_1
+          - id: read_50
+            name: 50 BOOKS
+            description: Complete 50 books — a bookworm
+            requires: read_10
+          - id: read_100
+            name: 100 BOOKS
+            description: Complete 100 books
+            requires: read_50
+          - id: read_365
+            name: 365 BOOKS
+            description: One book per day (or accumulated 365) — legendary
+            requires: read_100
+
+      - id: languages
+        name: LANGUAGES
+        icon: "🗣️"
+        children:
+          - id: lang_first
+            name: SECOND LANGUAGE (A2)
+            description: Reach basic conversational level in a language other than your native
+          - id: lang_b2
+            name: FLUENT (B2)
+            description: Hold a flowing conversation on most topics
+            requires: lang_first
+          - id: lang_c1
+            name: PROFICIENT (C1)
+            description: Read literature, watch films, write professionally
+            requires: lang_b2
+          - id: lang_third
+            name: THIRD LANGUAGE (A2)
+            description: Begin a third language
+            requires: lang_first
+          - id: lang_polyglot
+            name: POLYGLOT (4+ LANGUAGES)
+            description: Conversational in 4 or more languages
+            requires: lang_third
+
+      - id: chess
+        name: CHESS
+        icon: "♟️"
+        children:
+          - id: chess_rules
+            name: KNOWS THE RULES
+            description: Understand all chess rules including en passant and castling
+          - id: chess_1000
+            name: 1000 ELO
+            description: Reach 1000 Elo rating (online or OTB)
+            requires: chess_rules
+          - id: chess_1500
+            name: 1500 ELO
+            description: Reach 1500 Elo — solid club level
+            requires: chess_1000
+          - id: chess_1800
+            name: 1800 ELO
+            description: Reach 1800 Elo — strong amateur
+            requires: chess_1500
+          - id: chess_2000
+            name: 2000 ELO (CANDIDATE MASTER)
+            description: Reach 2000 Elo — FIDE Candidate Master threshold
+            requires: chess_1800
+
+      - id: meditation
+        name: MEDITATION
+        icon: "🕯️"
+        children:
+          - id: med_7days
+            name: 7-DAY STREAK
+            description: Meditate every day for a week
+          - id: med_30days
+            name: 30-DAY STREAK
+            description: Meditate every day for a month
+            requires: med_7days
+          - id: med_100days
+            name: 100-DAY STREAK
+            description: 100 consecutive days of meditation
+            requires: med_30days
+          - id: med_retreat
+            name: SILENT RETREAT
+            description: Complete a multi-day silent meditation retreat
+            requires: med_30days
+
+      - id: coding
+        name: CODING
+        icon: "💻"
+        children:
+          - id: code_hello
+            name: HELLO WORLD
+            description: Write and run your first program
+          - id: code_project
+            name: FIRST PROJECT
+            description: Build and deploy a real project others can use
+            requires: code_hello
+          - id: code_oss
+            name: OPEN SOURCE CONTRIBUTION
+            description: Have a PR merged into a public repository
+            requires: code_project
+          - id: code_job
+            name: PROFESSIONAL DEVELOPER
+            description: Work as a software developer professionally
+            requires: code_project
+          - id: code_app
+            name: SHIPPED APP
+            description: Publish an app to the App Store or Play Store
+            requires: code_project
+
+      - id: mathematics
+        name: MATHEMATICS
+        icon: "📐"
+        children:
+          - id: math_algebra
+            name: ALGEBRA
+            description: Comfortable with algebraic manipulation and equations
+          - id: math_calculus
+            name: CALCULUS
+            description: Understand differentiation and integration
+            requires: math_algebra
+          - id: math_linalg
+            name: LINEAR ALGEBRA
+            description: Comfortable with matrices, vectors, and transformations
+            requires: math_algebra
+          - id: math_stats
+            name: STATISTICS & PROBABILITY
+            description: Understand distributions, hypothesis testing, and inference
+            requires: math_algebra
+
+  # ─────────────────────────────────────────
+  # CREATIVE — Arts, craft, expression
+  # ─────────────────────────────────────────
+  - id: creative
+    name: CREATIVE
+    icon: "🎨"
+    skills:
+
+      - id: drawing
+        name: DRAWING
+        icon: "✏️"
+        children:
+          - id: draw_first
+            name: FIRST SKETCH
+            description: Complete your first intentional drawing
+          - id: draw_portrait
+            name: PORTRAIT
+            description: Draw a recognisable human portrait from reference
+            requires: draw_first
+          - id: draw_perspective
+            name: PERSPECTIVE
+            description: Draw a scene with correct 1-point or 2-point perspective
+            requires: draw_first
+          - id: draw_daily
+            name: 100-DAY SKETCH CHALLENGE
+            description: Draw every day for 100 days
+            requires: draw_first
+
+      - id: music_instrument
+        name: MUSIC — INSTRUMENT
+        icon: "🎸"
+        children:
+          - id: music_first_song
+            name: FIRST SONG
+            description: Play your first complete song on any instrument
+          - id: music_perform
+            name: LIVE PERFORMANCE
+            description: Perform in front of an audience (open mic, recital, jam session)
+            requires: music_first_song
+          - id: music_compose
+            name: COMPOSE ORIGINAL PIECE
+            description: Write and record an original song or piece
+            requires: music_first_song
+          - id: music_grade5
+            name: GRADE 5 EQUIVALENT
+            description: Reach Grade 5 (or equivalent intermediate exam) on any instrument
+            requires: music_first_song
+
+      - id: music_production
+        name: MUSIC PRODUCTION
+        icon: "🎧"
+        children:
+          - id: prod_first_track
+            name: FIRST TRACK FINISHED
+            description: Complete and export your first produced track
+          - id: prod_release
+            name: RELEASED ON STREAMING
+            description: Release a track on Spotify/Apple Music
+            requires: prod_first_track
+          - id: prod_ep
+            name: EP RELEASED
+            description: Release a multi-track EP
+            requires: prod_release
+
+      - id: photography
+        name: PHOTOGRAPHY
+        icon: "📷"
+        children:
+          - id: photo_manual
+            name: MANUAL MODE
+            description: Shoot confidently in full manual (aperture, shutter, ISO)
+          - id: photo_edit
+            name: POST-PROCESSING
+            description: Edit photos in Lightroom or equivalent to professional standard
+            requires: photo_manual
+          - id: photo_published
+            name: PUBLISHED WORK
+            description: Have your photo published or exhibited publicly
+            requires: photo_manual
+          - id: photo_street
+            name: STREET PHOTOGRAPHY
+            description: Complete a street photography project with 10+ strong shots
+            requires: photo_manual
+
+      - id: writing
+        name: WRITING
+        icon: "✍️"
+        children:
+          - id: write_blog
+            name: PUBLISHED BLOG POST
+            description: Publish a long-form article online
+          - id: write_50k
+            name: 50K WORDS
+            description: Write 50,000 words of fiction or non-fiction (e.g. NaNoWriMo)
+            requires: write_blog
+          - id: write_published
+            name: PUBLISHED BOOK
+            description: Publish a book (self-published or traditional)
+            requires: write_50k
+
+      - id: cooking
+        name: COOKING
+        icon: "🍳"
+        children:
+          - id: cook_basics
+            name: CAN COOK A MEAL
+            description: Prepare a complete, tasty meal from scratch
+          - id: cook_dinner_party
+            name: DINNER PARTY HOST
+            description: Cook a multi-course meal for 6+ guests
+            requires: cook_basics
+          - id: cook_baking
+            name: BAKING
+            description: Bake bread, cakes, or pastries from scratch
+            requires: cook_basics
+          - id: cook_sourdough
+            name: SOURDOUGH BREAD
+            description: Bake a proper sourdough loaf with a live starter
+            requires: cook_baking
+          - id: cook_fermentation
+            name: FERMENTATION
+            description: Ferment your own food (kimchi, kombucha, miso, etc.)
+            requires: cook_basics
+          - id: cook_knife_skills
+            name: PROFESSIONAL KNIFE SKILLS
+            description: Julienne, brunoise, and chiffonade with speed and precision
+            requires: cook_basics
+
+  # ─────────────────────────────────────────
+  # CRAFT — Technical & practical skills
+  # ─────────────────────────────────────────
+  - id: craft
+    name: CRAFT
+    icon: "🔧"
+    skills:
+
+      - id: woodworking
+        name: WOODWORKING
+        icon: "🪵"
+        children:
+          - id: wood_first_project
+            name: FIRST PROJECT
+            description: Build something functional from wood
+          - id: wood_joinery
+            name: JOINERY
+            description: Cut and fit mortise-and-tenon or dovetail joints by hand
+            requires: wood_first_project
+          - id: wood_furniture
+            name: FURNITURE PIECE
+            description: Build a piece of furniture (table, chair, shelves)
+            requires: wood_joinery
+
+      - id: electronics
+        name: ELECTRONICS
+        icon: "⚡"
+        children:
+          - id: elec_ohms_law
+            name: OHM'S LAW
+            description: Understand voltage, current, resistance, and build your first circuit
+          - id: elec_arduino
+            name: MICROCONTROLLER PROJECT
+            description: Build a working Arduino/ESP32/Pi project
+            requires: elec_ohms_law
+          - id: elec_pcb
+            name: CUSTOM PCB
+            description: Design and order a custom printed circuit board
+            requires: elec_arduino
+          - id: elec_solder
+            name: SMD SOLDERING
+            description: Solder surface-mount components successfully
+            requires: elec_ohms_law
+
+      - id: first_aid
+        name: FIRST AID
+        icon: "🩹"
+        children:
+          - id: fa_cpr
+            name: CPR CERTIFIED
+            description: Trained and certified in CPR and AED use
+          - id: fa_first_aid_cert
+            name: FIRST AID CERTIFIED
+            description: Hold a recognised first aid certificate
+            requires: fa_cpr
+          - id: fa_wilderness
+            name: WILDERNESS FIRST AID
+            description: Certified in wilderness or remote area first aid
+            requires: fa_first_aid_cert
+
+      - id: mechanics
+        name: MECHANICS
+        icon: "🔩"
+        children:
+          - id: mech_oil_change
+            name: OIL CHANGE
+            description: Change engine oil and filter on a car
+          - id: mech_brakes
+            name: BRAKE SERVICE
+            description: Replace brake pads and rotors
+            requires: mech_oil_change
+          - id: mech_engine_rebuild
+            name: ENGINE REBUILD
+            description: Disassemble and rebuild an engine
+            requires: mech_brakes
+          - id: mech_bike
+            name: BIKE MECHANIC
+            description: Full overhaul of a bicycle (drivetrain, brakes, wheels)
+            requires: mech_oil_change
+
+      - id: sewing
+        name: SEWING & TEXTILES
+        icon: "🧵"
+        children:
+          - id: sew_first_item
+            name: FIRST SEWN ITEM
+            description: Sew your first item of clothing or textile piece
+          - id: sew_garment
+            name: FULL GARMENT
+            description: Sew a complete wearable garment from a pattern
+            requires: sew_first_item
+          - id: sew_own_pattern
+            name: OWN PATTERN
+            description: Draft and sew from your own pattern
+            requires: sew_garment
+
+  # ─────────────────────────────────────────
+  # EXPLORER — Travel, adventure, outdoors
+  # ─────────────────────────────────────────
+  - id: explorer
+    name: EXPLORER
+    icon: "🌍"
+    skills:
+
+      - id: countries
+        name: COUNTRIES VISITED
+        icon: "✈️"
+        children:
+          - id: country_5
+            name: 5 COUNTRIES
+            description: Visit 5 different countries
+          - id: country_15
+            name: 15 COUNTRIES
+            description: Visit 15 different countries
+            requires: country_5
+          - id: country_30
+            name: 30 COUNTRIES
+            description: Visit 30 different countries
+            requires: country_15
+          - id: country_50
+            name: 50 COUNTRIES
+            description: Visit 50 different countries — seasoned traveller
+            requires: country_30
+          - id: country_100
+            name: 100 COUNTRIES
+            description: Visit 100 different countries — extreme traveller
+            requires: country_50
+
+      - id: continents
+        name: CONTINENTS
+        icon: "🗺️"
+        children:
+          - id: cont_3
+            name: 3 CONTINENTS
+            description: Set foot on 3 different continents
+          - id: cont_5
+            name: 5 CONTINENTS
+            description: Set foot on 5 different continents
+            requires: cont_3
+          - id: cont_7
+            name: ALL 7 CONTINENTS
+            description: Set foot on all seven continents including Antarctica
+            requires: cont_5
+
+      - id: diving
+        name: DIVING
+        icon: "🤿"
+        children:
+          - id: dive_snorkel
+            name: SNORKELLING
+            description: Confident snorkeller in open water
+          - id: dive_owd
+            name: OPEN WATER DIVER (OWD)
+            description: Hold a PADI/SSI Open Water Diver certification
+            requires: dive_snorkel
+          - id: dive_aowd
+            name: ADVANCED OWD
+            description: Hold an Advanced Open Water Diver certification
+            requires: dive_owd
+          - id: dive_rescue
+            name: RESCUE DIVER
+            description: Complete rescue diver training
+            requires: dive_aowd
+          - id: dive_divemaster
+            name: DIVEMASTER
+            description: Hold professional Divemaster certification
+            requires: dive_rescue
+          - id: dive_night
+            name: NIGHT DIVE
+            description: Complete a certified night dive
+            requires: dive_owd
+          - id: dive_wreck
+            name: WRECK DIVE
+            description: Dive a shipwreck
+            requires: dive_owd
+
+      - id: camping
+        name: CAMPING & HIKING
+        icon: "⛺"
+        children:
+          - id: camp_overnight
+            name: OVERNIGHT CAMP
+            description: Sleep outdoors in a tent at least one night
+          - id: camp_solo
+            name: SOLO WILD CAMP
+            description: Camp solo in a remote location at least one night
+            requires: camp_overnight
+          - id: hike_10km
+            name: 10KM DAY HIKE
+            description: Complete a 10+ km day hike
+            requires: camp_overnight
+          - id: hike_multiday
+            name: MULTI-DAY TRAIL
+            description: Complete a multi-day hike carrying all gear
+            requires: hike_10km
+          - id: hike_100km
+            name: 100KM TRAIL
+            description: Complete a 100+ km long-distance trail
+            requires: hike_multiday
+
+      - id: skiing
+        name: SKIING / SNOWBOARDING
+        icon: "⛷️"
+        children:
+          - id: ski_beginner
+            name: BEGINNER SLOPE
+            description: Successfully ski or snowboard down a beginner piste
+          - id: ski_blue
+            name: BLUE RUNS
+            description: Comfortable on intermediate blue-graded pistes
+            requires: ski_beginner
+          - id: ski_red
+            name: RED RUNS
+            description: Tackle red (advanced) runs with confidence
+            requires: ski_blue
+          - id: ski_black
+            name: BLACK RUNS
+            description: Ski or board black (expert) runs
+            requires: ski_red
+          - id: ski_offpiste
+            name: OFF-PISTE
+            description: Ski off-piste terrain with a guide
+            requires: ski_red
+
+      - id: driving
+        name: DRIVING
+        icon: "🚗"
+        children:
+          - id: drive_license
+            name: DRIVING LICENSE
+            description: Hold a full driving license
+          - id: drive_manual
+            name: MANUAL GEARBOX
+            description: Confident driver of a manual/stick-shift car
+            requires: drive_license
+          - id: drive_motorway
+            name: MOTORWAY DRIVING
+            description: Drive confidently on motorways / highways
+            requires: drive_license
+          - id: drive_abroad
+            name: DRIVE ABROAD
+            description: Drive in a foreign country (different rules or side of road)
+            requires: drive_motorway
+          - id: drive_trackday
+            name: TRACK DAY
+            description: Drive your car on a race circuit
+            requires: drive_manual
+          - id: drive_motorcycle
+            name: MOTORCYCLE LICENSE
+            description: Hold a full motorcycle license
+          - id: drive_boat
+            name: BOAT LICENSE
+            description: Hold a recognised powerboat or sailing licence
+
+      - id: flying
+        name: FLYING
+        icon: "✈️"
+        children:
+          - id: fly_passenger
+            name: FLOWN AS PASSENGER
+            description: Taken a commercial flight
+          - id: fly_ppl
+            name: PRIVATE PILOT LICENSE (PPL)
+            description: Hold a PPL — fly single-engine aircraft solo
+            requires: fly_passenger
+          - id: fly_instrument
+            name: INSTRUMENT RATING (IR)
+            description: Fly in clouds and low visibility by instruments only
+            requires: fly_ppl
+          - id: fly_paraglide
+            name: PARAGLIDING
+            description: Complete a certified paragliding course and fly solo
+            requires: fly_passenger
+          - id: fly_skydive
+            name: SKYDIVE
+            description: Complete a solo skydive (AFF or tandem)
+            requires: fly_passenger
+          - id: fly_aff
+            name: AFF CERTIFIED
+            description: Complete the Accelerated Freefall skydiving course
+            requires: fly_skydive
+
+  # ─────────────────────────────────────────
+  # SOCIAL — People, leadership, community
+  # ─────────────────────────────────────────
+  - id: social
+    name: SOCIAL
+    icon: "🤝"
+    skills:
+
+      - id: public_speaking
+        name: PUBLIC SPEAKING
+        icon: "🎤"
+        children:
+          - id: speak_first
+            name: FIRST TALK
+            description: Give your first talk or presentation to a live audience
+          - id: speak_50ppl
+            name: 50 PEOPLE AUDIENCE
+            description: Speak confidently to an audience of 50 or more
+            requires: speak_first
+          - id: speak_500ppl
+            name: 500 PEOPLE AUDIENCE
+            description: Keynote or address an audience of 500+
+            requires: speak_50ppl
+          - id: speak_toastmasters
+            name: TOASTMASTERS MEMBER
+            description: Join and actively participate in Toastmasters
+            requires: speak_first
+
+      - id: teaching
+        name: TEACHING
+        icon: "🏫"
+        children:
+          - id: teach_first
+            name: TAUGHT A SKILL
+            description: Formally teach a skill to another person
+          - id: teach_workshop
+            name: RAN A WORKSHOP
+            description: Facilitate a multi-person workshop or class
+            requires: teach_first
+          - id: teach_online_course
+            name: PUBLISHED ONLINE COURSE
+            description: Create and publish an online course with enrolled students
+            requires: teach_workshop
+
+      - id: volunteering
+        name: VOLUNTEERING
+        icon: "🌱"
+        children:
+          - id: vol_first
+            name: FIRST VOLUNTEER SESSION
+            description: Volunteer your time at an organisation or community project
+          - id: vol_100hrs
+            name: 100 HOURS VOLUNTEERED
+            description: Accumulate 100+ hours of volunteer work
+            requires: vol_first
+          - id: vol_lead
+            name: LEAD A PROJECT
+            description: Organise or lead a community project or volunteer initiative
+            requires: vol_100hrs
+
+      - id: mentoring
+        name: MENTORING
+        icon: "🧑‍🏫"
+        children:
+          - id: mentor_first
+            name: FIRST MENTEE
+            description: Formally mentor someone over a sustained period
+          - id: mentor_5
+            name: 5 MENTEES
+            description: Successfully mentor 5 different people
+            requires: mentor_first
+
+      - id: fundraising
+        name: FUNDRAISING
+        icon: "💸"
+        children:
+          - id: fund_1k
+            name: RAISED £1,000
+            description: Raise £1,000+ for a charitable cause
+          - id: fund_10k
+            name: RAISED £10,000
+            description: Raise £10,000+ through fundraising
+            requires: fund_1k

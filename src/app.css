@@ -1,0 +1,325 @@
+/* ═══════════════════════════════════════════
+   Tree of Life — Global Design System
+   SpaceX-inspired: black canvas, white type,
+   ghost pills, futuristic minimal.
+   ═══════════════════════════════════════════ */
+
+/* Google Fonts: Inter (D-DIN substitute) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Design tokens ── */
+:root {
+  /* Surfaces */
+  --canvas:           #000000;
+  --canvas-soft:      #0a0a0a;
+  --canvas-raised:    #111113;
+  --canvas-hover:     #18181c;
+
+  /* Text */
+  --text-primary:     #ffffff;
+  --text-mute:        #a0a0a8;
+  --text-dim:         #505058;
+
+  /* Borders */
+  --border:           #2a2a30;
+  --border-bright:    #3a3a42;
+
+  /* Canvas Grid */
+  --canvas-grid:      #1e1e24;
+
+  /* Node states */
+  --node-meta-bg:     #111115;
+  --node-meta-stroke: #33333e;
+  
+  --node-unskilled-bg: #0d0d11;
+  --node-unskilled-stroke: #28283a;
+  --node-unskilled-hover-bg: #18182a;
+  --node-unskilled-hover-stroke: #50507a;
+  
+  --node-skilled-bg:  #17171e;
+  --node-skilled-stroke: rgba(255,255,255,0.65);
+  --node-skilled-hover-bg: #202030;
+  
+  --node-locked-bg:   #080809;
+  --node-locked-stroke: #181820;
+  
+  --node-glow-fill:   rgba(255,255,255,0.03);
+  --node-glow-stroke: rgba(255,255,255,0.1);
+
+  /* Labels */
+  --label-normal:     #cccce0;
+  --label-dim:        #32323e;
+
+  /* Indicators */
+  --check-bg:         #ffffff;
+  --check-mark:       #000000;
+  --dot-stroke:       #32324a;
+  --dot-locked-stroke: #1a1a24;
+
+  /* Buttons inside canvas */
+  --collapse-bg:      #1a1a26;
+  --collapse-stroke:  #3a3a52;
+  --collapse-icon:    #8080a8;
+  
+  --expand-bg:        #0e0e16;
+  --expand-stroke:    #383852;
+  --expand-hover-bg:  #18182a;
+  --expand-hover-stroke:#6060a0;
+  --expand-label:     #6868a0;
+  --expand-label-hover: #a0a0e0;
+  
+  /* Connector lines */
+  --line-edge:        #222230;
+  --line-active:      rgba(255,255,255,0.45);
+  --line-dashed:      #28283a;
+
+  /* UI Elements */
+  --nav-bg:           rgba(0,0,0,0.88);
+  --stats-bg:         rgba(0,0,0,0.92);
+  --modal-overlay:    rgba(0,0,0,0.75);
+  --panel-bg:         #0a0a0a;
+  
+  /* Badges & Alerts */
+  --badge-view:       #ffb84d;
+  --badge-view-border:#ffb84d44;
+  --color-success:    #44ff88;
+  --color-error:      #ff6666;
+  --color-danger:     #ff4444;
+  --color-danger-text:#ffffff;
+
+  /* Category accent (used sparingly for icon tint) */
+  --accent-body:      #ffffff;
+  --accent-mind:      #c8c8ff;
+  --accent-creative:  #ffc8e8;
+  --accent-craft:     #c8ffd4;
+  --accent-explorer:  #c8eeff;
+  --accent-social:    #ffeed0;
+
+  /* Typography */
+  --font-display:     'Inter', 'Arial Narrow', Arial, sans-serif;
+  --font-body:        'Inter', Arial, sans-serif;
+
+  /* Spacing */
+  --sp-xs:  4px;
+  --sp-sm:  8px;
+  --sp-md:  16px;
+  --sp-lg:  24px;
+  --sp-xl:  32px;
+  --sp-2xl: 48px;
+  --sp-3xl: 64px;
+
+  /* Border radius */
+  --r-xs:   4px;
+  --r-sm:   8px;
+  --r-pill: 32px;
+
+  /* Nav height */
+  --nav-h:  56px;
+}
+
+/* ── Light Theme ── */
+[data-theme="light"] {
+  /* Surfaces */
+  --canvas:           #f7f7f9;
+  --canvas-soft:      #ffffff;
+  --canvas-raised:    #ffffff;
+  --canvas-hover:     #f0f0f4;
+
+  /* Text */
+  --text-primary:     #111115;
+  --text-mute:        #70707a;
+  --text-dim:         #9a9a9f;
+
+  /* Borders */
+  --border:           #e2e2e8;
+  --border-bright:    #d0d0d8;
+
+  /* Canvas Grid */
+  --canvas-grid:      #e5e5eb;
+
+  /* Node states */
+  --node-meta-bg:     #ffffff;
+  --node-meta-stroke: #d0d0d8;
+  
+  --node-unskilled-bg: #fdfdfd;
+  --node-unskilled-stroke: #e2e2e8;
+  --node-unskilled-hover-bg: #f2f2f6;
+  --node-unskilled-hover-stroke: #a0a0b0;
+  
+  --node-skilled-bg:  #ffffff;
+  --node-skilled-stroke: rgba(0,0,0,0.85);
+  --node-skilled-hover-bg: #f4f4f8;
+  
+  --node-locked-bg:   #f0f0f4;
+  --node-locked-stroke: #e8e8ed;
+  
+  --node-glow-fill:   rgba(0,0,0,0.02);
+  --node-glow-stroke: rgba(0,0,0,0.06);
+
+  /* Labels */
+  --label-normal:     #333340;
+  --label-dim:        #b0b0b8;
+
+  /* Indicators */
+  --check-bg:         #000000;
+  --check-mark:       #ffffff;
+  --dot-stroke:       #d0d0d8;
+  --dot-locked-stroke: #e0e0e6;
+
+  /* Buttons inside canvas */
+  --collapse-bg:      #ffffff;
+  --collapse-stroke:  #d0d0d8;
+  --collapse-icon:    #606070;
+  
+  --expand-bg:        #ffffff;
+  --expand-stroke:    #e0e0e6;
+  --expand-hover-bg:  #f4f4f8;
+  --expand-hover-stroke:#a0a0b0;
+  --expand-label:     #707080;
+  --expand-label-hover: #404050;
+  
+  /* Connector lines */
+  --line-edge:        #e0e0e6;
+  --line-active:      rgba(0,0,0,0.3);
+  --line-dashed:      #d0d0d8;
+
+  /* UI Elements */
+  --nav-bg:           rgba(255,255,255,0.88);
+  --stats-bg:         rgba(255,255,255,0.92);
+  --modal-overlay:    rgba(255,255,255,0.8);
+  --panel-bg:         #ffffff;
+  
+  /* Badges & Alerts */
+  --badge-view:       #d97706;
+  --badge-view-border:#f59e0b44;
+  --color-success:    #10b981;
+  --color-error:      #ef4444;
+  --color-danger:     #ef4444;
+  --color-danger-text:#ffffff;
+
+  /* Category accent (adjusted for light mode) */
+  --accent-body:      #111115;
+  --accent-mind:      #6366f1;
+  --accent-creative:  #ec4899;
+  --accent-craft:     #10b981;
+  --accent-explorer:  #0ea5e9;
+  --accent-social:    #f59e0b;
+}
+
+/* ── Base ── */
+html, body {
+  height: 100%;
+  background: var(--canvas);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ── Typography utilities ── */
+.display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.display-lg {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.label-caps {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+
+/* ── Ghost pill button (SpaceX signature CTA) ── */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  padding: 12px 22px;
+  border: 1px solid var(--text-primary);
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+  white-space: nowrap;
+}
+.btn-ghost:hover {
+  background: var(--text-primary);
+  color: var(--canvas);
+}
+.btn-ghost:active { opacity: 0.8; }
+
+.btn-sm {
+  padding: 6px 14px;
+  font-size: 10px;
+}
+
+/* Muted ghost variant */
+.btn-ghost-dim {
+  border-color: var(--border-bright);
+  color: var(--text-mute);
+}
+.btn-ghost-dim:hover {
+  background: var(--canvas-hover);
+  color: var(--text-primary);
+}
+
+/* Danger ghost */
+.btn-ghost-danger {
+  border-color: var(--color-danger);
+  color: var(--color-error);
+}
+.btn-ghost-danger:hover {
+  background: var(--color-danger);
+  color: var(--color-danger-text);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 3px; }
+
+/* ── Focus ring ── */
+:focus-visible {
+  outline: 1px solid var(--border-bright);
+  outline-offset: 2px;
+}
+
+/* ── Utility ── */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
