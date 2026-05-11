@@ -11,12 +11,10 @@ categories:
   # ─────────────────────────────────────────
   - id: body
     name: BODY
-    icon: "🏋️"
     skills:
 
       - id: running
         name: RUNNING
-        icon: "🏃"
         children:
           - id: run_100km
             name: 100KM TOTAL
@@ -36,7 +34,6 @@ categories:
 
       - id: swimming
         name: SWIMMING
-        icon: "🏊"
         children:
           - id: swim_10h
             name: 10 HOURS
@@ -56,7 +53,6 @@ categories:
 
       - id: cycling
         name: CYCLING
-        icon: "🚴"
         children:
           - id: cycle_500km
             name: 500KM TOTAL
@@ -76,7 +72,6 @@ categories:
 
       - id: bouldering
         name: BOULDERING
-        icon: "🧗‍♂️"
         children:
           - id: boulder_50h
             name: 50 HOURS
@@ -96,7 +91,6 @@ categories:
 
       - id: rope_climbing
         name: ROPE CLIMBING
-        icon: "🧗"
         children:
           - id: rope_50h
             name: 50 HOURS
@@ -116,7 +110,6 @@ categories:
 
       - id: striking
         name: STRIKING ARTS
-        icon: "🥊"
         children:
           - id: strike_50h
             name: 50 HOURS
@@ -136,7 +129,6 @@ categories:
 
       - id: grappling
         name: GRAPPLING ARTS
-        icon: "🥋"
         children:
           - id: grap_50h
             name: 50 HOURS
@@ -156,7 +148,6 @@ categories:
 
       - id: yoga
         name: YOGA
-        icon: "🧘"
         children:
           - id: yoga_50h
             name: 50 HOURS
@@ -176,7 +167,6 @@ categories:
 
       - id: strength
         name: STRENGTH TRAINING
-        icon: "💪"
         children:
           - id: str_50h
             name: 50 HOURS
@@ -199,12 +189,10 @@ categories:
   # ─────────────────────────────────────────
   - id: mind
     name: MIND
-    icon: "🧠"
     skills:
 
       - id: media
         name: MEDIA & STORIES
-        icon: "🍿"
         children:
           - id: media_500h
             name: 500 HOURS
@@ -224,7 +212,6 @@ categories:
 
       - id: reading
         name: READING
-        icon: "📚"
         children:
           - id: read_50
             name: 50 BOOKS
@@ -244,7 +231,6 @@ categories:
 
       - id: languages
         name: LANGUAGES
-        icon: "🗣️"
         children:
           - id: lang_500h
             name: 500 HOURS
@@ -264,7 +250,6 @@ categories:
 
       - id: chess
         name: CHESS
-        icon: "♟️"
         children:
           - id: chess_50h
             name: 50 HOURS
@@ -284,7 +269,6 @@ categories:
 
       - id: meditation
         name: MEDITATION
-        icon: "🕯️"
         children:
           - id: med_50h
             name: 50 HOURS
@@ -304,7 +288,6 @@ categories:
 
       - id: coding
         name: CODING
-        icon: "💻"
         children:
           - id: code_50h
             name: 50 HOURS
@@ -328,7 +311,6 @@ categories:
 
       - id: mathematics
         name: MATHEMATICS
-        icon: "📐"
         children:
           - id: math_50h
             name: 50 HOURS
@@ -351,12 +333,10 @@ categories:
   # ─────────────────────────────────────────
   - id: creative
     name: CREATIVE
-    icon: "🎨"
     skills:
 
       - id: drawing
         name: DRAWING
-        icon: "✏️"
         children:
           - id: draw_50h
             name: 50 HOURS
@@ -376,7 +356,6 @@ categories:
 
       - id: music_instrument
         name: MUSIC — INSTRUMENT
-        icon: "🎸"
         children:
           - id: music_50h
             name: 50 HOURS
@@ -396,7 +375,6 @@ categories:
 
       - id: music_production
         name: MUSIC PRODUCTION
-        icon: "🎧"
         children:
           - id: prod_50h
             name: 50 HOURS
@@ -416,7 +394,6 @@ categories:
 
       - id: photography
         name: PHOTOGRAPHY
-        icon: "📷"
         children:
           - id: photo_50h
             name: 50 HOURS
@@ -436,7 +413,6 @@ categories:
 
       - id: writing
         name: WRITING
-        icon: "✍️"
         children:
           - id: write_50h
             name: 50 HOURS
@@ -456,7 +432,6 @@ categories:
 
       - id: cooking
         name: COOKING
-        icon: "🍳"
         children:
           - id: cook_100m
             name: 100 MEALS
@@ -479,12 +454,10 @@ categories:
   # ─────────────────────────────────────────
   - id: craft
     name: CRAFT
-    icon: "🔧"
     skills:
 
       - id: woodworking
         name: WOODWORKING
-        icon: "🪵"
         children:
           - id: wood_50h
             name: 50 HOURS
@@ -504,7 +477,6 @@ categories:
 
       - id: electronics
         name: ELECTRONICS
-        icon: "⚡"
         children:
           - id: elec_50h
             name: 50 HOURS
@@ -524,7 +496,6 @@ categories:
 
       - id: first_aid
         name: FIRST AID
-        icon: "🩹"
         children:
           - id: fa_10h
             name: 10 HOURS
@@ -540,7 +511,6 @@ categories:
 
       - id: mechanics
         name: MECHANICS
-        icon: "🔩"
         children:
           - id: mech_50h
             name: 50 HOURS
@@ -560,7 +530,6 @@ categories:
 
       - id: sewing
         name: SEWING & TEXTILES
-        icon: "🧵"
         children:
           - id: sew_50h
             name: 50 HOURS
@@ -583,12 +552,10 @@ categories:
   # ─────────────────────────────────────────
   - id: explorer
     name: EXPLORER
-    icon: "🌍"
     skills:
 
       - id: countries
         name: COUNTRIES VISITED
-        icon: "✈️"
         children:
           - id: country_5
             name: 5 COUNTRIES
@@ -612,7 +579,6 @@ categories:
 
       - id: continents
         name: CONTINENTS
-        icon: "🗺️"
         children:
           - id: cont_3
             name: 3 CONTINENTS
@@ -628,7 +594,6 @@ categories:
 
       - id: diving
         name: DIVING
-        icon: "🤿"
         children:
           - id: dive_10h
             name: 10 HOURS
@@ -648,7 +613,6 @@ categories:
 
       - id: hiking
         name: HIKING & CAMPING
-        icon: "⛺"
         children:
           - id: hike_100km
             name: 100KM TOTAL
@@ -668,7 +632,6 @@ categories:
 
       - id: skiing
         name: SKIING
-        icon: "⛷️"
         children:
           - id: ski_50h
             name: 50 HOURS
@@ -688,7 +651,6 @@ categories:
 
       - id: snowboarding
         name: SNOWBOARDING
-        icon: "🏂"
         children:
           - id: snow_50h
             name: 50 HOURS
@@ -708,7 +670,6 @@ categories:
 
       - id: driving
         name: DRIVING
-        icon: "🚗"
         children:
           - id: drive_500h
             name: 500 HOURS
@@ -724,7 +685,6 @@ categories:
 
       - id: flying
         name: FLYING
-        icon: "✈️"
         children:
           - id: fly_50h
             name: 50 FLIGHT HOURS
@@ -743,12 +703,10 @@ categories:
   # ─────────────────────────────────────────
   - id: collector
     name: COLLECTOR
-    icon: "📦"
     skills:
 
       - id: action_figures
         name: ACTION FIGURES
-        icon: "🦸‍♂️"
         children:
           - id: figure_10
             name: 10 FIGURES
@@ -768,7 +726,6 @@ categories:
 
       - id: stamps
         name: STAMPS
-        icon: "✉️"
         children:
           - id: stamp_100
             name: 100 STAMPS
@@ -788,7 +745,6 @@ categories:
 
       - id: coins
         name: COINS & NUMISMATICS
-        icon: "🪙"
         children:
           - id: coin_100
             name: 100 COINS
@@ -808,7 +764,6 @@ categories:
 
       - id: vintage_tech
         name: VINTAGE TECH
-        icon: "📻"
         children:
           - id: tech_5
             name: 5 PIECES

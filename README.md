@@ -1,5 +1,9 @@
 # Tree of Life
 
+<p align="center">
+  <img src="treeoflife.svg" alt="Tree of Life logo" width="220" />
+</p>
+
 A visual passion tree tracker built with Svelte 5. Keep track of your real-life passions across various domains, unlock nodes as you progress, and share your tree with others.
 
 ## Features

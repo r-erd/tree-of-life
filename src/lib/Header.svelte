@@ -23,25 +23,23 @@
   }
 
   let query = $state('')
-  let suggestions = $state([])
-  let selectedIndex = $state(-1)
   let searchInput = $state(null)
 
-  $effect(() => {
-    if (query.trim() === '') {
-      suggestions = []
-      selectedIndex = -1
-      return
-    }
+  const suggestions = $derived.by(() => {
+    if (query.trim() === '') return []
     const q = query.toLowerCase()
     const results = []
-    for (const [id, node] of $nodeIndex.entries()) {
+    for (const [, node] of $nodeIndex.entries()) {
       if (node.name.toLowerCase().includes(q)) {
         results.push(node)
       }
     }
     results.sort((a, b) => a.name.length - b.name.length)
-    suggestions = results.slice(0, 8)
+    return results.slice(0, 8)
+  })
+
+  let selectedIndex = $state(-1)
+  $effect(() => {
     selectedIndex = suggestions.length > 0 ? 0 : -1
   })
 
@@ -73,6 +71,7 @@
 <nav class="navbar">
   <div class="nav-inner">
     <a href="." class="wordmark" aria-label="Tree of Life">
+      <img src="/favicon.svg" alt="" class="logo-img" aria-hidden="true" />
       TREE<span class="wordmark-sep">OF</span>LIFE
     </a>
 
@@ -95,7 +94,6 @@
               class:selected={i === selectedIndex}
               onclick={() => selectSuggestion(s)}
             >
-              <span class="suggestion-icon">{s.icon || ''}</span>
               <span class="suggestion-name">{s.name}</span>
             </div>
           {/each}
@@ -146,17 +144,26 @@
   }
 
   .wordmark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    text-decoration: none;
     font-family: var(--font-display);
     font-size: 18px;
     font-weight: 900;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--text-primary);
-    text-decoration: none;
-    flex-shrink: 0;
     line-height: 1;
   }
   .wordmark-sep { color: var(--text-dim); margin: 0 2px; }
+  .logo-img {
+    height: 28px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+  }
 
   /* ── Search Bar ── */
   .search-container {
