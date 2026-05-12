@@ -166,14 +166,30 @@
   }
 
   function toggleNode(node) {
-    if (isViewMode || node.isRoot || node.isCategory || node.isGroup) return
-    // Touch: first tap selects, second tap toggles
-    if (isTouch && selectedNodeId !== node.id) {
+    if (isViewMode || node.isRoot) return
+
+    const isLeaf = (!node.children || node.children.length === 0) && !node._hasHidden
+
+    // Touch: first tap selects leaf nodes, second tap toggles
+    if (isLeaf && isTouch && selectedNodeId !== node.id) {
       selectedNodeId = node.id
       showTooltip(node)
       return
     }
+
     selectedNodeId = null
+
+    // Nodes with children: click to expand/collapse
+    if (node._hasHidden) {
+      expandNodeId(node.id)
+      return
+    }
+    if (node.children && node.children.length > 0) {
+      collapseNodeId(node.id)
+      return
+    }
+
+    // Leaf node: toggle skilled
     const before = get(skilled)
     skilled.toggle(node.id)
     const after = get(skilled)
@@ -239,30 +255,36 @@
   }
 
   // ── Expand / collapse ──
-  function expandNode(e, node) {
-    e.stopPropagation()
+  function expandNodeId(nodeId) {
     const next = new Set(expandedNodes)
-    next.add(node.id)
+    next.add(nodeId)
     expandedNodes = next
-    // If it was manually collapsed, un-collapse it
-    if (collapsedNodes.has(node.id)) {
+    if (collapsedNodes.has(nodeId)) {
       const c = new Set(collapsedNodes)
-      c.delete(node.id)
+      c.delete(nodeId)
       collapsedNodes = c
     }
   }
 
-  function collapseNode(e, node) {
-    e.stopPropagation()
+  function collapseNodeId(nodeId) {
     const c = new Set(collapsedNodes)
-    c.add(node.id)
+    c.add(nodeId)
     collapsedNodes = c
-    // Remove from expanded too
-    if (expandedNodes.has(node.id)) {
+    if (expandedNodes.has(nodeId)) {
       const ex = new Set(expandedNodes)
-      ex.delete(node.id)
+      ex.delete(nodeId)
       expandedNodes = ex
     }
+  }
+
+  function expandNode(e, node) {
+    e.stopPropagation()
+    expandNodeId(node.id)
+  }
+
+  function collapseNode(e, node) {
+    e.stopPropagation()
+    collapseNodeId(node.id)
   }
 
   // A node can be collapsed by the user if it has visible children right now
@@ -488,7 +510,8 @@
     <!-- Nodes -->
     {#each layoutData.nodes as node (node.id)}
       {@const state = nodeState(node)}
-      {@const isClickable = !node.isRoot && !node.isCategory && !node.isGroup && state !== 'locked'}
+      {@const isLeaf = (!node.children || node.children.length === 0) && !node._hasHidden}
+      {@const isClickable = !node.isRoot && !(isLeaf && state === 'locked')}
       {@const hasVisibleChildren = node.children && node.children.length > 0}
       {@const isMeta = node.isRoot || node.isCategory || node.isGroup}
       {@const textLines = wrapText(node.name, isMeta ? 24 : 18)}
