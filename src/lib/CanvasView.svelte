@@ -370,18 +370,49 @@
 
   // ── Pan (touch) ──
   let lastTouch = null
+  let pinchStart = $state(null)
+
   function onTouchStart(e) {
-    if (e.touches.length === 1)
+    if (e.touches.length === 1) {
       lastTouch = { x: e.touches[0].clientX, y: e.touches[0].clientY, tx, ty }
+    } else if (e.touches.length === 2) {
+      lastTouch = null
+      const dx = e.touches[0].clientX - e.touches[1].clientX
+      const dy = e.touches[0].clientY - e.touches[1].clientY
+      const rect = svgEl?.getBoundingClientRect()
+      pinchStart = {
+        distance: Math.sqrt(dx * dx + dy * dy),
+        scale,
+        tx,
+        ty,
+        midX: ((e.touches[0].clientX + e.touches[1].clientX) / 2) - (rect?.left ?? 0),
+        midY: ((e.touches[0].clientY + e.touches[1].clientY) / 2) - (rect?.top ?? 0),
+      }
+    }
   }
   function onTouchMove(e) {
     e.preventDefault()
     if (e.touches.length === 1 && lastTouch) {
       tx = lastTouch.tx + (e.touches[0].clientX - lastTouch.x)
       ty = lastTouch.ty + (e.touches[0].clientY - lastTouch.y)
+    } else if (e.touches.length === 2 && pinchStart) {
+      const dx = e.touches[0].clientX - e.touches[1].clientX
+      const dy = e.touches[0].clientY - e.touches[1].clientY
+      const newDistance = Math.sqrt(dx * dx + dy * dy)
+      const newScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE,
+        pinchStart.scale * (newDistance / pinchStart.distance)))
+
+      const mx = pinchStart.midX
+      const my = pinchStart.midY
+      tx = mx - (mx - pinchStart.tx) * (newScale / pinchStart.scale)
+      ty = my - (my - pinchStart.ty) * (newScale / pinchStart.scale)
+      scale = newScale
     }
   }
-  function onTouchEnd() { lastTouch = null }
+  function onTouchEnd(e) {
+    lastTouch = null
+    if (e.touches.length < 2) pinchStart = null
+  }
 
   // ── Background click (deselect) ──
   function onSvgClick(e) {
@@ -468,6 +499,7 @@
 
 <!-- SVG canvas -->
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+<!-- svelte-ignore a11y_click_events_have_key_events -->
 <svg
   class="canvas"
   class:dragging={isDragging}
@@ -528,14 +560,6 @@
         class:node-selected={isSelected}
         transform="translate({node.x},{node.y})"
         style="--node-accent: {nodeAccent}"
-        onclick={() => toggleNode(node)}
-        onkeydown={(e) => (e.key === 'Enter' || e.key === ' ') && toggleNode(node)}
-        onmouseenter={() => showTooltip(node)}
-        onmouseleave={() => hideTooltip()}
-        onmousemove={() => moveTooltip(node)}
-        role={isMeta ? 'presentation' : 'button'}
-        aria-pressed={isClickable ? state === 'skilled' : undefined}
-        tabindex={isClickable ? 0 : undefined}
       >
         <!-- Glow -->
         {#if state === 'skilled' || state === 'meta-active'}
@@ -544,6 +568,7 @@
         {/if}
 
         <!-- Body -->
+        <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
         <rect x={0} y={0} width={NODE_W} height={NODE_H} rx="8" ry="8"
           class="node-rect"
           class:node-skilled={state === 'skilled' || state === 'meta-active'}
@@ -551,6 +576,14 @@
           class:node-locked={state === 'locked'}
           class:node-meta={state === 'meta'}
           class:node-pulse={isPulsing}
+          onclick={() => toggleNode(node)}
+          onkeydown={(e) => (e.key === 'Enter' || e.key === ' ') && toggleNode(node)}
+          onmouseenter={() => showTooltip(node)}
+          onmouseleave={() => hideTooltip()}
+          onmousemove={() => moveTooltip(node)}
+          role={isClickable ? 'button' : 'presentation'}
+          aria-pressed={isClickable ? state === 'skilled' : undefined}
+          tabindex={isClickable ? 0 : undefined}
         />
 
         <!-- Category progress bar -->
