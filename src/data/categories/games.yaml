@@ -1,0 +1,210 @@
+id: games
+name: GAMES
+skills:
+- id: board_games
+  name: BOARD GAMES
+  children:
+  - id: bg_50h
+    name: 50 HOURS
+    description: Played a variety of tabletop games
+  - id: bg_250h
+    name: 250 HOURS
+    description: Deep knowledge of mechanics and strategy
+    requires: bg_50h
+  - id: bg_1000h
+    name: 1,000 HOURS
+    description: Board gamer as identity
+    requires: bg_250h
+  - id: bg_5000h
+    name: 5,000 HOURS
+    description: Walking board game encyclopedia
+    requires: bg_1000h
+  - id: bg_euro
+    name: EUROGAMES
+    description: Agricola, Catan, Terraforming Mars
+    requires: bg_50h
+  - id: bg_ameritrash
+    name: AMERITRASH
+    description: Thematic, dice-heavy, conflict-driven
+    requires: bg_50h
+  - id: bg_wargame
+    name: WARGAMES
+    description: Hexes, chits, historical simulation
+    requires: bg_50h
+  - id: bg_design
+    name: DESIGNED A GAME
+    description: Created an original board game
+    requires: bg_250h
+  - id: bg_publish
+    name: PUBLISHED A GAME
+    description: Released a game to the public
+    requires: bg_design
+  - id: bg_collection
+    name: 100+ GAMES OWNED
+    description: Serious collection
+    requires: bg_250h
+- id: video_games
+  name: VIDEO GAMES
+  children:
+  - id: vg_100h
+    name: 100 HOURS
+    description: Gamer, not just casual player
+  - id: vg_1000h
+    name: 1,000 HOURS
+    description: Gaming as a primary hobby
+    requires: vg_100h
+  - id: vg_5000h
+    name: 5,000 HOURS
+    description: Veteran gamer
+    requires: vg_1000h
+  - id: vg_speedrun
+    name: SPEEDRUN
+    description: Completed a game as fast as possible
+    requires: vg_100h
+  - id: vg_100pct
+    name: 100% COMPLETION
+    description: Every achievement, every secret
+    requires: vg_100h
+  - id: vg_esports
+    name: COMPETITIVE / ESPORTS
+    description: Played at a competitive level
+    requires: vg_1000h
+  - id: vg_rpg
+    name: RPG MASTER
+    description: Deep immersion in role-playing games
+    requires: vg_100h
+  - id: vg_fps
+    name: FPS VETERAN
+    description: First-person shooter expertise
+    requires: vg_100h
+  - id: vg_retro
+    name: RETRO GAMING
+    description: Classic consoles and arcade
+    requires: vg_100h
+  - id: vg_stream
+    name: STREAMED GAMES
+    description: Shared gameplay with an audience
+    requires: vg_1000h
+- id: tabletop_rpg
+  name: TABLETOP RPG
+  children:
+  - id: ttrpg_50h
+    name: 50 HOURS
+    description: Rolled dice, told stories, had adventures
+  - id: ttrpg_250h
+    name: 250 HOURS
+    description: Deep campaigns and character arcs
+    requires: ttrpg_50h
+  - id: ttrpg_1000h
+    name: 1,000 HOURS
+    description: TTRPG as a way of life
+    requires: ttrpg_250h
+  - id: ttrpg_5000h
+    name: 5,000 HOURS
+    description: Legendary gamer
+    requires: ttrpg_1000h
+  - id: ttrpg_dm
+    name: GAME MASTER
+    description: Ran a campaign for others
+    requires: ttrpg_50h
+  - id: ttrpg_long
+    name: YEAR-LONG CAMPAIGN
+    description: A story that lasted 12+ months
+    requires: ttrpg_dm
+  - id: ttrpg_dnd
+    name: DUNGEONS & DRAGONS
+    description: The classic fantasy RPG
+    requires: ttrpg_50h
+  - id: ttrpg_indie
+    name: INDIE SYSTEMS
+    description: Beyond D&D — PBTA, FitD, OSR
+    requires: ttrpg_50h
+  - id: ttrpg_larp
+    name: LARP
+    description: Live-action roleplay
+    requires: ttrpg_50h
+  - id: ttrpg_homebrew
+    name: HOMEBREW WORLD
+    description: Created an original setting
+    requires: ttrpg_dm
+- id: puzzles
+  name: PUZZLES & RIDDLES
+  children:
+  - id: puz_50h
+    name: 50 HOURS
+    description: Crosswords, sudoku, logic grids
+  - id: puz_250h
+    name: 250 HOURS
+    description: Advanced puzzle solver
+    requires: puz_50h
+  - id: puz_1000h
+    name: 1,000 HOURS
+    description: Puzzle master
+    requires: puz_250h
+  - id: puz_crossword
+    name: NYT CROSSWORD
+    description: Solved the New York Times crossword
+    requires: puz_50h
+  - id: puz_cryptic
+    name: CRYPTIC CROSSWORDS
+    description: The British wordplay tradition
+    requires: puz_crossword
+  - id: puz_cube
+    name: RUBIK'S CUBE
+    description: Solved the 3x3
+    requires: puz_50h
+  - id: puz_speedcube
+    name: SUB-60 CUBE
+    description: Solved in under a minute
+    requires: puz_cube
+  - id: puz_jigsaw
+    name: 1,000-PIECE JIGSAW
+    description: Patience and pattern recognition
+    requires: puz_50h
+  - id: puz_escape
+    name: ESCAPE ROOM
+    description: Escaped a physical puzzle room
+    requires: puz_50h
+  - id: puz_create
+    name: DESIGNED A PUZZLE
+    description: Created a puzzle for others
+    requires: puz_250h
+- id: card_games
+  name: CARD GAMES
+  children:
+  - id: card_50h
+    name: 50 HOURS
+    description: Played poker, bridge, or other card games
+  - id: card_250h
+    name: 250 HOURS
+    description: Serious card player
+    requires: card_50h
+  - id: card_1000h
+    name: 1,000 HOURS
+    description: Card shark
+    requires: card_250h
+  - id: card_poker
+    name: TEXAS HOLD'EM
+    description: The world's most popular poker variant
+    requires: card_50h
+  - id: card_bridge
+    name: BRIDGE
+    description: The ultimate partnership card game
+    requires: card_50h
+  - id: card_blackjack
+    name: BLACKJACK
+    description: Beat the dealer with strategy
+    requires: card_50h
+  - id: card_tournament
+    name: CARD TOURNAMENT
+    description: Competed in an organized event
+    requires: card_250h
+  - id: card_cash
+    name: CASH GAME WINNER
+    description: Won money playing cards
+    requires: card_250h
+  - id: card_count
+    name: CARD COUNTING
+    description: Used math to gain an edge
+    requires: card_blackjack
+description: Mastery of play, strategy, and competition

@@ -1,0 +1,183 @@
+id: flow
+name: FLOW
+skills:
+- id: juggling
+  name: JUGGLING & OBJECT MANIPULATION
+  children:
+  - id: juggle_50h
+    name: 50 HOURS
+    description: Three balls solid, starting four
+  - id: juggle_250h
+    name: 250 HOURS
+    description: Five balls, clubs, passing patterns
+    requires: juggle_50h
+  - id: juggle_1000h
+    name: 1,000 HOURS
+    description: Juggler for life
+    requires: juggle_250h
+  - id: juggle_5000h
+    name: 5,000 HOURS
+    description: Circus-level juggler
+    requires: juggle_1000h
+  - id: juggle_clubs
+    name: CLUB JUGGLING
+    description: Spun and caught clubs
+    requires: juggle_50h
+  - id: juggle_rings
+    name: RING JUGGLING
+    description: Flat spin and pancake flips
+    requires: juggle_50h
+  - id: juggle_contact
+    name: CONTACT JUGGLING
+    description: Rolling a ball on your body
+    requires: juggle_50h
+  - id: juggle_diabolo
+    name: DIABOLO
+    description: Chinese yoyo mastery
+    requires: juggle_50h
+  - id: juggle_passing
+    name: PASSING
+    description: Juggled with a partner
+    requires: juggle_250h
+  - id: juggle_fire
+    name: FIRE JUGGLING
+    description: Burning props, calm nerves
+    requires: juggle_250h
+  - id: juggle_perform
+    name: PERFORMED PUBLICLY
+    description: Showed your skills to an audience
+    requires: juggle_250h
+- id: yoyo
+  name: YOYO
+  children:
+  - id: yoyo_50h
+    name: 50 HOURS
+    description: Responsive play, basic string tricks
+  - id: yoyo_250h
+    name: 250 HOURS
+    description: Unresponsive binds, complex combos
+    requires: yoyo_50h
+  - id: yoyo_1000h
+    name: 1,000 HOURS
+    description: Competitive-level thrower
+    requires: yoyo_250h
+  - id: yoyo_5000h
+    name: 5,000 HOURS
+    description: Yoyo master
+    requires: yoyo_1000h
+  - id: yoyo_1a
+    name: 1A - STRING TRICKS
+    description: The classic style
+    requires: yoyo_50h
+  - id: yoyo_2a
+    name: 2A - LOOPING
+    description: Two responsive yoyos looping
+    requires: yoyo_50h
+  - id: yoyo_3a
+    name: 3A - TWO HANDS
+    description: Two unresponsive yoyos
+    requires: yoyo_250h
+  - id: yoyo_4a
+    name: 4A - OFF-STRING
+    description: Yoyo leaves the string entirely
+    requires: yoyo_250h
+  - id: yoyo_5a
+    name: 5A - COUNTERWEIGHT
+    description: No finger loop, just a counterweight
+    requires: yoyo_250h
+  - id: yoyo_comp
+    name: COMPETED
+    description: Entered a yoyo contest
+    requires: yoyo_1000h
+- id: slam_poetry
+  name: SPOKEN WORD & SLAM
+  children:
+  - id: slam_50h
+    name: 50 HOURS
+    description: Wrote and performed first pieces
+  - id: slam_250h
+    name: 250 HOURS
+    description: Found your voice and stage presence
+    requires: slam_50h
+  - id: slam_1000h
+    name: 1,000 HOURS
+    description: Spoken word artist
+    requires: slam_250h
+  - id: slam_5000h
+    name: 5,000 HOURS
+    description: Legend of the mic
+    requires: slam_1000h
+  - id: slam_open
+    name: OPEN MIC
+    description: First performance for strangers
+  - id: slam_feature
+    name: FEATURED SET
+    description: Headlined or featured at an event
+    requires: slam_open
+  - id: slam_comp
+    name: SLAM COMPETITION
+    description: Competed in a poetry slam
+    requires: slam_open
+  - id: slam_win
+    name: WON A SLAM
+    description: Took first place
+    requires: slam_comp
+  - id: slam_published
+    name: PUBLISHED
+    description: Poems in print or digital
+    requires: slam_250h
+  - id: slam_tour
+    name: SPOKEN WORD TOUR
+    description: Performed in multiple cities
+    requires: slam_feature
+- id: flow_arts
+  name: FLOW ARTS
+  children:
+  - id: flowart_50h
+    name: 50 HOURS
+    description: Started spinning poi, staff, or hoop
+  - id: flowart_250h
+    name: 250 HOURS
+    description: Fluid transitions, multiple props
+    requires: flowart_50h
+  - id: flowart_1000h
+    name: 1,000 HOURS
+    description: Flow artist
+    requires: flowart_250h
+  - id: flowart_5000h
+    name: 5,000 HOURS
+    description: Flow arts master
+    requires: flowart_1000h
+  - id: flowart_poi
+    name: POI
+    description: Weighted balls on strings
+    requires: flowart_50h
+  - id: flowart_staff
+    name: STAFF
+    description: Contact staff or spinning
+    requires: flowart_50h
+  - id: flowart_hoop
+    name: HOOP
+    description: Hula hoop as art form
+    requires: flowart_50h
+  - id: flowart_levi
+    name: LEVISTICK
+    description: Floating stick illusion
+    requires: flowart_50h
+  - id: flowart_rope
+    name: ROPE DART
+    description: Martial art meets dance
+    requires: flowart_250h
+  - id: flowart_fire
+    name: FIRE SPINNING
+    description: Performed with lit props
+    requires: flowart_250h
+  - id: flowart_led
+    name: LED / GLOW
+    description: Light shows and pixel poi
+    requires: flowart_50h
+  - id: flowart_perform
+    name: PERFORMED PUBLICLY
+    description: Showed your flow to an audience
+    requires: flowart_250h
+description: Movement as meditation and art

@@ -1,11 +1,23 @@
 <script>
   import "./app.css";
-  import skillsData from "./data/passions.yaml";
+  const CATEGORY_ORDER = [
+    'body', 'mind', 'creative', 'craft', 'explorer', 'collector',
+    'social', 'performing', 'games', 'nature', 'animals', 'home',
+    'wheel_wave', 'flow', 'digital_craft', 'finance', 'precision', 'spiritual'
+  ]
+  const categoryModules = import.meta.glob('./data/categories/*.yaml', { eager: true })
+  const skillsData = {
+    version: 5,
+    categories: Object.values(categoryModules)
+      .map(m => m.default)
+      .sort((a, b) => CATEGORY_ORDER.indexOf(a.id) - CATEGORY_ORDER.indexOf(b.id))
+  }
   import {
     categories,
     buildNodeIndex,
     skilled,
     stats,
+    viewMode,
     TREE_VERSION,
   } from "./lib/store.js";
   import Header from "./lib/Header.svelte";
@@ -17,6 +29,16 @@
   let error = $state(null);
   let shareMode = $state(null); // null | 'export' | 'import'
   let showResetConfirm = $state(false);
+
+  // Empty-state hint
+  let hintDismissed = $state(false);
+  $effect(() => {
+    hintDismissed = localStorage.getItem('tol_hint_dismissed') === '1'
+  })
+  function dismissHint() {
+    hintDismissed = true
+    localStorage.setItem('tol_hint_dismissed', '1')
+  }
 
   try {
     categories.set(skillsData.categories);
@@ -65,6 +87,25 @@
 {:else}
   <Header onShare={openShare} onImport={openImport} />
   <CanvasView />
+
+  <!-- Empty-state hint -->
+  {#if $skilled.size === 0 && $viewMode === null && !hintDismissed}
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <div class="hint-overlay" onclick={dismissHint} tabindex="-1" role="button" aria-label="Dismiss getting started hint">
+      <!-- svelte-ignore a11y_click_events_have_key_events -->
+      <!-- svelte-ignore a11y_no_static_element_interactions -->
+      <div class="hint-panel" onclick={(e) => e.stopPropagation()} role="presentation">
+        <p class="hint-title">START YOUR TREE</p>
+        <div class="hint-steps">
+          <p><span class="hint-num">1</span> Search for a passion</p>
+          <p><span class="hint-num">2</span> Click to mark it achieved</p>
+          <p><span class="hint-num">3</span> Watch your tree grow</p>
+        </div>
+        <button class="btn-ghost btn-sm" onclick={dismissHint}>GOT IT</button>
+      </div>
+    </div>
+  {/if}
 
   <div class="app-footer">
     v{TREE_VERSION} · {$stats.total} passions
@@ -145,5 +186,61 @@
     letter-spacing: 0.1em;
     pointer-events: none;
     z-index: 100;
+  }
+
+  /* ── Empty-state hint ── */
+  .hint-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fade-in 0.3s ease;
+    cursor: pointer;
+  }
+  .hint-panel {
+    background: var(--canvas-raised);
+    border: 1px solid var(--border-bright);
+    border-radius: var(--r-sm);
+    padding: 32px 40px;
+    text-align: center;
+    cursor: default;
+    max-width: 320px;
+  }
+  .hint-title {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+  }
+  .hint-steps {
+    text-align: left;
+    margin-bottom: 24px;
+  }
+  .hint-steps p {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--text-mute);
+    line-height: 2;
+    margin: 0;
+  }
+  .hint-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid var(--border-bright);
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-dim);
+    margin-right: 10px;
   }
 </style>

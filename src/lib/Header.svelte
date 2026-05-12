@@ -212,7 +212,6 @@
   .suggestion-item:hover, .suggestion-item.selected {
     background: var(--canvas-inset);
   }
-  .suggestion-icon { font-size: 14px; }
   .suggestion-name { font-weight: 500; }
 
   .spacer { flex: 1; }

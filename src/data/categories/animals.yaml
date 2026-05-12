@@ -1,0 +1,151 @@
+id: animals
+name: ANIMALS
+skills:
+- id: dog_training
+  name: DOG TRAINING
+  children:
+  - id: dog_50h
+    name: 50 HOURS
+    description: Taught basic obedience and communication
+  - id: dog_250h
+    name: 250 HOURS
+    description: Advanced behaviors and reliability
+    requires: dog_50h
+  - id: dog_1000h
+    name: 1,000 HOURS
+    description: Professional-level dog training
+    requires: dog_250h
+  - id: dog_puppy
+    name: RAISED A PUPPY
+    description: Socialized and trained from the start
+  - id: dog_rescue
+    name: RESCUE DOG
+    description: Rehabilitated a challenging case
+    requires: dog_50h
+  - id: dog_agility
+    name: AGILITY
+    description: Competed in obstacle courses
+    requires: dog_250h
+  - id: dog_therapy
+    name: THERAPY DOG
+    description: Certified for emotional support work
+    requires: dog_250h
+  - id: dog_offleash
+    name: RELIABLE OFF-LEASH
+    description: Trustworthy recall in any environment
+    requires: dog_250h
+  - id: dog_trick
+    name: 50+ TRICKS
+    description: A repertoire of behaviors
+    requires: dog_50h
+- id: horse_riding
+  name: HORSE RIDING
+  children:
+  - id: horse_50h
+    name: 50 HOURS
+    description: Learned to walk, trot, and canter
+  - id: horse_250h
+    name: 250 HOURS
+    description: Confident in multiple disciplines
+    requires: horse_50h
+  - id: horse_1000h
+    name: 1,000 HOURS
+    description: Equestrian for life
+    requires: horse_250h
+  - id: horse_5000h
+    name: 5,000 HOURS
+    description: Master equestrian
+    requires: horse_1000h
+  - id: horse_jump
+    name: SHOW JUMPING
+    description: Cleared courses on horseback
+    requires: horse_50h
+  - id: horse_dressage
+    name: DRESSAGE
+    description: The art of equine ballet
+    requires: horse_50h
+  - id: horse_xc
+    name: CROSS-COUNTRY
+    description: Galloped and jumped across terrain
+    requires: horse_jump
+  - id: horse_trail
+    name: TRAIL RIDING
+    description: Explored wilderness on horseback
+    requires: horse_50h
+  - id: horse_care
+    name: HORSE CARE & STABLE
+    description: Groomed, fed, and managed equine health
+    requires: horse_50h
+  - id: horse_comp
+    name: COMPETED
+    description: Rode in an equestrian competition
+    requires: horse_250h
+- id: aquarium_keeping
+  name: AQUARIUM KEEPING
+  children:
+  - id: aqua_50h
+    name: 50 HOURS
+    description: Set up and cycled a healthy tank
+  - id: aqua_250h
+    name: 250 HOURS
+    description: Breeding, aquascaping, complex systems
+    requires: aqua_50h
+  - id: aqua_1000h
+    name: 1,000 HOURS
+    description: Aquarist for life
+    requires: aqua_250h
+  - id: aqua_fresh
+    name: PLANTED FRESHWATER
+    description: A thriving underwater garden
+    requires: aqua_50h
+  - id: aqua_salt
+    name: REEF TANK
+    description: Corals, invertebrates, marine fish
+    requires: aqua_50h
+  - id: aqua_biotope
+    name: BIOTOPE AQUARIUM
+    description: Recreated a specific natural habitat
+    requires: aqua_250h
+  - id: aqua_breed
+    name: BRED FISH
+    description: Successfully raised fry to adulthood
+    requires: aqua_250h
+  - id: aqua_scape
+    name: AQUASCAPING CONTEST
+    description: Entered an aquascaping competition
+    requires: aqua_250h
+- id: falconry
+  name: FALCONRY & BIRDS OF PREY
+  children:
+  - id: falc_50h
+    name: 50 HOURS
+    description: Learned the ancient art of hawking
+  - id: falc_250h
+    name: 250 HOURS
+    description: Bonded with a raptor, hunting together
+    requires: falc_50h
+  - id: falc_1000h
+    name: 1,000 HOURS
+    description: Falconer for life
+    requires: falc_250h
+  - id: falc_license
+    name: FALCONRY LICENSE
+    description: Legal apprentice or general falconer
+    requires: falc_50h
+  - id: falc_hunt
+    name: SUCCESSFUL HUNT
+    description: Raptor caught quarry
+    requires: falc_license
+  - id: falc_free
+    name: FREE-FLIGHTED
+    description: Bird returned from free flight
+    requires: falc_license
+  - id: falc_species
+    name: MULTIPLE SPECIES
+    description: Worked with hawks, falcons, and owls
+    requires: falc_250h
+  - id: falc_breed
+    name: BRED RAPTORS
+    description: Participated in captive breeding
+    requires: falc_250h
+description: Bonding with and understanding creatures

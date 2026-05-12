@@ -5,11 +5,13 @@
    * Users can expand/collapse individual branches.
    */
   import { categories, activeCategory, displaySkilled, skilled, viewMode, searchFocus } from '../lib/store.js'
+  import { get } from 'svelte/store'
   import { tick } from 'svelte'
   import {
     buildVisualTree, computeLayout, flatten,
-    filterSkilled, pruneTree, NODE_W, NODE_H, LEVEL_H, hasSkilledDescendant, countSkilledDescendants
+    filterSkilled, pruneTree, NODE_W, NODE_H, LEVEL_H, hasSkilledDescendant, countSkilledDescendants, countDescendants
   } from '../lib/layout.js'
+  import { categoryIconInner } from '../lib/icons.js'
 
   // ── State ──
   let scale      = $state(1)
@@ -23,6 +25,29 @@
   // Manually expanded/collapsed node sets
   let expandedNodes  = $state(new Set())
   let collapsedNodes = $state(new Set())
+
+  // Tooltip state
+  let tooltipNode = $state(null)
+  let tooltipX = $state(0)
+  let tooltipY = $state(0)
+  let tooltipVisible = $state(false)
+  let tooltipTimer = $state(null)
+
+  // Unlock toast state
+  let unlockToast = $state(null)
+  let unlockToastTimer = $state(null)
+
+  // Touch / selection state
+  let selectedNodeId = $state(null)
+  let isTouch = $state(false)
+
+  // Pulse animation state
+  let pulseMap = $state(new Map())
+
+  // Detect touch capability
+  $effect(() => {
+    isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+  })
 
   // Reset expansions when category or focus mode changes
   $effect(() => {
@@ -142,8 +167,75 @@
 
   function toggleNode(node) {
     if (isViewMode || node.isRoot || node.isCategory || node.isGroup) return
-    if (nodeState(node) === 'locked') return
+    // Touch: first tap selects, second tap toggles
+    if (isTouch && selectedNodeId !== node.id) {
+      selectedNodeId = node.id
+      showTooltip(node)
+      return
+    }
+    selectedNodeId = null
+    const before = get(skilled)
     skilled.toggle(node.id)
+    const after = get(skilled)
+    const added = after.size - before.size
+    if (added > 0) {
+      triggerPulse(node.id)
+    }
+    if (added > 1) {
+      showUnlockToast(added)
+    }
+  }
+
+  function showUnlockToast(count) {
+    if (unlockToastTimer) clearTimeout(unlockToastTimer)
+    unlockToast = count
+    unlockToastTimer = setTimeout(() => {
+      unlockToast = null
+    }, 2500)
+  }
+
+  function triggerPulse(nodeId) {
+    const next = new Map(pulseMap)
+    next.set(nodeId, Date.now())
+    pulseMap = next
+    setTimeout(() => {
+      const after = new Map(pulseMap)
+      after.delete(nodeId)
+      pulseMap = after
+    }, 600)
+  }
+
+  function categoryProgress(node) {
+    if (!node.isCategory) return 0
+    const total = countDescendants(node)
+    if (total === 0) return 0
+    const skilledCount = countSkilledDescendants(node, $displaySkilled)
+    return skilledCount / total
+  }
+
+  // ── Zoom buttons ──
+  function zoomIn() {
+    const newScale = Math.min(MAX_SCALE, scale * 1.3)
+    if (svgEl) {
+      const rect = svgEl.getBoundingClientRect()
+      const cx = rect.width / 2
+      const cy = rect.height / 2
+      tx = cx - (cx - tx) * (newScale / scale)
+      ty = cy - (cy - ty) * (newScale / scale)
+    }
+    scale = newScale
+  }
+
+  function zoomOut() {
+    const newScale = Math.max(MIN_SCALE, scale / 1.3)
+    if (svgEl) {
+      const rect = svgEl.getBoundingClientRect()
+      const cx = rect.width / 2
+      const cy = rect.height / 2
+      tx = cx - (cx - tx) * (newScale / scale)
+      ty = cy - (cy - ty) * (newScale / scale)
+    }
+    scale = newScale
   }
 
   // ── Expand / collapse ──
@@ -196,6 +288,35 @@
     return lines
   }
 
+  // ── Tooltip ──
+  function showTooltip(node) {
+    if (tooltipTimer) clearTimeout(tooltipTimer)
+    tooltipNode = node
+    updateTooltipPos(node)
+    tooltipVisible = true
+  }
+
+  function hideTooltip() {
+    tooltipTimer = setTimeout(() => {
+      tooltipVisible = false
+      tooltipNode = null
+    }, 100)
+  }
+
+  function moveTooltip(node) {
+    updateTooltipPos(node)
+  }
+
+  function updateTooltipPos(node) {
+    if (!svgEl) return
+    tooltipX = node.x * scale + tx + (NODE_W * scale) / 2
+    tooltipY = node.y * scale + ty + NODE_H * scale + 10
+  }
+
+  function accentVar(node) {
+    return node._categoryId ? `var(--accent-${node._categoryId})` : ''
+  }
+
   // ── Zoom ──
   const MIN_SCALE = 0.1
   const MAX_SCALE = 3
@@ -239,6 +360,14 @@
     }
   }
   function onTouchEnd() { lastTouch = null }
+
+  // ── Background click (deselect) ──
+  function onSvgClick(e) {
+    if (isDragging) return
+    if (e.target === svgEl || e.target.getAttribute('class')?.includes('canvas')) {
+      selectedNodeId = null
+    }
+  }
 
   // ── Edge bezier ──
   function edgePath(from, to) {
@@ -294,6 +423,20 @@
   </button>
   <button
     class="btn-ghost btn-ghost-dim toolbar-btn"
+    onclick={zoomOut}
+    title="Zoom out"
+  >
+    −
+  </button>
+  <button
+    class="btn-ghost btn-ghost-dim toolbar-btn"
+    onclick={zoomIn}
+    title="Zoom in"
+  >
+    +
+  </button>
+  <button
+    class="btn-ghost btn-ghost-dim toolbar-btn"
     onclick={fitToScreen}
     title="Fit tree to screen"
   >
@@ -317,6 +460,7 @@
   ontouchstart={onTouchStart}
   ontouchmove={onTouchMove}
   ontouchend={onTouchEnd}
+  onclick={onSvgClick}
 >
   <g transform="translate({tx},{ty}) scale({scale})">
 
@@ -331,11 +475,12 @@
       {@const weight = bothSkilled ? countSkilledDescendants(edge.to, $displaySkilled) : 0}
       {@const ratio = bothSkilled && $displaySkilled.size > 0 ? weight / $displaySkilled.size : 0}
       {@const thickness = bothSkilled ? 1.5 + (ratio * 6.5) : 1.5}
+      {@const edgeAccent = bothSkilled ? accentVar(edge.to) : ''}
       <path
         d={edgePath(edge.from, edge.to)}
         class="edge"
         class:edge-active={bothSkilled}
-        style="stroke-width: {thickness}px"
+        style="stroke-width: {thickness}px; --edge-accent: {edgeAccent}"
         fill="none"
       />
     {/each}
@@ -345,15 +490,27 @@
       {@const state = nodeState(node)}
       {@const isClickable = !node.isRoot && !node.isCategory && !node.isGroup && state !== 'locked'}
       {@const hasVisibleChildren = node.children && node.children.length > 0}
-      {@const textLines = wrapText(node.name, node.isRoot || node.isCategory || node.isGroup ? 24 : 18)}
+      {@const isMeta = node.isRoot || node.isCategory || node.isGroup}
+      {@const textLines = wrapText(node.name, isMeta ? 24 : 18)}
+      {@const nodeAccent = accentVar(node)}
+      {@const showIcon = node.isCategory && categoryIconInner(node.id)}
+      {@const labelX = showIcon ? 30 : (isMeta ? NODE_W / 2 : 30)}
+      {@const labelAnchor = showIcon ? 'start' : (isMeta ? 'middle' : 'start')}
 
+      {@const isPulsing = pulseMap.has(node.id)}
+      {@const isSelected = selectedNodeId === node.id}
       <g
         class="node-g"
         class:clickable={isClickable}
+        class:node-selected={isSelected}
         transform="translate({node.x},{node.y})"
+        style="--node-accent: {nodeAccent}"
         onclick={() => toggleNode(node)}
         onkeydown={(e) => (e.key === 'Enter' || e.key === ' ') && toggleNode(node)}
-        role={node.isRoot || node.isCategory || node.isGroup ? 'presentation' : 'button'}
+        onmouseenter={() => showTooltip(node)}
+        onmouseleave={() => hideTooltip()}
+        onmousemove={() => moveTooltip(node)}
+        role={isMeta ? 'presentation' : 'button'}
         aria-pressed={isClickable ? state === 'skilled' : undefined}
         tabindex={isClickable ? 0 : undefined}
       >
@@ -370,7 +527,25 @@
           class:node-unskilled={state === 'unskilled'}
           class:node-locked={state === 'locked'}
           class:node-meta={state === 'meta'}
+          class:node-pulse={isPulsing}
         />
+
+        <!-- Category progress bar -->
+        {#if node.isCategory}
+          {@const progress = categoryProgress(node)}
+          {#if progress > 0}
+            <rect x={0} y={NODE_H - 2} width={NODE_W * progress} height={2} rx="1" class="cat-progress" />
+          {/if}
+        {/if}
+
+        <!-- Category icon -->
+        {#if showIcon}
+          <svg x={10} y={NODE_H / 2 - 7} width={14} height={14} viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="cat-icon">
+            {@html categoryIconInner(node.id)}
+          </svg>
+        {/if}
 
         <!-- Status indicator -->
         {#if state === 'skilled'}
@@ -398,15 +573,15 @@
 
         <!-- Label -->
         <text
-          x={node.isRoot || node.isCategory || node.isGroup ? NODE_W / 2 : 30}
+          x={labelX}
           y={NODE_H / 2}
-          text-anchor={node.isRoot || node.isCategory || node.isGroup ? 'middle' : 'start'}
+          text-anchor={labelAnchor}
           class="node-label"
           class:node-label-dim={state === 'locked'}
         >
           {#each textLines as line, i}
             <tspan
-              x={node.isRoot || node.isCategory || node.isGroup ? NODE_W / 2 : 30}
+              x={labelX}
               dy={i === 0 ? `-${(textLines.length - 1) * 6}px` : '12px'}
             >{line}</tspan>
           {/each}
@@ -444,6 +619,31 @@
   </g>
 </svg>
 
+<!-- Tooltip -->
+{#if (tooltipVisible && tooltipNode) || selectedNodeId}
+  {@const node = tooltipNode || layoutData.nodes.find(n => n.id === selectedNodeId)}
+  {#if node}
+    <div class="tooltip" style="left: {tooltipX}px; top: {tooltipY}px;">
+      <div class="tooltip-title">{node.name}</div>
+      {#if node.description}
+        <div class="tooltip-desc">{node.description}</div>
+      {/if}
+      {#if nodeState(node) === 'locked' && node.requires}
+        {@const reqNode = get(nodeIndex).get(node.requires)}
+        {#if reqNode}
+          <div class="tooltip-locked">Requires {reqNode.name}</div>
+        {/if}
+      {/if}
+    </div>
+  {/if}
+{/if}
+
+{#if unlockToast}
+  <div class="unlock-toast" role="status" aria-live="polite">
+    ✦ Unlocked {unlockToast} passions
+  </div>
+{/if}
+
 <style>
   /* ── Toolbar ── */
   .toolbar {
@@ -474,25 +674,42 @@
 
   /* ── Edges ── */
   :global(.edge) { stroke: var(--line-edge); stroke-width: 1.5; }
-  :global(.edge-active) { stroke: var(--line-active); }
+  :global(.edge-active) { stroke: var(--edge-accent, var(--line-active)); }
 
   /* ── Node rects ── */
   :global(.node-rect) { transition: fill 0.15s, stroke 0.15s; }
   :global(.node-meta)     { fill: var(--node-meta-bg); stroke: var(--node-meta-stroke); stroke-width: 1; }
   :global(.node-unskilled){ fill: var(--node-unskilled-bg); stroke: var(--node-unskilled-stroke); stroke-width: 1; }
-  :global(.node-skilled)  { fill: var(--node-skilled-bg); stroke: var(--node-skilled-stroke); stroke-width: 1.5; }
+  :global(.node-skilled)  { fill: var(--node-skilled-bg); stroke: var(--node-accent, var(--node-skilled-stroke)); stroke-width: 1.5; }
   :global(.node-locked)   { fill: var(--node-locked-bg); stroke: var(--node-locked-stroke); stroke-width: 1; opacity: 0.55; }
   :global(.node-glow) {
     fill: var(--node-glow-fill);
-    stroke: var(--node-glow-stroke);
+    stroke: var(--node-accent, var(--node-glow-stroke));
     stroke-width: 1;
     filter: blur(4px);
   }
+
+  /* Category icon */
+  :global(.cat-icon) { color: var(--node-accent, var(--text-mute)); pointer-events: none; }
 
   /* Hover */
   :global(.node-g.clickable) { cursor: pointer; }
   :global(.node-g.clickable:hover .node-unskilled) { fill: var(--node-unskilled-hover-bg); stroke: var(--node-unskilled-hover-stroke); }
   :global(.node-g.clickable:hover .node-skilled)   { fill: var(--node-skilled-hover-bg); }
+
+  /* Selected state (mobile tap) */
+  :global(.node-selected .node-rect) { stroke: var(--node-accent, var(--border-bright)); stroke-width: 2; }
+
+  /* Unlock pulse */
+  :global(.node-pulse) { animation: node-pulse 0.5s ease-out; }
+  @keyframes node-pulse {
+    0% { stroke-width: 1.5; filter: brightness(1); }
+    30% { stroke-width: 3; filter: brightness(1.4); }
+    100% { stroke-width: 1.5; filter: brightness(1); }
+  }
+
+  /* Category progress bar */
+  :global(.cat-progress) { fill: var(--node-accent, var(--text-mute)); pointer-events: none; }
 
   /* ── Labels ── */
   :global(.node-icon) { font-size: 14px; dominant-baseline: auto; }
@@ -540,4 +757,67 @@
     transition: fill 0.15s;
   }
   :global(.expand-btn-g:hover .expand-label) { fill: var(--expand-label-hover); }
+
+  /* ── Tooltip ── */
+  .tooltip {
+    position: fixed;
+    z-index: 50;
+    pointer-events: none;
+    transform: translateX(-50%);
+    background: var(--canvas-raised);
+    border: 1px solid var(--border-bright);
+    border-radius: var(--r-sm);
+    padding: 10px 14px;
+    max-width: 220px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    animation: tooltip-in 0.15s ease;
+  }
+  .tooltip-title {
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .tooltip-desc {
+    font-family: var(--font-body);
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-mute);
+  }
+  .tooltip-locked {
+    font-family: var(--font-body);
+    font-size: 11px;
+    line-height: 1.4;
+    color: var(--text-dim);
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid var(--border);
+  }
+  @keyframes tooltip-in {
+    from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+
+  /* ── Unlock toast ── */
+  .unlock-toast {
+    position: fixed;
+    bottom: 72px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 300;
+    background: var(--text-primary);
+    color: var(--canvas);
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: var(--r-pill);
+    white-space: nowrap;
+    animation: fade-in 0.2s ease;
+  }
 </style>

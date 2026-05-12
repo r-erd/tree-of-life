@@ -1,0 +1,544 @@
+id: explorer
+name: EXPLORER
+skills:
+- id: countries
+  name: COUNTRIES VISITED
+  children:
+  - id: travel_5
+    name: 5 COUNTRIES
+    description: Started exploring the world
+  - id: travel_20
+    name: 20 COUNTRIES
+    description: Well-traveled citizen of the world
+    requires: travel_5
+  - id: travel_50
+    name: 50 COUNTRIES
+    description: Visited a quarter of all nations
+    requires: travel_20
+  - id: travel_100
+    name: 100 COUNTRIES
+    description: Half the world — the Travelers' Century Club
+    requires: travel_50
+  - id: travel_solo
+    name: SOLO TRAVEL
+    description: Traveled alone, found yourself
+    requires: travel_5
+  - id: travel_backpack
+    name: BACKPACKING
+    description: Months on the road with just a pack
+    requires: travel_5
+  - id: travel_overland
+    name: OVERLAND JOURNEY
+    description: Crossed a continent without flying
+    requires: travel_20
+  - id: travel_work
+    name: DIGITAL NOMAD
+    description: Worked remotely while traveling
+    requires: travel_20
+- id: continents
+  name: CONTINENTS
+  children:
+  - id: cont_2
+    name: 2 CONTINENTS
+    description: Stepped beyond your home continent
+  - id: cont_3
+    name: 3 CONTINENTS
+    description: Expanding your global footprint
+    requires: cont_2
+  - id: cont_4
+    name: 4 CONTINENTS
+    description: Majority of the world explored
+    requires: cont_3
+  - id: cont_5
+    name: 5 CONTINENTS
+    description: Nearly everywhere
+    requires: cont_4
+  - id: cont_6
+    name: 6 CONTINENTS
+    description: All but one
+    requires: cont_5
+  - id: cont_7
+    name: 7 CONTINENTS
+    description: Antarctica included — the ultimate traveler
+    requires: cont_6
+- id: diving
+  name: DIVING
+  children:
+  - id: dive_10
+    name: 10 DIVES
+    description: Open Water certified, hooked on the deep
+  - id: dive_50
+    name: 50 DIVES
+    description: Comfortable and confident underwater
+    requires: dive_10
+  - id: dive_200
+    name: 200 DIVES
+    description: Experienced diver
+    requires: dive_50
+  - id: dive_500
+    name: 500 DIVES
+    description: Veteran of the depths
+    requires: dive_200
+  - id: dive_adv
+    name: ADVANCED OPEN WATER
+    description: Deep, nav, drift, night, wreck
+    requires: dive_10
+  - id: dive_rescue
+    name: RESCUE DIVER
+    description: Trained to help others in emergencies
+    requires: dive_adv
+  - id: dive_wreck
+    name: WRECK DIVER
+    description: Explored sunken ships and planes
+    requires: dive_adv
+  - id: dive_cave
+    name: CAVE DIVER
+    description: The most technical and dangerous diving
+    requires: dive_rescue
+  - id: dive_photo
+    name: UNDERWATER PHOTO
+    description: Captured the world beneath the waves
+    requires: dive_50
+- id: hiking
+  name: HIKING & CAMPING
+  children:
+  - id: hike_50h
+    name: 50 HOURS
+    description: Comfortable on trails and at camp
+  - id: hike_250h
+    name: 250 HOURS
+    description: Multi-day trips are second nature
+    requires: hike_50h
+  - id: hike_1000h
+    name: 1,000 HOURS
+    description: The wilderness is home
+    requires: hike_250h
+  - id: hike_5000h
+    name: 5,000 HOURS
+    description: Thru-hiker, guide, or wilderness expert
+    requires: hike_1000h
+  - id: hike_overnight
+    name: OVERNIGHT HIKE
+    description: Slept under the stars on trail
+    requires: hike_50h
+  - id: hike_multiday
+    name: MULTI-DAY TREK
+    description: 3+ days in the backcountry
+    requires: hike_overnight
+  - id: hike_thru
+    name: THRU-HIKE
+    description: Completed a long-distance trail end-to-end
+    requires: hike_multiday
+  - id: hike_14er
+    name: SUMMITED A 14ER
+    description: Stood on a 14,000ft peak
+    requires: hike_250h
+  - id: hipe_alpine
+    name: ALPINE ROUTE
+    description: Technical hiking with exposure and risk
+    requires: hike_250h
+  - id: hike_nav
+    name: OFF-TRAIL NAVIGATION
+    description: Map, compass, GPS, no marked path
+    requires: hike_250h
+- id: skiing
+  name: SKIING
+  children:
+  - id: ski_50h
+    name: 50 HOURS
+    description: Linked turns, controlled speed
+  - id: ski_250h
+    name: 250 HOURS
+    description: Confident on most groomed terrain
+    requires: ski_50h
+  - id: ski_1000h
+    name: 1,000 HOURS
+    description: Skier for life
+    requires: ski_250h
+  - id: ski_5000h
+    name: 5,000 HOURS
+    description: Ski bum or instructor-level
+    requires: ski_1000h
+  - id: ski_offpiste
+    name: OFF-PISTE
+    description: Left the groomers for powder
+    requires: ski_50h
+  - id: ski_backcountry
+    name: BACKCOUNTRY
+    description: Earned your turns, avalanche aware
+    requires: ski_offpiste
+  - id: ski_tour
+    name: SKI TOURING
+    description: Multi-day ski expeditions
+    requires: ski_backcountry
+  - id: ski_mogul
+    name: MOGULS
+    description: Bumped terrain, mastered
+    requires: ski_250h
+  - id: ski_race
+    name: RACE GATES
+    description: Competed in a ski race
+    requires: ski_250h
+  - id: ski_instructor
+    name: SKI INSTRUCTOR
+    description: Teaching others to slide
+    requires: ski_1000h
+- id: snowboarding
+  name: SNOWBOARDING
+  children:
+  - id: board_50h
+    name: 50 HOURS
+    description: Heelside, toeside, linking turns
+  - id: board_250h
+    name: 250 HOURS
+    description: Styling down the mountain
+    requires: board_50h
+  - id: board_1000h
+    name: 1,000 HOURS
+    description: Rider for life
+    requires: board_250h
+  - id: board_5000h
+    name: 5,000 HOURS
+    description: Legendary rider
+    requires: board_1000h
+  - id: board_park
+    name: TERRAIN PARK
+    description: Jumps, rails, boxes
+    requires: board_50h
+  - id: board_halfpipe
+    name: HALFPIPE
+    description: Air, grabs, and transitions
+    requires: board_park
+  - id: board_powder
+    name: POWDER DAYS
+    description: Deep snow, face shots
+    requires: board_50h
+  - id: board_backcountry
+    name: BACKCOUNTRY
+    description: Splitboard or snowmobile access
+    requires: board_powder
+  - id: board_freestyle
+    name: FREESTYLE
+    description: Creative tricks and style
+    requires: board_park
+- id: driving
+  name: DRIVING
+  children:
+  - id: drive_1000km
+    name: 1,000 KM
+    description: Beyond learner, comfortable on the road
+  - id: drive_10000km
+    name: 10,000 KM
+    description: Experienced driver
+    requires: drive_1000km
+  - id: drive_100000km
+    name: 100,000 KM
+    description: Veteran of the road
+    requires: drive_10000km
+  - id: drive_500000km
+    name: 500,000 KM
+    description: More miles than most people fly
+    requires: drive_100000km
+  - id: drive_manual
+    name: MANUAL TRANSMISSION
+    description: Three pedals, full control
+    requires: drive_1000km
+  - id: drive_track
+    name: TRACK DAY
+    description: Pushed a car to its limit on circuit
+    requires: drive_10000km
+  - id: drive_drift
+    name: DRIFTING
+    description: Controlled oversteer, sideways speed
+    requires: drive_track
+  - id: drive_rally
+    name: RALLY
+    description: Dirt, gravel, pace notes
+    requires: drive_track
+  - id: drive_race
+    name: RACING LICENSE
+    description: Competed in motorsport
+    requires: drive_track
+  - id: drive_teach
+    name: RACING INSTRUCTOR
+    description: Teaching others to drive fast
+    requires: drive_race
+- id: flying
+  name: FLYING
+  children:
+  - id: fly_10h
+    name: 10 HOURS
+    description: First lessons, first solos
+  - id: fly_50h
+    name: 50 HOURS
+    description: Private pilot license territory
+    requires: fly_10h
+  - id: fly_250h
+    name: 250 HOURS
+    description: Instrument rating, commercial ready
+    requires: fly_50h
+  - id: fly_1500h
+    name: 1,500 HOURS
+    description: Airline transport pilot level
+    requires: fly_250h
+  - id: fly_ppl
+    name: PRIVATE PILOT
+    description: Licensed to fly single-engine aircraft
+    requires: fly_50h
+  - id: fly_ifr
+    name: INSTRUMENT RATING
+    description: Flying through clouds, no visual reference
+    requires: fly_ppl
+  - id: fly_cpl
+    name: COMMERCIAL PILOT
+    description: Paid to fly
+    requires: fly_ifr
+  - id: fly_atp
+    name: AIRLINE TRANSPORT
+    description: Captain of a commercial airliner
+    requires: fly_cpl
+  - id: fly_glider
+    name: GLIDER / SAILPLANE
+    description: Flying without an engine
+    requires: fly_10h
+  - id: fly_heli
+    name: HELICOPTER
+    description: Rotary-wing mastery
+    requires: fly_50h
+- id: surfing
+  name: SURFING
+  children:
+  - id: surf_50h
+    name: 50 HOURS
+    description: Caught your first waves, learned to read the ocean
+  - id: surf_250h
+    name: 250 HOURS
+    description: Riding down the line, turning
+    requires: surf_50h
+  - id: surf_1000h
+    name: 1,000 HOURS
+    description: Surfer for life
+    requires: surf_250h
+  - id: surf_5000h
+    name: 5,000 HOURS
+    description: Local legend status
+    requires: surf_1000h
+  - id: surf_short
+    name: SHORTBOARD
+    description: Performance surfing, aerials, cutbacks
+    requires: surf_50h
+  - id: surf_long
+    name: LONGBOARD
+    description: Nose rides, cross-steps, style
+    requires: surf_50h
+  - id: surf_big
+    name: BIG WAVE
+    description: Faced waves that could kill you
+    requires: surf_250h
+  - id: surf_tube
+    name: BARREL RIDE
+    description: Ridden inside the hollow of a wave
+    requires: surf_250h
+  - id: surf_travel
+    name: SURF TRIP
+    description: Traveled for waves, not just convenience
+    requires: surf_50h
+- id: kayaking
+  name: KAYAKING & CANOEING
+  children:
+  - id: kayak_50h
+    name: 50 HOURS
+    description: Learned strokes, rolls, and river reading
+  - id: kayak_250h
+    name: 250 HOURS
+    description: Comfortable in moving water
+    requires: kayak_50h
+  - id: kayak_1000h
+    name: 1,000 HOURS
+    description: Paddler for life
+    requires: kayak_250h
+  - id: kayak_5000h
+    name: 5,000 HOURS
+    description: Expedition paddler
+    requires: kayak_1000h
+  - id: kayak_roll
+    name: ESKIMO ROLL
+    description: Self-rescue without exiting the boat
+    requires: kayak_50h
+  - id: kayak_ww3
+    name: CLASS III WHITEWATER
+    description: Moderate rapids, confident lines
+    requires: kayak_50h
+  - id: kayak_ww5
+    name: CLASS V WHITEWATER
+    description: Expert-level extreme rapids
+    requires: kayak_ww3
+  - id: kayak_sea
+    name: SEA KAYAKING
+    description: Open water, tides, crossings
+    requires: kayak_50h
+  - id: kayak_tour
+    name: MULTI-DAY PADDLE
+    description: Expedition kayaking with camping
+    requires: kayak_sea
+  - id: kayak_falls
+    name: WATERFALL DROP
+    description: Ran a significant waterfall
+    requires: kayak_ww5
+- id: sailing
+  name: SAILING
+  children:
+  - id: sail_50h
+    name: 50 HOURS
+    description: Learned points of sail, tacking, gybing
+  - id: sail_250h
+    name: 250 HOURS
+    description: Competent crew, maybe day skipper
+    requires: sail_50h
+  - id: sail_1000h
+    name: 1,000 HOURS
+    description: Sailor for life
+    requires: sail_250h
+  - id: sail_5000h
+    name: 5,000 HOURS
+    description: Bluewater veteran
+    requires: sail_1000h
+  - id: sail_dinghy
+    name: DINGHY SAILING
+    description: Small boat, direct feel
+    requires: sail_50h
+  - id: sail_cruiser
+    name: CRUISING
+    description: Multi-day trips on a keelboat
+    requires: sail_250h
+  - id: sail_offshore
+    name: OFFSHORE PASSAGE
+    description: Out of sight of land for days
+    requires: sail_cruiser
+  - id: sail_ocean
+    name: OCEAN CROSSING
+    description: Crossed an ocean under sail
+    requires: sail_offshore
+  - id: sail_race
+    name: REGATTA
+    description: Competed in a sailing race
+    requires: sail_250h
+  - id: sail_solo
+    name: SOLO SAILING
+    description: Handled the boat alone
+    requires: sail_cruiser
+- id: motorcycling
+  name: MOTORCYCLING
+  children:
+  - id: moto_50h
+    name: 50 HOURS
+    description: Learned to ride safely and smoothly
+  - id: moto_250h
+    name: 250 HOURS
+    description: Confident in traffic and weather
+    requires: moto_50h
+  - id: moto_1000h
+    name: 1,000 HOURS
+    description: Rider for life
+    requires: moto_250h
+  - id: moto_5000h
+    name: 5,000 HOURS
+    description: Veteran rider
+    requires: moto_1000h
+  - id: moto_tour
+    name: MULTI-DAY TOUR
+    description: Traveled far on two wheels
+    requires: moto_50h
+  - id: moto_offroad
+    name: OFF-ROAD / DUAL-SPORT
+    description: Dirt, gravel, adventure riding
+    requires: moto_50h
+  - id: moto_track
+    name: TRACK DAY
+    description: Knee down on a circuit
+    requires: moto_250h
+  - id: moto_stunt
+    name: STUNT RIDING
+    description: Wheelies, stoppies, tricks
+    requires: moto_250h
+  - id: moto_custom
+    name: CUSTOM BUILD
+    description: Built or heavily modified your bike
+    requires: moto_250h
+- id: caving
+  name: CAVING & SPELUNKING
+  children:
+  - id: cave_10
+    name: 10 TRIPS
+    description: Learned vertical and horizontal cave skills
+  - id: cave_50
+    name: 50 TRIPS
+    description: Experienced caver
+    requires: cave_10
+  - id: cave_200
+    name: 200 TRIPS
+    description: Veteran of the underground
+    requires: cave_50
+  - id: cave_500
+    name: 500 TRIPS
+    description: Master caver
+    requires: cave_200
+  - id: cave_vertical
+    name: VERTICAL CAVING
+    description: Ropes, ascenders, pits
+    requires: cave_10
+  - id: cave_squeeze
+    name: SQUEEZE PASSAGE
+    description: Pushed through tight restrictions
+    requires: cave_10
+  - id: cave_dive
+    name: Cave DIVING
+    description: The most dangerous form of exploration
+    requires: cave_vertical
+  - id: cave_survey
+    name: Cave SURVEY
+    description: Mapped and documented new passages
+    requires: cave_50
+  - id: cave_discovery
+    name: NEW PASSAGE
+    description: Discovered virgin cave
+    requires: cave_survey
+- id: paragliding
+  name: PARAGLIDING & HANG GLIDING
+  children:
+  - id: para_10
+    name: 10 FLIGHTS
+    description: Learned to launch, turn, and land
+  - id: para_50
+    name: 50 FLIGHTS
+    description: Confident in varied conditions
+    requires: para_10
+  - id: para_200
+    name: 200 FLIGHTS
+    description: Experienced free-flight pilot
+    requires: para_50
+  - id: para_500
+    name: 500 FLIGHTS
+    description: Veteran of the sky
+    requires: para_200
+  - id: para_hike
+    name: HIKE & FLY
+    description: Carried your wing up and flew down
+    requires: para_10
+  - id: para_xc
+    name: CROSS-COUNTRY
+    description: Flew tens of kilometers without power
+    requires: para_50
+  - id: para_100k
+    name: 100KM FLIGHT
+    description: A century in the air
+    requires: para_xc
+  - id: para_acro
+    name: ACROBATICS
+    description: Wingovers, helicos, SATs
+    requires: para_50
+  - id: para_cloud
+    name: CLOUD BASE
+    description: Climbed to cloudbase and flew the sky
+    requires: para_xc
+description: Discovering the world, near and far

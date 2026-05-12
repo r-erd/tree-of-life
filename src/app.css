@@ -90,13 +90,25 @@
   --color-danger:     #ff4444;
   --color-danger-text:#ffffff;
 
-  /* Category accent (used sparingly for icon tint) */
-  --accent-body:      #ffffff;
-  --accent-mind:      #c8c8ff;
-  --accent-creative:  #ffc8e8;
-  --accent-craft:     #c8ffd4;
-  --accent-explorer:  #c8eeff;
-  --accent-social:    #ffeed0;
+  /* Category accents (muted tints for dark canvas) */
+  --accent-body:        #e8e8ec;
+  --accent-mind:        #a8b0ff;
+  --accent-creative:    #ff9ec8;
+  --accent-craft:       #7ae0a0;
+  --accent-explorer:    #78d0f8;
+  --accent-collector:   #f0b890;
+  --accent-social:      #f8d888;
+  --accent-performing:  #d0a0f8;
+  --accent-games:       #90c8f8;
+  --accent-nature:      #90e878;
+  --accent-animals:     #f0c898;
+  --accent-home:        #c8c8d0;
+  --accent-wheel_wave:  #90a8f8;
+  --accent-flow:        #f8e078;
+  --accent-digital_craft:#60e0f8;
+  --accent-finance:     #a8e060;
+  --accent-precision:   #f09898;
+  --accent-spiritual:   #c8a8f8;
 
   /* Typography */
   --font-display:     'Inter', 'Arial Narrow', Arial, sans-serif;
@@ -200,13 +212,25 @@
   --color-danger:     #ef4444;
   --color-danger-text:#ffffff;
 
-  /* Category accent (adjusted for light mode) */
-  --accent-body:      #111115;
-  --accent-mind:      #6366f1;
-  --accent-creative:  #ec4899;
-  --accent-craft:     #10b981;
-  --accent-explorer:  #0ea5e9;
-  --accent-social:    #f59e0b;
+  /* Category accents (saturated for light canvas) */
+  --accent-body:        #111115;
+  --accent-mind:        #4f5fff;
+  --accent-creative:    #e04080;
+  --accent-craft:       #20a050;
+  --accent-explorer:    #1088c8;
+  --accent-collector:   #c87830;
+  --accent-social:      #d8a820;
+  --accent-performing:  #9040d0;
+  --accent-games:       #3088d8;
+  --accent-nature:      #30a818;
+  --accent-animals:     #c89840;
+  --accent-home:        #707078;
+  --accent-wheel_wave:  #4060d8;
+  --accent-flow:        #d8b820;
+  --accent-digital_craft:#00a8c8;
+  --accent-finance:     #60a820;
+  --accent-precision:   #c84040;
+  --accent-spiritual:   #8040c0;
 }
 
 /* ── Base ── */

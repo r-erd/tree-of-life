@@ -1,0 +1,182 @@
+id: social
+name: SOCIAL
+skills:
+- id: volunteering
+  name: VOLUNTEERING
+  children:
+  - id: vol_10h
+    name: 10 HOURS
+    description: Gave time to a cause
+  - id: vol_100h
+    name: 100 HOURS
+    description: Committed volunteer
+    requires: vol_10h
+  - id: vol_500h
+    name: 500 HOURS
+    description: Volunteer as identity
+    requires: vol_100h
+  - id: vol_2000h
+    name: 2,000 HOURS
+    description: A lifetime of service
+    requires: vol_500h
+  - id: vol_disaster
+    name: DISASTER RELIEF
+    description: Helped in an emergency or crisis
+    requires: vol_100h
+  - id: vol_mentor
+    name: MENTORING YOUTH
+    description: Guided young people long-term
+    requires: vol_100h
+  - id: vol_animal
+    name: ANIMAL SHELTER
+    description: Cared for animals in need
+    requires: vol_10h
+  - id: vol_org
+    name: FOUNDED AN INITIATIVE
+    description: Started your own volunteer project
+    requires: vol_500h
+- id: mentoring
+  name: MENTORING
+  children:
+  - id: ment_1
+    name: 1 MENTEE
+    description: Guided someone through growth
+  - id: ment_5
+    name: 5 MENTEES
+    description: Experienced mentor
+    requires: ment_1
+  - id: ment_20
+    name: 20 MENTEES
+    description: Mentor as a core role
+    requires: ment_5
+  - id: ment_career
+    name: CAREER MENTOR
+    description: Helped someone advance professionally
+    requires: ment_1
+  - id: ment_peer
+    name: PEER MENTOR
+    description: Guided someone at a similar level
+    requires: ment_1
+  - id: ment_reverse
+    name: REVERSE MENTORING
+    description: Learned from someone younger
+    requires: ment_5
+  - id: ment_program
+    name: RAN A MENTORSHIP PROGRAM
+    description: Structured mentoring at scale
+    requires: ment_20
+- id: teaching
+  name: TEACHING & EDUCATION
+  children:
+  - id: teach_50h
+    name: 50 HOURS
+    description: Taught others in any setting
+  - id: teach_250h
+    name: 250 HOURS
+    description: Developing pedagogy and presence
+    requires: teach_50h
+  - id: teach_1000h
+    name: 1,000 HOURS
+    description: Teacher as identity
+    requires: teach_250h
+  - id: teach_5000h
+    name: 5,000 HOURS
+    description: Master educator
+    requires: teach_1000h
+  - id: teach_formal
+    name: FORMAL CLASSROOM
+    description: Taught in a school or university
+    requires: teach_50h
+  - id: teach_online
+    name: ONLINE COURSE
+    description: Created and published a course
+    requires: teach_250h
+  - id: teach_workshop
+    name: WORKSHOP FACILITATOR
+    description: Led hands-on learning sessions
+    requires: teach_50h
+  - id: teach_tutor
+    name: 1-ON-1 TUTORING
+    description: Personalized instruction
+    requires: teach_50h
+  - id: teach_cert
+    name: TEACHING CERTIFICATION
+    description: Formal qualification to teach
+    requires: teach_250h
+- id: public_speaking
+  name: PUBLIC SPEAKING
+  children:
+  - id: speak_1
+    name: FIRST TALK
+    description: Spoke to a group of 5+ people
+  - id: speak_10
+    name: 10 TALKS
+    description: Becoming comfortable on stage
+    requires: speak_1
+  - id: speak_50
+    name: 50 TALKS
+    description: Seasoned speaker
+    requires: speak_10
+  - id: speak_100
+    name: 100 TALKS
+    description: Professional speaker
+    requires: speak_50
+  - id: speak_keynote
+    name: KEYNOTE
+    description: Headlined an event
+    requires: speak_50
+  - id: speak_ted
+    name: TED / MAIN STAGE
+    description: Spoke at a prestigious venue
+    requires: speak_keynote
+  - id: speak_podcast
+    name: PODCAST GUEST
+    description: Shared expertise on audio
+    requires: speak_10
+  - id: speak_panel
+    name: PANEL MODERATOR
+    description: Facilitated group discussion
+    requires: speak_10
+  - id: speak_story
+    name: STORYTELLING EVENT
+    description: The Moth, Ignite, or similar
+    requires: speak_10
+- id: activism
+  name: ACTIVISM & ADVOCACY
+  children:
+  - id: act_50h
+    name: 50 HOURS
+    description: Took action for a cause
+  - id: act_250h
+    name: 250 HOURS
+    description: Organized and mobilized
+    requires: act_50h
+  - id: act_1000h
+    name: 1,000 HOURS
+    description: Activist as identity
+    requires: act_250h
+  - id: act_5000h
+    name: 5,000 HOURS
+    description: Movement veteran
+    requires: act_1000h
+  - id: act_protest
+    name: ORGANIZED A PROTEST
+    description: Led direct action
+    requires: act_50h
+  - id: act_policy
+    name: POLICY CHANGE
+    description: Influenced law or institutional policy
+    requires: act_250h
+  - id: act_media
+    name: MEDIA CAMPAIGN
+    description: Used media to shift public opinion
+    requires: act_50h
+  - id: act_fundraise
+    name: FUNDRAISING
+    description: Raised significant money for a cause
+    requires: act_50h
+  - id: act_nonprofit
+    name: STARTED A NONPROFIT
+    description: Built an organization for change
+    requires: act_250h
+description: Connecting with and uplifting others

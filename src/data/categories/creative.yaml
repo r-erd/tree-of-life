@@ -1,0 +1,452 @@
+id: creative
+name: CREATIVE
+skills:
+- id: drawing
+  name: DRAWING
+  children:
+  - id: draw_50h
+    name: 50 HOURS
+    description: Learned to see and put lines on paper
+  - id: draw_250h
+    name: 250 HOURS
+    description: Hand is starting to obey the eye
+    requires: draw_50h
+  - id: draw_1000h
+    name: 1,000 HOURS
+    description: Drawing is a native language
+    requires: draw_250h
+  - id: draw_5000h
+    name: 5,000 HOURS
+    description: Master draftsman
+    requires: draw_1000h
+  - id: draw_figure
+    name: FIGURE DRAWING
+    description: The human form, captured
+    requires: draw_50h
+  - id: draw_portrait
+    name: PORTRAITURE
+    description: Capturing a specific person's likeness
+    requires: draw_figure
+  - id: draw_urban
+    name: URBAN SKETCHING
+    description: Drawing cities and streets on location
+    requires: draw_50h
+  - id: draw_ink
+    name: INK & PEN
+    description: Confident line work, no erasing
+    requires: draw_50h
+  - id: draw_digital
+    name: DIGITAL ILLUSTRATION
+    description: Drawing with a tablet and software
+    requires: draw_250h
+  - id: draw_comic
+    name: COMIC ART
+    description: Sequential visual storytelling
+    requires: draw_250h
+  - id: draw_sold
+    name: SOLD ARTWORK
+    description: Someone paid for your drawing
+    requires: draw_250h
+- id: music_instrument
+  name: MUSIC — INSTRUMENT
+  children:
+  - id: music_50h
+    name: 50 HOURS
+    description: Built the calluses and muscle memory
+  - id: music_250h
+    name: 250 HOURS
+    description: Playing is starting to feel natural
+    requires: music_50h
+  - id: music_1000h
+    name: 1,000 HOURS
+    description: Instrument feels like an extension of you
+    requires: music_250h
+  - id: music_5000h
+    name: 5,000 HOURS
+    description: Mastery that only comes with decades
+    requires: music_1000h
+  - id: music_first_song
+    name: FIRST SONG
+    description: Played a complete piece start to finish
+    requires: music_50h
+  - id: music_open_mic
+    name: OPEN MIC
+    description: Performed in front of strangers
+    requires: music_first_song
+  - id: music_gig
+    name: FIRST GIG
+    description: Booked and played a real show
+    requires: music_open_mic
+  - id: music_album
+    name: RECORDED AN ALBUM
+    description: Released your music into the world
+    requires: music_gig
+  - id: music_improv
+    name: IMPROVISATION
+    description: Making music in real time, no script
+    requires: music_250h
+  - id: music_ear
+    name: PLAY BY EAR
+    description: Learned songs without sheet music
+    requires: music_250h
+  - id: music_teacher
+    name: STARTED TEACHING
+    description: Passing the craft to someone else
+    requires: music_1000h
+- id: music_production
+  name: MUSIC PRODUCTION
+  children:
+  - id: prod_50h
+    name: 50 HOURS
+    description: First beats, first mixes, first messes
+  - id: prod_250h
+    name: 250 HOURS
+    description: Tracks are starting to sound professional
+    requires: prod_50h
+  - id: prod_1000h
+    name: 1,000 HOURS
+    description: Producer with a recognizable sound
+    requires: prod_250h
+  - id: prod_5000h
+    name: 5,000 HOURS
+    description: Veteran producer
+    requires: prod_1000h
+  - id: prod_daw
+    name: DAW MASTER
+    description: Deep knowledge of your production software
+    requires: prod_50h
+  - id: prod_mix
+    name: MIXING ENGINEER
+    description: Balanced frequencies, space, and dynamics
+    requires: prod_250h
+  - id: prod_master
+    name: MASTERING
+    description: Final polish for release-ready tracks
+    requires: prod_mix
+  - id: prod_release
+    name: RELEASED A TRACK
+    description: Put music on streaming platforms
+    requires: prod_250h
+  - id: prod_ep
+    name: RELEASED AN EP
+    description: A cohesive body of work
+    requires: prod_release
+  - id: prod_collab
+    name: COLLABORATION
+    description: Produced with another artist
+    requires: prod_250h
+  - id: prod_studio
+    name: HOME STUDIO
+    description: Built a dedicated production space
+    requires: prod_50h
+- id: photography
+  name: PHOTOGRAPHY
+  children:
+  - id: photo_50h
+    name: 50 HOURS
+    description: Learned exposure, composition, focus
+  - id: photo_250h
+    name: 250 HOURS
+    description: Developing a personal eye
+    requires: photo_50h
+  - id: photo_1000h
+    name: 1,000 HOURS
+    description: Photographer, not just camera owner
+    requires: photo_250h
+  - id: photo_5000h
+    name: 5,000 HOURS
+    description: Master of light and moment
+    requires: photo_1000h
+  - id: photo_street
+    name: STREET PHOTOGRAPHY
+    description: Candid moments in public space
+    requires: photo_50h
+  - id: photo_portrait
+    name: PORTRAITURE
+    description: People, personality, connection
+    requires: photo_50h
+  - id: photo_landscape
+    name: LANDSCAPE
+    description: Chasing light in nature and cities
+    requires: photo_50h
+  - id: photo_bw
+    name: BLACK & WHITE
+    description: Seeing in tones, not colors
+    requires: photo_250h
+  - id: photo_exhibit
+    name: PHOTO EXHIBITION
+    description: Showed work in a physical or digital show
+    requires: photo_250h
+  - id: photo_sold
+    name: SOLD A PRINT
+    description: Someone paid for your image
+    requires: photo_250h
+  - id: photo_darkroom
+    name: DARKROOM / FILM
+    description: Analog chemistry and patience
+    requires: photo_250h
+- id: writing
+  name: WRITING
+  children:
+  - id: write_50h
+    name: 50 HOURS
+    description: Formed a writing habit
+  - id: write_250h
+    name: 250 HOURS
+    description: Voice and style emerging
+    requires: write_50h
+  - id: write_1000h
+    name: 1,000 HOURS
+    description: Writer as identity
+    requires: write_250h
+  - id: write_5000h
+    name: 5,000 HOURS
+    description: A body of work that matters
+    requires: write_1000h
+  - id: write_fiction
+    name: FICTION
+    description: Stories, novels, worlds invented
+    requires: write_50h
+  - id: write_nonfic
+    name: NON-FICTION
+    description: Essays, journalism, memoir
+    requires: write_50h
+  - id: write_poetry
+    name: POETRY
+    description: Distilled language, rhythm, image
+    requires: write_50h
+  - id: write_published
+    name: PUBLISHED
+    description: Work appeared in a publication
+    requires: write_250h
+  - id: write_book
+    name: FINISHED A BOOK
+    description: Completed a manuscript
+    requires: write_250h
+  - id: write_nano
+    name: NANOWRIMO
+    description: Wrote 50,000 words in a month
+    requires: write_50h
+  - id: write_blog
+    name: BLOG / NEWSLETTER
+    description: Regular public writing
+    requires: write_50h
+- id: cooking
+  name: COOKING
+  children:
+  - id: cook_50h
+    name: 50 HOURS
+    description: Comfortable in the kitchen
+  - id: cook_250h
+    name: 250 HOURS
+    description: Intuitive seasoning and timing
+    requires: cook_50h
+  - id: cook_1000h
+    name: 1,000 HOURS
+    description: Cook as identity
+    requires: cook_250h
+  - id: cook_5000h
+    name: 5,000 HOURS
+    description: Chef-level intuition
+    requires: cook_1000h
+  - id: cook_italian
+    name: ITALIAN
+    description: Pasta, risotto, regional mastery
+    requires: cook_50h
+  - id: cook_asian
+    name: ASIAN CUISINE
+    description: Wok, fermentation, umami
+    requires: cook_50h
+  - id: cook_french
+    name: FRENCH
+    description: Classical technique and mother sauces
+    requires: cook_50h
+  - id: cook_bbq
+    name: BBQ & SMOKING
+    description: Low and slow, fire mastery
+    requires: cook_50h
+  - id: cook_dinner
+    name: DINNER PARTY
+    description: Cooked for 6+ guests, start to finish
+    requires: cook_250h
+  - id: cook_menu
+    name: TASTING MENU
+    description: Multi-course experience for guests
+    requires: cook_dinner
+  - id: cook_knife
+    name: KNIFE SKILLS
+    description: Professional-level prep speed
+    requires: cook_50h
+- id: baking
+  name: BAKING
+  children:
+  - id: bake_50h
+    name: 50 HOURS
+    description: First loaves, first cakes, first failures
+  - id: bake_250h
+    name: 250 HOURS
+    description: Consistent, repeatable results
+    requires: bake_50h
+  - id: bake_1000h
+    name: 1,000 HOURS
+    description: Baker, not just recipe follower
+    requires: bake_250h
+  - id: bake_5000h
+    name: 5,000 HOURS
+    description: Bread science intuition
+    requires: bake_1000h
+  - id: bake_sourdough
+    name: SOURDOUGH
+    description: Maintained a starter, baked naturally leavened
+    requires: bake_50h
+  - id: bake_pastry
+    name: PASTRY
+    description: Laminated dough, pâte à choux, tarts
+    requires: bake_50h
+  - id: bake_cake
+    name: LAYER CAKE
+    description: Built a multi-layer decorated cake
+    requires: bake_50h
+  - id: bake_viennoiserie
+    name: VIENNOISERIE
+    description: Croissants, danish, pain au chocolat
+    requires: bake_pastry
+  - id: bake_macaron
+    name: MACARONS
+    description: Conquered the finicky French cookie
+    requires: bake_250h
+  - id: bake_sale
+    name: SOLD BAKED GOODS
+    description: Someone paid for your bread or pastry
+    requires: bake_250h
+- id: pottery
+  name: POTTERY & CERAMICS
+  children:
+  - id: pot_50h
+    name: 50 HOURS
+    description: Learned to center clay on the wheel
+  - id: pot_250h
+    name: 250 HOURS
+    description: Consistent forms, developing style
+    requires: pot_50h
+  - id: pot_1000h
+    name: 1,000 HOURS
+    description: Potter for life
+    requires: pot_250h
+  - id: pot_5000h
+    name: 5,000 HOURS
+    description: Master potter
+    requires: pot_1000h
+  - id: pot_wheel
+    name: THROWING
+    description: Wheel-thrown vessels
+    requires: pot_50h
+  - id: pot_hand
+    name: HAND-BUILDING
+    description: Coil, slab, pinch techniques
+    requires: pot_50h
+  - id: pot_glaze
+    name: GLAZE CHEMISTRY
+    description: Mixed and fired original glazes
+    requires: pot_250h
+  - id: pot_kiln
+    name: KILN FIRING
+    description: Loaded and fired a kiln independently
+    requires: pot_250h
+  - id: pot_set
+    name: DINNERWARE SET
+    description: Made a complete matching set
+    requires: pot_250h
+  - id: pot_sold
+    name: SOLD POTTERY
+    description: Someone bought your ceramic work
+    requires: pot_250h
+- id: filmmaking
+  name: FILMMAKING & VIDEO
+  children:
+  - id: film_50h
+    name: 50 HOURS
+    description: First shoots, first edits, first attempts
+  - id: film_250h
+    name: 250 HOURS
+    description: Understanding story, shot, cut
+    requires: film_50h
+  - id: film_1000h
+    name: 1,000 HOURS
+    description: Filmmaker, not just camera operator
+    requires: film_250h
+  - id: film_5000h
+    name: 5,000 HOURS
+    description: Veteran filmmaker
+    requires: film_1000h
+  - id: film_short
+    name: SHORT FILM
+    description: Wrote, shot, and edited a short
+    requires: film_50h
+  - id: film_doc
+    name: DOCUMENTARY
+    description: Told a real story on camera
+    requires: film_50h
+  - id: film_youtube
+    name: YOUTUBE CHANNEL
+    description: Regular video content creation
+    requires: film_50h
+  - id: film_color
+    name: COLOR GRADING
+    description: Cinematic look and feel
+    requires: film_250h
+  - id: film_sound
+    name: SOUND DESIGN
+    description: Built a sonic world for your film
+    requires: film_250h
+  - id: film_festival
+    name: FILM FESTIVAL
+    description: Screened at a festival
+    requires: film_short
+  - id: film_feature
+    name: FEATURE LENGTH
+    description: Completed a full-length film
+    requires: film_festival
+- id: fashion_design
+  name: FASHION DESIGN
+  children:
+  - id: fash_50h
+    name: 50 HOURS
+    description: Learned to sketch, drape, and sew
+  - id: fash_250h
+    name: 250 HOURS
+    description: Developing a personal aesthetic
+    requires: fash_50h
+  - id: fash_1000h
+    name: 1,000 HOURS
+    description: Fashion designer as identity
+    requires: fash_250h
+  - id: fash_5000h
+    name: 5,000 HOURS
+    description: Established designer
+    requires: fash_1000h
+  - id: fash_sketch
+    name: FASHION ILLUSTRATION
+    description: Sketching garments with flair
+    requires: fash_50h
+  - id: fash_pattern
+    name: PATTERN MAKING
+    description: From flat sketch to 3D garment
+    requires: fash_50h
+  - id: fash_drape
+    name: DRAPING
+    description: Shaping fabric on a dress form
+    requires: fash_50h
+  - id: fash_garment
+    name: FIRST GARMENT
+    description: Wore something you designed and made
+    requires: fash_250h
+  - id: fash_collection
+    name: MINI COLLECTION
+    description: A cohesive 3+ piece line
+    requires: fash_garment
+  - id: fash_sold
+    name: SOLD A DESIGN
+    description: Someone bought your fashion
+    requires: fash_garment
+description: Self-expression through art, sound, and making

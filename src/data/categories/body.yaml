@@ -1,0 +1,586 @@
+id: body
+name: BODY
+skills:
+- id: running
+  name: RUNNING
+  children:
+  - id: run_50h
+    name: 50 HOURS
+    description: Put in your first meaningful miles
+  - id: run_250h
+    name: 250 HOURS
+    description: Running is becoming a habit
+    requires: run_50h
+  - id: run_1000h
+    name: 1,000 HOURS
+    description: A true runner's lifestyle
+    requires: run_250h
+  - id: run_5000h
+    name: 5,000 HOURS
+    description: Running is part of your identity
+    requires: run_1000h
+  - id: run_5k
+    name: 5K RACE
+    description: Toed the start line
+    requires: run_50h
+  - id: run_10k
+    name: 10K RACE
+    description: Doubled your race distance
+    requires: run_5k
+  - id: run_half
+    name: HALF MARATHON
+    description: 21.1km — the ultimate test of discipline
+    requires: run_10k
+  - id: run_marathon
+    name: MARATHON
+    description: 42.195km — the legendary distance
+    requires: run_half
+  - id: run_boston
+    name: BOSTON QUALIFIER
+    description: Fast enough for the world's oldest annual marathon
+    requires: run_marathon
+  - id: run_ultra
+    name: ULTRAMARATHON
+    description: Beyond the marathon — into the unknown
+    requires: run_half
+  - id: run_trail
+    name: TRAIL RUNNER
+    description: Swapped pavement for dirt and vert
+    requires: run_50h
+  - id: run_sky
+    name: SKYRUNNER
+    description: Running ridges above the clouds
+    requires: run_trail
+  - id: run_weekly
+    name: WEEKLY HABIT
+    description: Runs consistently, week after week
+    requires: run_50h
+  - id: run_daily
+    name: DAILY RUNNER
+    description: Runs most days without fail
+    requires: run_weekly
+- id: swimming
+  name: SWIMMING
+  children:
+  - id: swim_10h
+    name: 10 HOURS
+    description: Comfortable in the water
+  - id: swim_50h
+    name: 50 HOURS
+    description: Stroke efficiency improving
+    requires: swim_10h
+  - id: swim_250h
+    name: 250 HOURS
+    description: Swimmer for life
+    requires: swim_50h
+  - id: swim_1000h
+    name: 1,000 HOURS
+    description: Water is your second home
+    requires: swim_250h
+  - id: swim_1km
+    name: 1KM NONSTOP
+    description: Swam a full kilometer without rest
+    requires: swim_10h
+  - id: swim_5km
+    name: 5KM OPEN WATER
+    description: Completed an open water swim
+    requires: swim_1km
+  - id: swim_tri
+    name: TRIATHLON SWIM
+    description: Swam the triathlon leg in competition
+    requires: swim_5km
+  - id: swim_freestyle
+    name: FREESTYLE MASTER
+    description: Clean, efficient crawl stroke
+    requires: swim_10h
+  - id: swim_breast
+    name: BREASTSTROKE MASTER
+    description: Mastered the frog kick and glide
+    requires: swim_10h
+  - id: swim_butterfly
+    name: BUTTERFLY
+    description: The hardest stroke, conquered
+    requires: swim_freestyle
+  - id: swim_lifeguard
+    name: LIFEGUARD CERTIFIED
+    description: Trained to save lives in the water
+    requires: swim_50h
+- id: cycling
+  name: CYCLING
+  children:
+  - id: cycle_50h
+    name: 50 HOURS
+    description: Saddle sore but hooked
+  - id: cycle_250h
+    name: 250 HOURS
+    description: Legs are getting strong
+    requires: cycle_50h
+  - id: cycle_1000h
+    name: 1,000 HOURS
+    description: Cyclist for life
+    requires: cycle_250h
+  - id: cycle_5000h
+    name: 5,000 HOURS
+    description: More saddle time than most people drive
+    requires: cycle_1000h
+  - id: cycle_100km
+    name: CENTURY RIDE
+    description: 100km in a single day
+    requires: cycle_50h
+  - id: cycle_200km
+    name: DOUBLE CENTURY
+    description: 200km — the ultimate endurance test
+    requires: cycle_100km
+  - id: cycle_mtb
+    name: MOUNTAIN BIKER
+    description: Trails, jumps, and berms
+    requires: cycle_50h
+  - id: cycle_downhill
+    name: DOWNHILL
+    description: Full-face helmet, full-send mindset
+    requires: cycle_mtb
+  - id: cycle_gravel
+    name: GRAVEL RIDER
+    description: Where road meets dirt
+    requires: cycle_50h
+  - id: cycle_commute
+    name: BIKE COMMUTER
+    description: Replaced the car with two wheels
+    requires: cycle_50h
+  - id: cycle_tour
+    name: BIKEPACKING
+    description: Multi-day adventure on two wheels
+    requires: cycle_100km
+- id: bouldering
+  name: BOULDERING
+  children:
+  - id: boulder_50h
+    name: 50 HOURS
+    description: Learned to read rock and move efficiently
+  - id: boulder_250h
+    name: 250 HOURS
+    description: Strength and technique coming together
+    requires: boulder_50h
+  - id: boulder_1000h
+    name: 1,000 HOURS
+    description: Boulderer for life
+    requires: boulder_250h
+  - id: boulder_5000h
+    name: 5,000 HOURS
+    description: Finger strength that defies physics
+    requires: boulder_1000h
+  - id: boulder_v3
+    name: V3 / 6A
+    description: Broke into intermediate grades
+    requires: boulder_50h
+  - id: boulder_v5
+    name: V5 / 6C
+    description: Powerful, technical climbing
+    requires: boulder_v3
+  - id: boulder_v7
+    name: V7 / 7A
+    description: Entered the advanced tier
+    requires: boulder_v5
+  - id: boulder_v10
+    name: V10 / 7C
+    description: Elite-level bouldering
+    requires: boulder_v7
+  - id: boulder_outdoor
+    name: FIRST OUTDOOR SEND
+    description: Touched real rock
+    requires: boulder_50h
+  - id: boulder_flash
+    name: FIRST FLASH
+    description: Sent a problem on the first attempt
+    requires: boulder_v3
+  - id: boulder_comp
+    name: COMP BOULDERER
+    description: Competed in a bouldering competition
+    requires: boulder_v5
+- id: rope_climbing
+  name: ROPE CLIMBING
+  children:
+  - id: rope_50h
+    name: 50 HOURS
+    description: Learned to tie in and belay
+  - id: rope_250h
+    name: 250 HOURS
+    description: Confident on the sharp end
+    requires: rope_50h
+  - id: rope_1000h
+    name: 1,000 HOURS
+    description: Experienced rope climber
+    requires: rope_250h
+  - id: rope_5000h
+    name: 5,000 HOURS
+    description: A true alpinist
+    requires: rope_1000h
+  - id: rope_lead
+    name: LEAD CLIMBER
+    description: Clipping bolts on the sharp end
+    requires: rope_50h
+  - id: rope_7a
+    name: 7A SPORT
+    description: Broke into the sport climbing grades
+    requires: rope_lead
+  - id: rope_8a
+    name: 8A SPORT
+    description: Elite sport climbing
+    requires: rope_7a
+  - id: rope_trad
+    name: TRAD CLIMBER
+    description: Placed your own protection
+    requires: rope_lead
+  - id: rope_multipitch
+    name: MULTIPITCH
+    description: Climbed a multi-pitch route
+    requires: rope_trad
+  - id: rope_bigwall
+    name: BIG WALL
+    description: Spent multiple days on a wall
+    requires: rope_multipitch
+  - id: rope_alpine
+    name: ALPINE CLIMB
+    description: Summited a major alpine route
+    requires: rope_multipitch
+- id: striking
+  name: STRIKING ARTS
+  children:
+  - id: strike_50h
+    name: 50 HOURS
+    description: Learned to throw a proper punch
+  - id: strike_250h
+    name: 250 HOURS
+    description: Combinations and footwork flowing
+    requires: strike_50h
+  - id: strike_1000h
+    name: 1,000 HOURS
+    description: Striker for life
+    requires: strike_250h
+  - id: strike_5000h
+    name: 5,000 HOURS
+    description: Mastery of eight limbs
+    requires: strike_1000h
+  - id: strike_boxing
+    name: BOXING
+    description: The sweet science
+    requires: strike_50h
+  - id: strike_muay
+    name: MUAY THAI
+    description: The art of eight limbs
+    requires: strike_50h
+  - id: strike_karate
+    name: KARATE
+    description: Traditional striking discipline
+    requires: strike_50h
+  - id: strike_spar
+    name: FIRST SPAR
+    description: Took and gave hits in the ring
+    requires: strike_50h
+  - id: strike_amateur
+    name: AMATEUR FIGHT
+    description: Competed in an amateur bout
+    requires: strike_spar
+  - id: strike_pad
+    name: PAD HOLDER
+    description: Holding pads is an art itself
+    requires: strike_250h
+- id: grappling
+  name: GRAPPLING ARTS
+  children:
+  - id: grap_50h
+    name: 50 HOURS
+    description: Learned to survive on the ground
+  - id: grap_250h
+    name: 250 HOURS
+    description: Submissions and escapes feeling natural
+    requires: grap_50h
+  - id: grap_1000h
+    name: 1,000 HOURS
+    description: Grappler for life
+    requires: grap_250h
+  - id: grap_5000h
+    name: 5,000 HOURS
+    description: A true black belt
+    requires: grap_1000h
+  - id: grap_bjj
+    name: BRAZILIAN JIU-JITSU
+    description: The gentle art of ground fighting
+    requires: grap_50h
+  - id: grap_wrestling
+    name: WRESTLING
+    description: Control, pressure, and takedowns
+    requires: grap_50h
+  - id: grap_judo
+    name: JUDO
+    description: The way of gentleness through throws
+    requires: grap_50h
+  - id: grap_blue
+    name: BJJ BLUE BELT
+    description: Survived the white belt years
+    requires: grap_bjj
+  - id: grap_purple
+    name: BJJ PURPLE BELT
+    description: Developing a personal game
+    requires: grap_blue
+  - id: grap_comp
+    name: GRAPPLING COMP
+    description: Tested yourself in competition
+    requires: grap_250h
+- id: yoga
+  name: YOGA
+  children:
+  - id: yoga_50h
+    name: 50 HOURS
+    description: Learned the basic asanas
+  - id: yoga_250h
+    name: 250 HOURS
+    description: Flow is starting to feel natural
+    requires: yoga_50h
+  - id: yoga_1000h
+    name: 1,000 HOURS
+    description: Yoga is part of daily life
+    requires: yoga_250h
+  - id: yoga_5000h
+    name: 5,000 HOURS
+    description: A lifelong yoga practice
+    requires: yoga_1000h
+  - id: yoga_vinyasa
+    name: VINYASA FLOW
+    description: Breath-linked continuous movement
+    requires: yoga_50h
+  - id: yoga_ashtanga
+    name: ASHTANGA
+    description: The disciplined primary series
+    requires: yoga_50h
+  - id: yoga_yin
+    name: YIN YOGA
+    description: Long holds, deep release
+    requires: yoga_50h
+  - id: yoga_inversion
+    name: INVERSIONS
+    description: Headstand, handstand, forearm stand
+    requires: yoga_250h
+  - id: yoga_teacher
+    name: YOGA TEACHER
+    description: Certified to guide others
+    requires: yoga_1000h
+  - id: yoga_retreat
+    name: YOGA RETREAT
+    description: Immersive practice in a dedicated setting
+    requires: yoga_250h
+- id: strength
+  name: STRENGTH TRAINING
+  children:
+  - id: str_50h
+    name: 50 HOURS
+    description: Learned the big lifts
+  - id: str_250h
+    name: 250 HOURS
+    description: Consistent programming, visible gains
+    requires: str_50h
+  - id: str_1000h
+    name: 1,000 HOURS
+    description: Strength is a core identity
+    requires: str_250h
+  - id: str_5000h
+    name: 5,000 HOURS
+    description: Veteran of the iron
+    requires: str_1000h
+  - id: str_squat
+    name: 2X BW SQUAT
+    description: Squatted double bodyweight
+    requires: str_250h
+  - id: str_dead
+    name: 2.5X BW DEADLIFT
+    description: Pulled 2.5x bodyweight off the floor
+    requires: str_250h
+  - id: str_bench
+    name: 1.5X BW BENCH
+    description: Benched 1.5x bodyweight
+    requires: str_250h
+  - id: str_ohp
+    name: BODYWEIGHT PRESS
+    description: Overhead pressed your own weight
+    requires: str_250h
+  - id: str_power
+    name: POWERLIFTING COMP
+    description: Competed in a powerlifting meet
+    requires: str_squat
+  - id: str_oly
+    name: OLYMPIC LIFTING
+    description: Clean & jerk, snatch
+    requires: str_250h
+  - id: str_strong
+    name: STRONGMAN
+    description: Stones, logs, farmers carries
+    requires: str_250h
+- id: calisthenics
+  name: CALISTHENICS
+  children:
+  - id: cal_50h
+    name: 50 HOURS
+    description: Mastered push-ups and pull-ups
+  - id: cal_250h
+    name: 250 HOURS
+    description: Bodyweight control improving
+    requires: cal_50h
+  - id: cal_1000h
+    name: 1,000 HOURS
+    description: Body is your gym
+    requires: cal_250h
+  - id: cal_5000h
+    name: 5,000 HOURS
+    description: Human flag mastery
+    requires: cal_1000h
+  - id: cal_muscle
+    name: MUSCLE-UP
+    description: The gateway calisthenics move
+    requires: cal_50h
+  - id: cal_front
+    name: FRONT LEVER
+    description: Horizontal hold, full body tension
+    requires: cal_muscle
+  - id: cal_planche
+    name: PLANCHE
+    description: Defying gravity on straight arms
+    requires: cal_muscle
+  - id: cal_handstand
+    name: FREESTAND HANDSTAND
+    description: Balanced inversion without a wall
+    requires: cal_50h
+  - id: cal_pistol
+    name: PISTOL SQUAT
+    description: Single-leg strength and mobility
+    requires: cal_50h
+  - id: cal_flag
+    name: HUMAN FLAG
+    description: The ultimate display of body tension
+    requires: cal_front
+- id: crossfit
+  name: CROSSFIT & FUNCTIONAL FITNESS
+  children:
+  - id: cf_50h
+    name: 50 HOURS
+    description: Survived your first WODs
+  - id: cf_250h
+    name: 250 HOURS
+    description: The community is your second home
+    requires: cf_50h
+  - id: cf_1000h
+    name: 1,000 HOURS
+    description: Elite general physical preparedness
+    requires: cf_250h
+  - id: cf_5000h
+    name: 5,000 HOURS
+    description: A decade of constant variation
+    requires: cf_1000h
+  - id: cf_fran
+    name: SUB-5 FRAN
+    description: The benchmark WOD, crushed
+    requires: cf_50h
+  - id: cf_murph
+    name: MURPH
+    description: The hero WOD, completed
+    requires: cf_fran
+  - id: cf_oly
+    name: CROSSFIT OLY
+    description: Clean & jerk and snatch in a WOD
+    requires: cf_50h
+  - id: cf_gymnastics
+    name: CROSSFIT GYMNASTICS
+    description: Muscle-ups, handstands, toes-to-bar
+    requires: cf_50h
+  - id: cf_open
+    name: CROSSFIT OPEN
+    description: Competed in the worldwide Open
+    requires: cf_250h
+  - id: cf_regionals
+    name: REGIONALS / QUARTERS
+    description: Advanced to the next stage
+    requires: cf_open
+- id: gymnastics
+  name: GYMNASTICS & TUMBLING
+  children:
+  - id: gym_50h
+    name: 50 HOURS
+    description: Learned basic shapes and rolls
+  - id: gym_250h
+    name: 250 HOURS
+    description: Flipping and twisting with confidence
+    requires: gym_50h
+  - id: gym_1000h
+    name: 1,000 HOURS
+    description: Gymnast for life
+    requires: gym_250h
+  - id: gym_5000h
+    name: 5,000 HOURS
+    description: Aerial mastery
+    requires: gym_1000h
+  - id: gym_backflip
+    name: BACKFLIP
+    description: Rotated backwards and landed on your feet
+    requires: gym_50h
+  - id: gym_frontflip
+    name: FRONTFLIP
+    description: The forward rotation, mastered
+    requires: gym_50h
+  - id: gym_roundoff
+    name: ROUND-OFF BHS
+    description: Connected tumbling pass
+    requires: gym_backflip
+  - id: gym_rings
+    name: STILL RINGS
+    description: Iron cross, inlocate, dislocate
+    requires: gym_250h
+  - id: gym_pommel
+    name: POMMEL HORSE
+    description: The most apparatus
+    requires: gym_250h
+  - id: gym_highbar
+    name: HIGH BAR
+    description: Giants, releases, dismounts
+    requires: gym_250h
+- id: fencing
+  name: FENCING & WEAPON ARTS
+  children:
+  - id: fence_50h
+    name: 50 HOURS
+    description: Learned footwork and basic attacks
+  - id: fence_250h
+    name: 250 HOURS
+    description: Distance and timing becoming instinctive
+    requires: fence_50h
+  - id: fence_1000h
+    name: 1,000 HOURS
+    description: Fencer for life
+    requires: fence_250h
+  - id: fence_5000h
+    name: 5,000 HOURS
+    description: Blademaster dedication
+    requires: fence_1000h
+  - id: fence_foil
+    name: FOIL
+    description: The sport of kings — right of way
+    requires: fence_50h
+  - id: fence_epee
+    name: EPEE
+    description: The whole body is target
+    requires: fence_50h
+  - id: fence_sabre
+    name: SABRE
+    description: Fast, aggressive, cutting edge
+    requires: fence_50h
+  - id: fence_hema
+    name: HEMA
+    description: Historical European martial arts
+    requires: fence_50h
+  - id: fence_longsword
+    name: LONGSWORD
+    description: The knightly art of combat
+    requires: fence_hema
+  - id: fence_tournament
+    name: FENCING TOURNAMENT
+    description: Tested your blade in competition
+    requires: fence_250h
+description: Physical mastery through movement, endurance, and strength

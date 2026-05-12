@@ -1,0 +1,390 @@
+id: mind
+name: MIND
+skills:
+- id: media
+  name: MEDIA & STORIES
+  children:
+  - id: media_50h
+    name: 50 HOURS
+    description: Conscious, deep consumption of film and TV
+  - id: media_250h
+    name: 250 HOURS
+    description: Developed taste and critical eye
+    requires: media_50h
+  - id: media_1000h
+    name: 1,000 HOURS
+    description: Cinema and stories as a lens on life
+    requires: media_250h
+  - id: media_5000h
+    name: 5,000 HOURS
+    description: Walking film encyclopedia
+    requires: media_1000h
+  - id: media_classics
+    name: CLASSICS CANON
+    description: Watched the essential film canon
+    requires: media_50h
+  - id: media_foreign
+    name: WORLD CINEMA
+    description: Explored films beyond Hollywood
+    requires: media_50h
+  - id: media_director
+    name: DIRECTOR STUDY
+    description: Deep-dive into a single director's work
+    requires: media_250h
+  - id: media_podcast
+    name: STARTED A PODCAST
+    description: Created media, not just consumed it
+    requires: media_250h
+  - id: media_review
+    name: PUBLISHED REVIEWS
+    description: Wrote criticism that others read
+    requires: media_250h
+- id: reading
+  name: READING
+  children:
+  - id: read_10b
+    name: 10 BOOKS
+    description: Established a reading habit
+  - id: read_50b
+    name: 50 BOOKS
+    description: Well-read and broadening
+    requires: read_10b
+  - id: read_200b
+    name: 200 BOOKS
+    description: A genuine bibliophile
+    requires: read_50b
+  - id: read_500b
+    name: 500 BOOKS
+    description: Library of a polymath
+    requires: read_200b
+  - id: read_fiction
+    name: FICTION DEEP-DIVE
+    description: Explored novels deeply
+    requires: read_10b
+  - id: read_nonfic
+    name: NON-FICTION
+    description: History, science, philosophy, biography
+    requires: read_10b
+  - id: read_classics
+    name: CLASSICS CANON
+    description: The great books of civilization
+    requires: read_50b
+  - id: read_speed
+    name: SPEED READING
+    description: Techniques for faster comprehension
+    requires: read_50b
+  - id: read_bookclub
+    name: BOOK CLUB
+    description: Discussing books with others
+    requires: read_10b
+  - id: read_50yr
+    name: 50-YEAR READER
+    description: A lifetime of reading
+    requires: read_200b
+- id: languages
+  name: LANGUAGES
+  children:
+  - id: lang_50h
+    name: 50 HOURS
+    description: First steps in a new tongue
+  - id: lang_250h
+    name: 250 HOURS
+    description: Can hold basic conversations
+    requires: lang_50h
+  - id: lang_1000h
+    name: 1,000 HOURS
+    description: Fluent in everyday situations
+    requires: lang_250h
+  - id: lang_5000h
+    name: 5,000 HOURS
+    description: Near-native mastery
+    requires: lang_1000h
+  - id: lang_a1
+    name: A1 BEGINNER
+    description: Can introduce yourself and ask directions
+    requires: lang_50h
+  - id: lang_a2
+    name: A2 ELEMENTARY
+    description: Can handle routine situations
+    requires: lang_a1
+  - id: lang_b1
+    name: B1 INTERMEDIATE
+    description: Can travel and discuss familiar topics
+    requires: lang_a2
+  - id: lang_b2
+    name: B2 UPPER-INT
+    description: Can interact with native speakers fluently
+    requires: lang_b1
+  - id: lang_c1
+    name: C1 ADVANCED
+    description: Can use language flexibly and precisely
+    requires: lang_b2
+  - id: lang_c2
+    name: C2 MASTERY
+    description: Near-native proficiency
+    requires: lang_c1
+  - id: lang_polyglot
+    name: POLYGLOT
+    description: Conversational in 3+ languages
+    requires: lang_b1
+- id: chess
+  name: CHESS
+  children:
+  - id: chess_50h
+    name: 50 HOURS
+    description: Learned openings and basic tactics
+  - id: chess_250h
+    name: 250 HOURS
+    description: Tactics and strategy developing
+    requires: chess_50h
+  - id: chess_1000h
+    name: 1,000 HOURS
+    description: Chess is a serious pursuit
+    requires: chess_250h
+  - id: chess_5000h
+    name: 5,000 HOURS
+    description: Master-level dedication
+    requires: chess_1000h
+  - id: chess_1000
+    name: 1000 ELO
+    description: Solid club player
+    requires: chess_50h
+  - id: chess_1500
+    name: 1500 ELO
+    description: Competitive club player
+    requires: chess_1000
+  - id: chess_2000
+    name: 2000 ELO
+    description: Expert — top 2% of players
+    requires: chess_1500
+  - id: chess_2200
+    name: 2200+ ELO
+    description: Master or grandmaster strength
+    requires: chess_2000
+  - id: chess_blitz
+    name: BLITZ SPECIALIST
+    description: Fast, intuitive play under pressure
+    requires: chess_1000
+  - id: chess_tournament
+    name: CHESS TOURNAMENT
+    description: Competed in an official event
+    requires: chess_1500
+  - id: chess_puzzle
+    name: PUZZLE MASTER
+    description: Solved thousands of tactical puzzles
+    requires: chess_250h
+- id: meditation
+  name: MEDITATION
+  children:
+  - id: med_50h
+    name: 50 HOURS
+    description: Established a sitting practice
+  - id: med_250h
+    name: 250 HOURS
+    description: Meditation is a daily anchor
+    requires: med_50h
+  - id: med_1000h
+    name: 1,000 HOURS
+    description: Deep familiarity with the mind
+    requires: med_250h
+  - id: med_5000h
+    name: 5,000 HOURS
+    description: A profound, transformative practice
+    requires: med_1000h
+  - id: med_mindfulness
+    name: MINDFULNESS
+    description: Present-moment awareness practice
+    requires: med_50h
+  - id: med_vipassana
+    name: VIPASSANA
+    description: Insight meditation — seeing things as they are
+    requires: med_50h
+  - id: med_zen
+    name: ZEN / ZAZEN
+    description: Just sitting — the simplest, hardest practice
+    requires: med_50h
+  - id: med_retreat
+    name: SILENT RETREAT
+    description: Multi-day intensive practice
+    requires: med_250h
+  - id: med_teacher
+    name: MEDITATION TEACHER
+    description: Guiding others in practice
+    requires: med_1000h
+- id: coding
+  name: CODING
+  children:
+  - id: code_50h
+    name: 50 HOURS
+    description: First programs, first bugs, first fixes
+  - id: code_250h
+    name: 250 HOURS
+    description: Comfortable building small projects
+    requires: code_50h
+  - id: code_1000h
+    name: 1,000 HOURS
+    description: Professional-level competence
+    requires: code_250h
+  - id: code_5000h
+    name: 5,000 HOURS
+    description: Senior engineer depth
+    requires: code_1000h
+  - id: code_web
+    name: WEB DEVELOPMENT
+    description: Shipped something to the internet
+    requires: code_50h
+  - id: code_mobile
+    name: MOBILE APPS
+    description: Built something for phones
+    requires: code_50h
+  - id: code_backend
+    name: BACKEND SYSTEMS
+    description: Databases, APIs, infrastructure
+    requires: code_250h
+  - id: code_ai
+    name: AI / ML
+    description: Trained models, worked with neural nets
+    requires: code_250h
+  - id: code_game
+    name: GAME DEV
+    description: Built an interactive experience
+    requires: code_50h
+  - id: code_contrib
+    name: OPEN SOURCE
+    description: Contributed to a public project
+    requires: code_250h
+  - id: code_talk
+    name: TECH TALK
+    description: Presented code to an audience
+    requires: code_1000h
+  - id: code_lead
+    name: TECH LEAD
+    description: Led engineering architecture and people
+    requires: code_1000h
+- id: mathematics
+  name: MATHEMATICS
+  children:
+  - id: math_50h
+    name: 50 HOURS
+    description: Revisited or advanced beyond school math
+  - id: math_250h
+    name: 250 HOURS
+    description: Serious self-study or coursework
+    requires: math_50h
+  - id: math_1000h
+    name: 1,000 HOURS
+    description: Mathematics as a core pursuit
+    requires: math_250h
+  - id: math_5000h
+    name: 5,000 HOURS
+    description: Research-level mathematical maturity
+    requires: math_1000h
+  - id: math_calc
+    name: CALCULUS
+    description: Rates of change, areas, infinite series
+    requires: math_50h
+  - id: math_lin
+    name: LINEAR ALGEBRA
+    description: Vectors, matrices, spaces, transforms
+    requires: math_50h
+  - id: math_prob
+    name: PROBABILITY & STATS
+    description: Randomness, distributions, inference
+    requires: math_50h
+  - id: math_abs
+    name: ABSTRACT ALGEBRA
+    description: Groups, rings, fields, structures
+    requires: math_250h
+  - id: math_analysis
+    name: REAL ANALYSIS
+    description: Rigorous foundations of calculus
+    requires: math_calc
+  - id: math_topology
+    name: TOPOLOGY
+    description: The study of shape and continuity
+    requires: math_250h
+  - id: math_number
+    name: NUMBER THEORY
+    description: The integers and their deep patterns
+    requires: math_250h
+- id: memory_sports
+  name: MEMORY SPORTS
+  children:
+  - id: mem_50h
+    name: 50 HOURS
+    description: Learned memory palace and major system
+  - id: mem_250h
+    name: 250 HOURS
+    description: Rapid memorization becoming instinctive
+    requires: mem_50h
+  - id: mem_1000h
+    name: 1,000 HOURS
+    description: Elite memory athlete
+    requires: mem_250h
+  - id: mem_deck
+    name: DECK OF CARDS
+    description: Memorized a shuffled deck in under 5 minutes
+    requires: mem_50h
+  - id: mem_100
+    name: 100 DIGITS
+    description: Memorized 100 random digits
+    requires: mem_deck
+  - id: mem_names
+    name: 100 NAMES
+    description: Matched 100 names to faces
+    requires: mem_50h
+  - id: mem_poetry
+    name: LONG POEM
+    description: Memorized a poem of 100+ lines
+    requires: mem_50h
+  - id: mem_pi
+    name: 500 DIGITS OF PI
+    description: Recited pi to 500 places
+    requires: mem_100
+  - id: mem_comp
+    name: MEMORY COMPETITION
+    description: Competed in a memory championship
+    requires: mem_250h
+- id: debate
+  name: DEBATE & RHETORIC
+  children:
+  - id: deb_50h
+    name: 50 HOURS
+    description: Learned argument structure and refutation
+  - id: deb_250h
+    name: 250 HOURS
+    description: Persuasive and analytical speaking
+    requires: deb_50h
+  - id: deb_1000h
+    name: 1,000 HOURS
+    description: Master persuader
+    requires: deb_250h
+  - id: deb_5000h
+    name: 5,000 HOURS
+    description: Rhetorical mastery
+    requires: deb_1000h
+  - id: deb_bp
+    name: BRITISH PARLIAMENTARY
+    description: The classic academic format
+    requires: deb_50h
+  - id: deb_ld
+    name: LINCOLN-DOUGLAS
+    description: Values-focused one-on-one debate
+    requires: deb_50h
+  - id: deb_pf
+    name: PUBLIC FORUM
+    description: Accessible, current-events debating
+    requires: deb_50h
+  - id: deb_tournament
+    name: DEBATE TOURNAMENT
+    description: Competed in an organized event
+    requires: deb_50h
+  - id: deb_coach
+    name: DEBATE COACH
+    description: Teaching others to argue
+    requires: deb_250h
+  - id: deb_extemp
+    name: EXTEMPORANEOUS
+    description: Speaking with minimal preparation
+    requires: deb_250h
+description: Mental discipline, knowledge, and cognitive skill

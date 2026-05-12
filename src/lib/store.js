@@ -12,7 +12,7 @@ import { writable, derived, get } from 'svelte/store'
 import { encode, decode } from './encoder.js'
 
 const LS_KEY = 'tol_state'
-export const TREE_VERSION = 2 // must match passions.yaml version
+export const TREE_VERSION = 5 // must match category YAML version
 
 // ── Skill tree definition (loaded once from YAML) ──
 export const categories = writable([])
@@ -53,7 +53,10 @@ function createSkilledStore() {
           const idx = get(nodeIndex)
           cascadeRemove(next, id, idx)
         } else {
+          const idx = get(nodeIndex)
           next.add(id)
+          // Auto-skill prerequisites
+          cascadeAdd(next, id, idx)
         }
         persist(next)
         return next
@@ -77,6 +80,18 @@ function cascadeRemove(skilled, removedId, idx) {
     if (node.requires === removedId && skilled.has(id)) {
       skilled.delete(id)
       cascadeRemove(skilled, id, idx)
+    }
+  }
+}
+
+/** Add all nodes that are transitively required by `addedId` */
+function cascadeAdd(skilled, addedId, idx) {
+  const node = idx.get(addedId)
+  if (node && node.requires) {
+    const reqId = node.requires
+    if (!skilled.has(reqId)) {
+      skilled.add(reqId)
+      cascadeAdd(skilled, reqId, idx)
     }
   }
 }

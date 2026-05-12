@@ -1,0 +1,240 @@
+id: collector
+name: COLLECTOR
+skills:
+- id: action_figures
+  name: ACTION FIGURES
+  children:
+  - id: af_10
+    name: 10 PIECES
+    description: Started a collection
+  - id: af_50
+    name: 50 PIECES
+    description: Serious collector
+    requires: af_10
+  - id: af_200
+    name: 200 PIECES
+    description: Dedicated room or display
+    requires: af_50
+  - id: af_500
+    name: 500+ PIECES
+    description: Museum-grade collection
+    requires: af_200
+  - id: af_rare
+    name: RARE / VINTAGE
+    description: Owns pieces that are hard to find
+    requires: af_50
+  - id: af_custom
+    name: CUSTOM / REPAINt
+    description: Modified or created custom pieces
+    requires: af_50
+  - id: af_community
+    name: COLLECTOR COMMUNITY
+    description: Active in forums, groups, or conventions
+    requires: af_50
+- id: stamps
+  name: STAMPS
+  children:
+  - id: stamp_50
+    name: 50 STAMPS
+    description: Started a philatelic collection
+  - id: stamp_500
+    name: 500 STAMPS
+    description: Organized and catalogued
+    requires: stamp_50
+  - id: stamp_5000
+    name: 5,000 STAMPS
+    description: Major collection
+    requires: stamp_500
+  - id: stamp_country
+    name: COUNTRY SPECIALIZATION
+    description: Deep focus on one nation's stamps
+    requires: stamp_50
+  - id: stamp_rare
+    name: RARE / ERROR
+    description: Owns a philatelic treasure
+    requires: stamp_500
+  - id: stamp_exhibit
+    name: PHILATELIC EXHIBIT
+    description: Displayed at a stamp show
+    requires: stamp_500
+- id: coins
+  name: COINS & NUMISMATICS
+  children:
+  - id: coin_50
+    name: 50 COINS
+    description: Started numismatics
+  - id: coin_500
+    name: 500 COINS
+    description: Growing collection with knowledge
+    requires: coin_50
+  - id: coin_5000
+    name: 5,000 COINS
+    description: Significant numismatic holding
+    requires: coin_500
+  - id: coin_ancient
+    name: ANCIENT COINS
+    description: Roman, Greek, Byzantine
+    requires: coin_50
+  - id: coin_gold
+    name: GOLD & SILVER
+    description: Precious metal stacking
+    requires: coin_50
+  - id: coin_graded
+    name: GRADED COINS
+    description: Professionally authenticated and slabbed
+    requires: coin_500
+- id: vintage_tech
+  name: VINTAGE TECH
+  children:
+  - id: vt_10
+    name: 10 ITEMS
+    description: Started saving old technology
+  - id: vt_50
+    name: 50 ITEMS
+    description: Serious vintage tech collection
+    requires: vt_10
+  - id: vt_200
+    name: 200 ITEMS
+    description: Archive-level holding
+    requires: vt_50
+  - id: vt_computers
+    name: VINTAGE COMPUTERS
+    description: Apple, Commodore, IBM, etc.
+    requires: vt_10
+  - id: vt_consoles
+    name: RETRO CONSOLES
+    description: Gaming systems from past eras
+    requires: vt_10
+  - id: vt_phones
+    name: CLASSIC PHONES
+    description: Mobile phones that changed the world
+    requires: vt_10
+  - id: vt_working
+    name: RESTORED TO WORKING
+    description: Brought dead tech back to life
+    requires: vt_50
+- id: vinyl_records
+  name: VINYL RECORDS
+  children:
+  - id: vinyl_50
+    name: 50 RECORDS
+    description: Started crate digging
+  - id: vinyl_500
+    name: 500 RECORDS
+    description: Serious collection, organized
+    requires: vinyl_50
+  - id: vinyl_2000
+    name: 2,000 RECORDS
+    description: Vinyl as a way of life
+    requires: vinyl_500
+  - id: vinyl_first
+    name: FIRST PRESSING
+    description: Owns an original pressing
+    requires: vinyl_50
+  - id: vinyl_import
+    name: IMPORTS
+    description: Records from around the world
+    requires: vinyl_50
+  - id: vinyl_genre
+    name: GENRE DEEP-DIVE
+    description: Complete or near-complete discography of an artist
+    requires: vinyl_500
+  - id: vinyl_setup
+    name: HI-FI SETUP
+    description: Turntable, amp, speakers — the full analog chain
+    requires: vinyl_50
+- id: comic_books
+  name: COMIC BOOKS & GRAPHIC NOVELS
+  children:
+  - id: comic_50
+    name: 50 ISSUES
+    description: Started a comic collection
+  - id: comic_500
+    name: 500 ISSUES
+    description: Serious long-boxes
+    requires: comic_50
+  - id: comic_2000
+    name: 2,000 ISSUES
+    description: Comic vault
+    requires: comic_500
+  - id: comic_key
+    name: KEY ISSUE
+    description: Owns a famous first appearance or milestone
+    requires: comic_50
+  - id: comic_slabbed
+    name: GRADED / SLABBED
+    description: Professionally graded key issues
+    requires: comic_500
+  - id: comic_indie
+    name: INDIE / ALT COMIX
+    description: Beyond Marvel and DC
+    requires: comic_50
+  - id: comic_con
+    name: COMIC CON
+    description: Attended a major comic convention
+    requires: comic_50
+- id: trading_cards
+  name: TRADING CARDS
+  children:
+  - id: tc_50
+    name: 50 CARDS
+    description: Started collecting cards
+  - id: tc_500
+    name: 500 CARDS
+    description: Organized binder or box
+    requires: tc_50
+  - id: tc_5000
+    name: 5,000 CARDS
+    description: Major collection
+    requires: tc_500
+  - id: tc_sports
+    name: SPORTS CARDS
+    description: Baseball, basketball, football, soccer
+    requires: tc_50
+  - id: tc_pokemon
+    name: POKÉMON / TCG
+    description: Collectible card games
+    requires: tc_50
+  - id: tc_graded
+    name: GRADED CARDS
+    description: Professionally authenticated gems
+    requires: tc_500
+  - id: tc_rare
+    name: RARE / HOLO
+    description: Owns a chase card or 1-of-1
+    requires: tc_500
+- id: watches
+  name: WATCHES & HOROLOGY
+  children:
+  - id: watchc_3
+    name: 3 WATCHES
+    description: Started a watch collection
+  - id: watchc_10
+    name: 10 WATCHES
+    description: Growing rotation
+    requires: watchc_3
+  - id: watchc_30
+    name: 30 WATCHES
+    description: Serious collector
+    requires: watchc_10
+  - id: watchc_vintage
+    name: VINTAGE
+    description: Appreciates watches from past eras
+    requires: watchc_3
+  - id: watchc_luxury
+    name: LUXURY
+    description: Owns watches from prestigious houses
+    requires: watchc_10
+  - id: watchc_diver
+    name: DIVE WATCH
+    description: The tool watch classic
+    requires: watchc_3
+  - id: watchc_chrono
+    name: CHRONOGRAPH
+    description: Timing function, racing heritage
+    requires: watchc_3
+  - id: watchc_mechanical
+    name: MECHANICAL APPRECIATION
+    description: Values hand-wound and automatic movements
+    requires: watchc_10
+description: Curating objects that tell a story

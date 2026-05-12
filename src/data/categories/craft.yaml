@@ -1,0 +1,374 @@
+id: craft
+name: CRAFT
+skills:
+- id: woodworking
+  name: WOODWORKING
+  children:
+  - id: wood_50h
+    name: 50 HOURS
+    description: Learned to measure, cut, and join
+  - id: wood_250h
+    name: 250 HOURS
+    description: Projects are getting refined
+    requires: wood_50h
+  - id: wood_1000h
+    name: 1,000 HOURS
+    description: Woodworker for life
+    requires: wood_250h
+  - id: wood_5000h
+    name: 5,000 HOURS
+    description: Master craftsman
+    requires: wood_1000h
+  - id: wood_furniture
+    name: FURNITURE
+    description: Built a piece of functional furniture
+    requires: wood_250h
+  - id: wood_joinery
+    name: HAND-CUT JOINERY
+    description: Dovetails, mortise and tenon, no metal
+    requires: wood_250h
+  - id: wood_lathe
+    name: WOOD TURNING
+    description: Bowls, spindles, and vessels on the lathe
+    requires: wood_50h
+  - id: wood_carve
+    name: CARVING
+    description: Sculptural detail in wood
+    requires: wood_50h
+  - id: wood_restore
+    name: RESTORATION
+    description: Brought old pieces back to life
+    requires: wood_250h
+  - id: wood_sell
+    name: SOLD A PIECE
+    description: Someone paid for your woodworking
+    requires: wood_250h
+- id: electronics
+  name: ELECTRONICS
+  children:
+  - id: elec_50h
+    name: 50 HOURS
+    description: Learned to solder and read schematics
+  - id: elec_250h
+    name: 250 HOURS
+    description: Building circuits from scratch
+    requires: elec_50h
+  - id: elec_1000h
+    name: 1,000 HOURS
+    description: Electronics as a core skill
+    requires: elec_250h
+  - id: elec_5000h
+    name: 5,000 HOURS
+    description: Electrical engineer-level intuition
+    requires: elec_1000h
+  - id: elec_arduino
+    name: ARDUINO / MICRO
+    description: Programmed hardware to do things
+    requires: elec_50h
+  - id: elec_audio
+    name: AUDIO ELECTRONICS
+    description: Amplifiers, pedals, synths
+    requires: elec_50h
+  - id: elec_repair
+    name: DEVICE REPAIR
+    description: Fixed phones, laptops, consoles
+    requires: elec_50h
+  - id: elec_design
+    name: PCB DESIGN
+    description: Designed and ordered custom circuit boards
+    requires: elec_250h
+  - id: elec_rf
+    name: RF / WIRELESS
+    description: Radio, antennas, signal processing
+    requires: elec_250h
+  - id: elec_product
+    name: SHIPPED A PRODUCT
+    description: Sold an electronic device you built
+    requires: elec_250h
+- id: first_aid
+  name: FIRST AID
+  children:
+  - id: aid_50h
+    name: 50 HOURS
+    description: Basic life support and wound care
+  - id: aid_250h
+    name: 250 HOURS
+    description: Advanced first aid training
+    requires: aid_50h
+  - id: aid_1000h
+    name: 1,000 HOURS
+    description: Medical responder-level skill
+    requires: aid_250h
+  - id: aid_5000h
+    name: 5,000 HOURS
+    description: Paramedic or wilderness medicine veteran
+    requires: aid_1000h
+  - id: aid_cpr
+    name: CPR CERTIFIED
+    description: Can perform cardiopulmonary resuscitation
+    requires: aid_50h
+  - id: aid_wild
+    name: WILDERNESS FIRST AID
+    description: Medical care far from help
+    requires: aid_50h
+  - id: aid_tourn
+    name: TRAuma CARE
+    description: Hemorrhage control, airway, shock
+    requires: aid_50h
+  - id: aid_emt
+    name: EMT / EMT-B
+    description: Emergency medical technician certified
+    requires: aid_250h
+  - id: aid_used
+    name: USED SKILLS IN EMERGENCY
+    description: Actually treated someone in a real emergency
+    requires: aid_50h
+- id: mechanics
+  name: MECHANICS
+  children:
+  - id: mech_50h
+    name: 50 HOURS
+    description: Learned how engines and systems work
+  - id: mech_250h
+    name: 250 HOURS
+    description: Comfortable with major repairs
+    requires: mech_50h
+  - id: mech_1000h
+    name: 1,000 HOURS
+    description: Mechanic-level competence
+    requires: mech_250h
+  - id: mech_5000h
+    name: 5,000 HOURS
+    description: Master mechanic
+    requires: mech_1000h
+  - id: mech_car
+    name: CAR MAINTENANCE
+    description: Oil, brakes, belts, basics
+    requires: mech_50h
+  - id: mech_engine
+    name: ENGINE REBUILD
+    description: Torn down and rebuilt an engine
+    requires: mech_250h
+  - id: mech_moto
+    name: MOTORCYCLE MECH
+    description: Two-wheeled mechanical expertise
+    requires: mech_50h
+  - id: mech_bike
+    name: BICYCLE MECH
+    description: Wheels, gears, drivetrain, suspension
+    requires: mech_50h
+  - id: mech_diagnose
+    name: DIAGNOSTICS
+    description: Found problems others missed
+    requires: mech_250h
+  - id: mech_fabricate
+    name: FABRICATION
+    description: Welded, machined, or custom-built parts
+    requires: mech_250h
+- id: sewing
+  name: SEWING & TEXTILES
+  children:
+  - id: sew_50h
+    name: 50 HOURS
+    description: Learned machine and hand stitching
+  - id: sew_250h
+    name: 250 HOURS
+    description: Garments fitting and looking professional
+    requires: sew_50h
+  - id: sew_1000h
+    name: 1,000 HOURS
+    description: Seamstress or tailor-level skill
+    requires: sew_250h
+  - id: sew_5000h
+    name: 5,000 HOURS
+    description: Master of the needle
+    requires: sew_1000h
+  - id: sew_garment
+    name: CUSTOM GARMENT
+    description: Made clothing that fits perfectly
+    requires: sew_50h
+  - id: sew_alter
+    name: ALTERATIONS
+    description: Modified existing pieces to fit
+    requires: sew_50h
+  - id: sew_quilt
+    name: QUILTING
+    description: Patchwork, batting, binding
+    requires: sew_50h
+  - id: sew_leather
+    name: LEATHERWORK
+    description: Bags, belts, wallets, shoes
+    requires: sew_250h
+  - id: sew_embroid
+    name: EMBROIDERY
+    description: Decorative needle art
+    requires: sew_50h
+  - id: sew_sell
+    name: SOLD A PIECE
+    description: Someone paid for your textile work
+    requires: sew_250h
+- id: blacksmithing
+  name: BLACKSMITHING & METALWORK
+  children:
+  - id: black_50h
+    name: 50 HOURS
+    description: Learned to heat, hammer, and shape
+  - id: black_250h
+    name: 250 HOURS
+    description: Control over fire and metal
+    requires: black_50h
+  - id: black_1000h
+    name: 1,000 HOURS
+    description: Blacksmith for life
+    requires: black_250h
+  - id: black_5000h
+    name: 5,000 HOURS
+    description: Master smith
+    requires: black_1000h
+  - id: black_knife
+    name: FORGED A KNIFE
+    description: The classic first blade
+    requires: black_50h
+  - id: black_sword
+    name: FORGED A SWORD
+    description: The ultimate bladesmith challenge
+    requires: black_knife
+  - id: black_tool
+    name: HAND TOOLS
+    description: Hammers, tongs, chisels you made yourself
+    requires: black_250h
+  - id: black_art
+    name: SCULPTURAL WORK
+    description: Metal as artistic medium
+    requires: black_250h
+  - id: black_weld
+    name: WELDING
+    description: Joined metal with fire and electricity
+    requires: black_50h
+  - id: black_armor
+    name: ARMOR
+    description: Protective metalwork, historical or fantasy
+    requires: black_250h
+- id: three_d_printing
+  name: 3D PRINTING & MAKING
+  children:
+  - id: print_50h
+    name: 50 HOURS
+    description: First prints, first failures, first successes
+  - id: print_250h
+    name: 250 HOURS
+    description: Reliable, repeatable, high-quality prints
+    requires: print_50h
+  - id: print_1000h
+    name: 1,000 HOURS
+    description: 3D printing as a core capability
+    requires: print_250h
+  - id: print_5000h
+    name: 5,000 HOURS
+    description: Printing wizard
+    requires: print_1000h
+  - id: print_fdm
+    name: FDM MASTER
+    description: PLA, PETG, ABS, nylon, tuned perfectly
+    requires: print_50h
+  - id: print_resin
+    name: RESIN PRINTING
+    description: High-detail SLA / MSLA
+    requires: print_50h
+  - id: print_design
+    name: CAD DESIGN
+    description: Designed your own models from scratch
+    requires: print_50h
+  - id: print_functional
+    name: FUNCTIONAL PARTS
+    description: Printed something that does real work
+    requires: print_50h
+  - id: print_art
+    name: 3D PRINTED ART
+    description: Sculptural, aesthetic pieces
+    requires: print_250h
+  - id: print_multi
+    name: MULTI-MATERIAL
+    description: Dual extrusion, soluble supports, composites
+    requires: print_250h
+- id: robotics
+  name: ROBOTICS
+  children:
+  - id: rob_50h
+    name: 50 HOURS
+    description: First servos, first code, first movement
+  - id: rob_250h
+    name: 250 HOURS
+    description: Building autonomous behaviors
+    requires: rob_50h
+  - id: rob_1000h
+    name: 1,000 HOURS
+    description: Roboticist as identity
+    requires: rob_250h
+  - id: rob_5000h
+    name: 5,000 HOURS
+    description: Research-level robotics
+    requires: rob_1000h
+  - id: rob_arduino
+    name: ARDUINO BOT
+    description: Built a simple programmable robot
+    requires: rob_50h
+  - id: rob_lego
+    name: LEGO MINDSTORMS
+    description: Educational robotics platform
+    requires: rob_50h
+  - id: rob_arm
+    name: ROBOTIC ARM
+    description: Manipulator with precise control
+    requires: rob_250h
+  - id: rob_vision
+    name: COMPUTER VISION
+    description: Robot that sees and responds
+    requires: rob_250h
+  - id: rob_drone
+    name: DRONE BUILD
+    description: Built and flew a custom drone
+    requires: rob_50h
+  - id: rob_comp
+    name: ROBOTICS COMP
+    description: Competed in a robotics challenge
+    requires: rob_250h
+- id: watchmaking
+  name: WATCHMAKING & HOROLOGY
+  children:
+  - id: watch_50h
+    name: 50 HOURS
+    description: Learned the anatomy of a movement
+  - id: watch_250h
+    name: 250 HOURS
+    description: Disassembled and reassembled movements
+    requires: watch_50h
+  - id: watch_1000h
+    name: 1,000 HOURS
+    description: Watchmaker-level precision
+    requires: watch_250h
+  - id: watch_5000h
+    name: 5,000 HOURS
+    description: Master horologist
+    requires: watch_1000h
+  - id: watch_service
+    name: SERVICE & REPAIR
+    description: Cleaned, oiled, regulated a movement
+    requires: watch_50h
+  - id: watch_mod
+    name: WATCH MODDING
+    description: Customized dials, hands, crystals
+    requires: watch_50h
+  - id: watch_restoration
+    name: RESTORATION
+    description: Brought a vintage piece back to life
+    requires: watch_250h
+  - id: watch_complication
+    name: COMPLICATION
+    description: Worked with chronographs, calendars, moon phases
+    requires: watch_250h
+  - id: watch_build
+    name: BUILT A WATCH
+    description: Assembled a complete timepiece from parts
+    requires: watch_250h
+description: Working with your hands to build and repair

@@ -1,0 +1,250 @@
+id: precision
+name: PRECISION
+skills:
+- id: chess
+  name: CHESS
+  children:
+  - id: chess_50h
+    name: 50 HOURS
+    description: Learned openings, tactics, and endgames
+  - id: chess_250h
+    name: 250 HOURS
+    description: Consistent strategic play
+    requires: chess_50h
+  - id: chess_1000h
+    name: 1,000 HOURS
+    description: Serious chess player
+    requires: chess_250h
+  - id: chess_5000h
+    name: 5,000 HOURS
+    description: Chess master candidate
+    requires: chess_1000h
+  - id: chess_blitz
+    name: BLITZ SPECIALIST
+    description: Rapid time controls under 10 minutes
+    requires: chess_50h
+  - id: chess_rapid
+    name: RAPID / CLASSICAL
+    description: Longer time controls, deep thinking
+    requires: chess_50h
+  - id: chess_puzzle
+    name: PUZZLE RUSH
+    description: Solved thousands of tactical puzzles
+    requires: chess_50h
+  - id: chess_online
+    name: ONLINE RATING 1500+
+    description: Strong intermediate on major platforms
+    requires: chess_250h
+  - id: chess_2000
+    name: ONLINE RATING 2000+
+    description: Expert-level play
+    requires: chess_online
+  - id: chess_tourna
+    name: TOURNAMENT PLAYER
+    description: Played in rated over-the-board events
+    requires: chess_250h
+  - id: chess_title
+    name: FIDE RATING / TITLE
+    description: Official international rating or title
+    requires: chess_tourna
+  - id: chess_coach
+    name: COACHED OTHERS
+    description: Taught chess to students
+    requires: chess_1000h
+- id: poker
+  name: POKER
+  children:
+  - id: poker_50h
+    name: 50 HOURS
+    description: Learned hand rankings, position, odds
+  - id: poker_250h
+    name: 250 HOURS
+    description: Winning at low stakes, bankroll management
+    requires: poker_50h
+  - id: poker_1000h
+    name: 1,000 HOURS
+    description: Serious poker player
+    requires: poker_250h
+  - id: poker_5000h
+    name: 5,000 HOURS
+    description: Professional-level player
+    requires: poker_1000h
+  - id: poker_cash
+    name: CASH GAMES
+    description: Ring games, deep stack strategy
+    requires: poker_50h
+  - id: poker_tourna
+    name: TOURNAMENTS
+    description: MTTs, survival and ICM
+    requires: poker_50h
+  - id: poker_live
+    name: LIVE POKER
+    description: Read tells, table dynamics, casino play
+    requires: poker_50h
+  - id: poker_online
+    name: ONLINE MULTITABLE
+    description: Played 4+ tables simultaneously
+    requires: poker_250h
+  - id: poker_bink
+    name: WON A TOURNAMENT
+    description: First place in a meaningful event
+    requires: poker_tourna
+  - id: poker_itm
+    name: CASHED A MAJOR
+    description: In the money at a large event
+    requires: poker_tourna
+  - id: poker_profit
+    name: PROFITABLE OVER 100K HANDS
+    description: Statistically significant win rate
+    requires: poker_250h
+- id: go_game
+  name: GO
+  children:
+  - id: go_50h
+    name: 50 HOURS
+    description: Learned rules, life and death, basic strategy
+  - id: go_250h
+    name: 250 HOURS
+    description: Reading ahead, shape, and direction of play
+    requires: go_50h
+  - id: go_1000h
+    name: 1,000 HOURS
+    description: Serious Go player
+    requires: go_250h
+  - id: go_5000h
+    name: 5,000 HOURS
+    description: Dan-level player
+    requires: go_1000h
+  - id: go_online
+    name: ONLINE 10 KYU
+    description: Basic understanding of the game
+    requires: go_50h
+  - id: go_5k
+    name: ONLINE 5 KYU
+    description: Intermediate, tactical reading
+    requires: go_online
+  - id: go_1d
+    name: ONLINE 1 DAN
+    description: Strong amateur, solid fundamentals
+    requires: go_5k
+  - id: go_club
+    name: CLUB PLAYER
+    description: Regular face-to-face games
+    requires: go_online
+  - id: go_tourna
+    name: TOURNAMENT
+    description: Competed in an official Go tournament
+    requires: go_1d
+  - id: go_3d
+    name: 3 DAN / REAL
+    description: Strong club player, teaching others
+    requires: go_1d
+  - id: go_pro
+    name: PRO CERTIFICATE
+    description: Professional certification or equivalent
+    requires: go_3d
+- id: magic
+  name: 'MAGIC: THE GATHERING'
+  children:
+  - id: mtg_50h
+    name: 50 HOURS
+    description: Learned rules, formats, deck building
+  - id: mtg_250h
+    name: 250 HOURS
+    description: Competitive local play, understanding metas
+    requires: mtg_50h
+  - id: mtg_1000h
+    name: 1,000 HOURS
+    description: Serious Magic player
+    requires: mtg_250h
+  - id: mtg_5000h
+    name: 5,000 HOURS
+    description: Magic veteran
+    requires: mtg_1000h
+  - id: mtg_draft
+    name: DRAFT SPECIALIST
+    description: Limited format mastery
+    requires: mtg_50h
+  - id: mtg_modern
+    name: MODERN / PIONEER
+    description: Eternal format expertise
+    requires: mtg_50h
+  - id: mtg_cmd
+    name: COMMANDER
+    description: 100-card singleton multiplayer
+    requires: mtg_50h
+  - id: mtg_fnm
+    name: FNM TOP 4
+    description: Placed at Friday Night Magic
+    requires: mtg_50h
+  - id: mtg_rcq
+    name: RCQ / REGIONAL
+    description: Competed at a Regional Championship Qualifier
+    requires: mtg_250h
+  - id: mtg_pt
+    name: PRO TOUR / WORLDS
+    description: Competed at the highest level
+    requires: mtg_rcq
+  - id: mtg_top8
+    name: PRO TOUR TOP 8
+    description: Reached the final bracket
+    requires: mtg_pt
+  - id: mtg_day2
+    name: DAY 2 GP / PRO TOUR
+    description: Made the second day of a major
+    requires: mtg_rcq
+  - id: mtg_pro
+    name: PRO PLAYER
+    description: Earned pro points or equivalent
+    requires: mtg_pt
+- id: speedrunning
+  name: SPEEDRUNNING
+  children:
+  - id: speed_50h
+    name: 50 HOURS
+    description: First runs, first splits, first PBs
+  - id: speed_250h
+    name: 250 HOURS
+    description: Routing, optimization, consistent execution
+    requires: speed_50h
+  - id: speed_1000h
+    name: 1,000 HOURS
+    description: Dedicated speedrunner
+    requires: speed_250h
+  - id: speed_5000h
+    name: 5,000 HOURS
+    description: Speedrunning legend
+    requires: speed_1000h
+  - id: speed_wr
+    name: WORLD RECORD
+    description: Fastest time on the leaderboard
+    requires: speed_250h
+  - id: speed_any
+    name: ANY%
+    description: Beat the game as fast as possible, no restrictions
+    requires: speed_50h
+  - id: speed_100
+    name: 100%
+    description: Completed everything as fast as possible
+    requires: speed_50h
+  - id: speed_glitch
+    name: GLITCHLESS
+    description: Speed without exploits
+    requires: speed_any
+  - id: speed_marathon
+    name: MARATHON SPEEDRUN
+    description: 6+ hour run to completion
+    requires: speed_1000h
+  - id: speed_tas
+    name: TAS / TOOL-ASSISTED
+    description: Frame-perfect theoretical run
+    requires: speed_250h
+  - id: speed_stream
+    name: STREAMED RUNS
+    description: Broadcast speedrunning live
+    requires: speed_250h
+  - id: speed_gdq
+    name: GAMES DONE QUICK
+    description: Featured at a GDQ event
+    requires: speed_stream
+description: Accuracy, timing, and fine control

@@ -1,0 +1,180 @@
+id: home
+name: HOME
+skills:
+- id: home_baking
+  name: BAKING
+  children:
+  - id: hbake_50h
+    name: 50 HOURS
+    description: First loaves, first cakes, first failures
+  - id: hbake_250h
+    name: 250 HOURS
+    description: Consistent, repeatable results
+    requires: hbake_50h
+  - id: hbake_1000h
+    name: 1,000 HOURS
+    description: Baker, not just recipe follower
+    requires: hbake_250h
+  - id: hbake_5000h
+    name: 5,000 HOURS
+    description: Bread science intuition
+    requires: hbake_1000h
+  - id: hbake_sourdough
+    name: SOURDOUGH
+    description: Maintained a starter, baked naturally leavened
+    requires: hbake_50h
+  - id: hbake_pastry
+    name: PASTRY
+    description: Laminated dough, pâte à choux, tarts
+    requires: hbake_50h
+  - id: hbake_cake
+    name: LAYER CAKE
+    description: Built a multi-layer decorated cake
+    requires: hbake_50h
+  - id: hbake_vien
+    name: VIENNOISERIE
+    description: Croissants, danish, pain au chocolat
+    requires: hbake_pastry
+  - id: hbake_macaron
+    name: MACARONS
+    description: Conquered the finicky French cookie
+    requires: hbake_250h
+  - id: hbake_sell
+    name: SOLD BAKED GOODS
+    description: Someone paid for your bread or pastry
+    requires: hbake_250h
+- id: homebrewing
+  name: BREWING & FERMENTATION
+  children:
+  - id: brew_50h
+    name: 50 HOURS
+    description: First batches, first mistakes, first successes
+  - id: brew_250h
+    name: 250 HOURS
+    description: Consistent, drinkable results
+    requires: brew_50h
+  - id: brew_1000h
+    name: 1,000 HOURS
+    description: Brewer for life
+    requires: brew_250h
+  - id: brew_5000h
+    name: 5,000 HOURS
+    description: Master brewer
+    requires: brew_1000h
+  - id: brew_beer
+    name: HOME BREW
+    description: Made beer from grain to glass
+    requires: brew_50h
+  - id: brew_allgrain
+    name: ALL-GRAIN
+    description: Mashed your own grains
+    requires: brew_beer
+  - id: brew_wine
+    name: WINEMAKING
+    description: Fermented grapes into wine
+    requires: brew_50h
+  - id: brew_mead
+    name: MEAD
+    description: Fermented honey into the drink of gods
+    requires: brew_50h
+  - id: brew_kombucha
+    name: KOMBUCHA
+    description: Continuous brew, SCOBY care
+    requires: brew_50h
+  - id: brew_kimchi
+    name: LACTO-FERMENT
+    description: Kimchi, sauerkraut, pickles
+    requires: brew_50h
+  - id: brew_share
+    name: SHARED WITH FRIENDS
+    description: Others enjoyed your brew
+    requires: brew_250h
+- id: interior_design
+  name: INTERIOR DESIGN
+  children:
+  - id: int_50h
+    name: 50 HOURS
+    description: Learned color, texture, and space planning
+  - id: int_250h
+    name: 250 HOURS
+    description: Designed complete rooms with confidence
+    requires: int_50h
+  - id: int_1000h
+    name: 1,000 HOURS
+    description: Interior designer as identity
+    requires: int_250h
+  - id: int_5000h
+    name: 5,000 HOURS
+    description: Professional interior designer
+    requires: int_1000h
+  - id: int_room
+    name: DESIGNED A ROOM
+    description: Complete room transformation
+    requires: int_50h
+  - id: int_home
+    name: DESIGNED A HOME
+    description: Cohesive design across an entire dwelling
+    requires: int_room
+  - id: int_furniture
+    name: CUSTOM FURNITURE
+    description: Designed or commissioned bespoke pieces
+    requires: int_250h
+  - id: int_lighting
+    name: LIGHTING DESIGN
+    description: Layered ambient, task, and accent light
+    requires: int_50h
+  - id: int_plants
+    name: INTERIOR PLANTS
+    description: Biophilic design with living greenery
+    requires: int_50h
+  - id: int_paid
+    name: PAID CLIENT
+    description: Designed for someone else
+    requires: int_250h
+- id: diy_renovation
+  name: DIY & RENOVATION
+  children:
+  - id: diy_50h
+    name: 50 HOURS
+    description: Learned to measure, cut, fix, and finish
+  - id: diy_250h
+    name: 250 HOURS
+    description: Tackled major home projects
+    requires: diy_50h
+  - id: diy_1000h
+    name: 1,000 HOURS
+    description: DIY warrior
+    requires: diy_250h
+  - id: diy_5000h
+    name: 5,000 HOURS
+    description: Basically rebuilt a house
+    requires: diy_1000h
+  - id: diy_paint
+    name: PAINTED A ROOM
+    description: The simplest transformation
+    requires: diy_50h
+  - id: diy_floor
+    name: LAID FLOORING
+    description: Hardwood, tile, or laminate
+    requires: diy_50h
+  - id: diy_tile
+    name: TILED A SURFACE
+    description: Backsplash, bathroom, or floor
+    requires: diy_50h
+  - id: diy_kitchen
+    name: KITCHEN RENO
+    description: The most valuable room, redone
+    requires: diy_250h
+  - id: diy_bath
+    name: BATHROOM RENO
+    description: Plumbing, waterproofing, fixtures
+    requires: diy_250h
+  - id: diy_elec
+    name: ELECTRICAL WORK
+    description: Added outlets, lights, or circuits
+    requires: diy_250h
+  - id: diy_plumb
+    name: PLUMBING
+    description: Fixed leaks, replaced fixtures, ran pipe
+    requires: diy_250h
+description: Creating comfort and function in your space

@@ -1,0 +1,207 @@
+id: finance
+name: FINANCE
+skills:
+- id: investing
+  name: INVESTING
+  children:
+  - id: inv_50h
+    name: 50 HOURS
+    description: Opened accounts, made first trades, learned basics
+  - id: inv_250h
+    name: 250 HOURS
+    description: Developed strategy, tracked performance
+    requires: inv_50h
+  - id: inv_1000h
+    name: 1,000 HOURS
+    description: Seasoned investor
+    requires: inv_250h
+  - id: inv_5000h
+    name: 5,000 HOURS
+    description: Market veteran
+    requires: inv_1000h
+  - id: inv_index
+    name: INDEX INVESTING
+    description: Passive, diversified, long-term wealth
+    requires: inv_50h
+  - id: inv_stock
+    name: STOCK PICKING
+    description: Individual company research and selection
+    requires: inv_50h
+  - id: inv_options
+    name: OPTIONS TRADING
+    description: Derivatives, spreads, risk management
+    requires: inv_250h
+  - id: inv_crypto
+    name: CRYPTO
+    description: Digital assets, DeFi, blockchain
+    requires: inv_50h
+  - id: inv_forex
+    name: FOREX / CURRENCIES
+    description: Currency pair trading
+    requires: inv_250h
+  - id: inv_real
+    name: REAL ESTATE
+    description: Property investment, REITs, or syndication
+    requires: inv_250h
+  - id: inv_rebal
+    name: REBALANCED ANNUALLY
+    description: Disciplined portfolio maintenance
+    requires: inv_index
+  - id: inv_bear
+    name: SURVIVED A BEAR MARKET
+    description: Held through a 20%+ drawdown
+    requires: inv_250h
+  - id: inv_10x
+    name: 10X RETURN
+    description: One investment returned 10x or more
+    requires: inv_250h
+  - id: inv_fire
+    name: FIRE MOVEMENT
+    description: Financial Independence, Retire Early
+    requires: inv_index
+- id: trading
+  name: ACTIVE TRADING
+  children:
+  - id: trade_50h
+    name: 50 HOURS
+    description: First positions, first charts, first rules
+  - id: trade_250h
+    name: 250 HOURS
+    description: Defined system, journal, risk parameters
+    requires: trade_50h
+  - id: trade_1000h
+    name: 1,000 HOURS
+    description: Consistent trader
+    requires: trade_250h
+  - id: trade_5000h
+    name: 5,000 HOURS
+    description: Professional trader
+    requires: trade_1000h
+  - id: trade_day
+    name: DAY TRADING
+    description: In and out within market hours
+    requires: trade_250h
+  - id: trade_swing
+    name: SWING TRADING
+    description: Positions held days to weeks
+    requires: trade_50h
+  - id: trade_algo
+    name: ALGORITHMIC
+    description: Automated strategies, backtesting
+    requires: trade_250h
+  - id: trade_ta
+    name: TECHNICAL ANALYSIS
+    description: Charts, patterns, indicators
+    requires: trade_50h
+  - id: trade_fund
+    name: FUNDAMENTAL ANALYSIS
+    description: Financial statements, valuation
+    requires: trade_50h
+  - id: trade_green
+    name: PROFITABLE YEAR
+    description: Beat buy-and-hold or index after costs
+    requires: trade_250h
+  - id: trade_3green
+    name: 3 PROFITABLE YEARS
+    description: Sustained trading success
+    requires: trade_green
+- id: entrepreneurship
+  name: ENTREPRENEURSHIP
+  children:
+  - id: ent_50h
+    name: 50 HOURS
+    description: First business idea, first customer, first revenue
+  - id: ent_250h
+    name: 250 HOURS
+    description: Sustainable side business or startup
+    requires: ent_50h
+  - id: ent_1000h
+    name: 1,000 HOURS
+    description: Founder as identity
+    requires: ent_250h
+  - id: ent_5000h
+    name: 5,000 HOURS
+    description: Serial entrepreneur
+    requires: ent_1000h
+  - id: ent_boot
+    name: BOOTSTRAPPED
+    description: Built without outside funding
+    requires: ent_50h
+  - id: ent_vc
+    name: VENTURE-FUNDED
+    description: Raised institutional capital
+    requires: ent_250h
+  - id: ent_saas
+    name: SAAS / SOFTWARE
+    description: Recurring revenue product
+    requires: ent_250h
+  - id: ent_ecom
+    name: E-COMMERCE
+    description: Sold physical or digital products online
+    requires: ent_50h
+  - id: ent_service
+    name: SERVICE BUSINESS
+    description: Agency, consulting, freelancing
+    requires: ent_50h
+  - id: ent_mrr
+    name: $1K MRR
+    description: Sustainable monthly revenue
+    requires: ent_250h
+  - id: ent_10k
+    name: $10K MRR
+    description: Real business, maybe full-time
+    requires: ent_mrr
+  - id: ent_100k
+    name: $100K MRR
+    description: Scaling fast
+    requires: ent_10k
+  - id: ent_exit
+    name: EXIT / ACQUISITION
+    description: Sold or merged the business
+    requires: ent_10k
+- id: frugality
+  name: FRUGALITY & MINIMAL FINANCE
+  children:
+  - id: frug_50h
+    name: 50 HOURS
+    description: Tracked spending, cut waste, built a budget
+  - id: frug_250h
+    name: 250 HOURS
+    description: Lifestyle aligned with values, not consumption
+    requires: frug_50h
+  - id: frug_1000h
+    name: 1,000 HOURS
+    description: Minimalist finance master
+    requires: frug_250h
+  - id: frug_5000h
+    name: 5,000 HOURS
+    description: Financial zen master
+    requires: frug_1000h
+  - id: frug_budget
+    name: BUDGET DISCIPLINE
+    description: Stuck to a budget for 6+ months
+  - id: frug_debtfree
+    name: DEBT FREE
+    description: Paid off all non-mortgage debt
+    requires: frug_budget
+  - id: frug_emerge
+    name: 6-MONTH EMERGENCY FUND
+    description: Security before speculation
+    requires: frug_budget
+  - id: frug_nobuy
+    name: NO-BUY YEAR
+    description: One year of intentional non-consumption
+    requires: frug_250h
+  - id: frug_diy
+    name: DIY LIFESTYLE
+    description: Repaired, made, grew instead of bought
+    requires: frug_50h
+  - id: frug_freegan
+    name: FREEGAN PRACTICES
+    description: Rescued, shared, bartered
+    requires: frug_250h
+  - id: frug_coop
+    name: HOUSING CO-OP / VANLIFE
+    description: Radical reduction in living costs
+    requires: frug_250h
+description: Understanding and growing wealth

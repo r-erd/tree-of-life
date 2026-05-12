@@ -35,12 +35,14 @@ function makeCatNode(cat) {
     id: cat.id,
     name: cat.name,
     icon: cat.icon || '',
+    description: cat.description || '',
     isCategory: true,
-    children: (cat.skills || []).map(s => makeSkillNode(s, true)),
+    _categoryId: cat.id,
+    children: (cat.skills || []).map(s => makeSkillNode(s, cat.id, true)),
   }
 }
 
-function makeSkillNode(skill, isGroup = false) {
+function makeSkillNode(skill, categoryId, isGroup = false) {
   return {
     id: skill.id,
     name: skill.name,
@@ -48,7 +50,8 @@ function makeSkillNode(skill, isGroup = false) {
     description: skill.description || '',
     requires: skill.requires || null,
     isGroup: isGroup,
-    children: restructureChildren(skill.children || []),
+    _categoryId: categoryId,
+    children: restructureChildren(skill.children || [], categoryId),
   }
 }
 
@@ -56,7 +59,7 @@ function makeSkillNode(skill, isGroup = false) {
  * Given a flat list of sibling YAML nodes, some of which chain via `requires`,
  * restructure into proper parent→child relationships.
  */
-function restructureChildren(yamlChildren) {
+function restructureChildren(yamlChildren, categoryId) {
   if (!yamlChildren || yamlChildren.length === 0) return []
 
   const siblingIds = new Set(yamlChildren.map(c => c.id))
@@ -76,7 +79,7 @@ function restructureChildren(yamlChildren) {
   const directChildren = yamlChildren.filter(c => !chained.has(c.id))
 
   function buildNode(yaml) {
-    const ownChildren = restructureChildren(yaml.children || [])
+    const ownChildren = restructureChildren(yaml.children || [], categoryId)
     const chainedChildren = (requiresChain.get(yaml.id) || []).map(buildNode)
     return {
       id: yaml.id,
@@ -85,6 +88,7 @@ function restructureChildren(yamlChildren) {
       description: yaml.description || '',
       requires: yaml.requires || null,
       isGroup: false,
+      _categoryId: categoryId,
       children: [...ownChildren, ...chainedChildren],
     }
   }
@@ -219,7 +223,7 @@ export function pruneTree(node, skilledSet, expandedSet, depth = 0) {
   return { ...node, children: [], _hasHidden: true, _hiddenCount: hidden }
 }
 
-function countDescendants(node) {
+export function countDescendants(node) {
   if (!node.children || node.children.length === 0) return 0
   return node.children.reduce((acc, c) => acc + 1 + countDescendants(c), 0)
 }

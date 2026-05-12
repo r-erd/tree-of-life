@@ -1,0 +1,214 @@
+id: performing
+name: PERFORMING
+skills:
+- id: acting
+  name: ACTING
+  children:
+  - id: act_50h
+    name: 50 HOURS
+    description: Learned to be present and truthful on stage
+  - id: act_250h
+    name: 250 HOURS
+    description: Developing range and technique
+    requires: act_50h
+  - id: act_1000h
+    name: 1,000 HOURS
+    description: Actor as identity
+    requires: act_250h
+  - id: act_5000h
+    name: 5,000 HOURS
+    description: Veteran performer
+    requires: act_1000h
+  - id: act_theater
+    name: THEATER
+    description: Performed in a stage production
+    requires: act_50h
+  - id: act_film
+    name: FILM / TV
+    description: Acted in a screen production
+    requires: act_250h
+  - id: act_improv
+    name: IMPROV
+    description: Unscripted, in-the-moment performance
+    requires: act_50h
+  - id: act_voice
+    name: VOICE ACTING
+    description: Character and narration with just your voice
+    requires: act_250h
+  - id: act_musical
+    name: MUSICAL THEATER
+    description: Sang, danced, and acted simultaneously
+    requires: act_theater
+  - id: act_lead
+    name: LEAD ROLE
+    description: Carried a production as the protagonist
+    requires: act_theater
+- id: dancing
+  name: DANCING
+  children:
+  - id: dance_50h
+    name: 50 HOURS
+    description: Learned rhythm, movement, and expression
+  - id: dance_250h
+    name: 250 HOURS
+    description: Style and technique developing
+    requires: dance_50h
+  - id: dance_1000h
+    name: 1,000 HOURS
+    description: Dancer for life
+    requires: dance_250h
+  - id: dance_5000h
+    name: 5,000 HOURS
+    description: Master mover
+    requires: dance_1000h
+  - id: dance_ballet
+    name: BALLET
+    description: Classical discipline and grace
+    requires: dance_50h
+  - id: dance_hiphop
+    name: HIP-HOP / STREET
+    description: Urban movement culture
+    requires: dance_50h
+  - id: dance_salsa
+    name: SALSA / PARTNER
+    description: Social partner dancing
+    requires: dance_50h
+  - id: dance_contemp
+    name: CONTEMPORARY
+    description: Expressive, abstract, emotional
+    requires: dance_50h
+  - id: dance_choreo
+    name: CHOREOGRAPHED
+    description: Created a dance for others to perform
+    requires: dance_250h
+  - id: dance_perform
+    name: PERFORMED ON STAGE
+    description: Danced for an audience
+    requires: dance_50h
+  - id: dance_battle
+    name: DANCE BATTLE
+    description: Competed in a cypher or battle
+    requires: dance_hiphop
+- id: singing
+  name: SINGING
+  children:
+  - id: sing_50h
+    name: 50 HOURS
+    description: Found your voice and started training it
+  - id: sing_250h
+    name: 250 HOURS
+    description: Pitch, tone, and control improving
+    requires: sing_50h
+  - id: sing_1000h
+    name: 1,000 HOURS
+    description: Singer as identity
+    requires: sing_250h
+  - id: sing_5000h
+    name: 5,000 HOURS
+    description: Vocal mastery
+    requires: sing_1000h
+  - id: sing_solo
+    name: SOLO PERFORMANCE
+    description: Sang alone in front of others
+    requires: sing_50h
+  - id: sing_choir
+    name: CHOIR / ENSEMBLE
+    description: Blended voice with a group
+    requires: sing_50h
+  - id: sing_recording
+    name: STUDIO RECORDING
+    description: Tracked vocals in a studio
+    requires: sing_250h
+  - id: sing_opera
+    name: OPERA / CLASSICAL
+    description: Classical vocal technique
+    requires: sing_250h
+  - id: sing_jazz
+    name: JAZZ / SCATTING
+    description: Improvised with the voice
+    requires: sing_250h
+  - id: sing_band
+    name: BAND VOCALIST
+    description: Fronted a group
+    requires: sing_solo
+- id: stand_up
+  name: STAND-UP COMEDY
+  children:
+  - id: stand_1
+    name: FIRST SET
+    description: Performed original material on stage
+  - id: stand_10
+    name: 10 SETS
+    description: Getting comfortable in the spotlight
+    requires: stand_1
+  - id: stand_50
+    name: 50 SETS
+    description: Regular on the open mic circuit
+    requires: stand_10
+  - id: stand_100
+    name: 100 SETS
+    description: Professional comedian
+    requires: stand_50
+  - id: stand_paid
+    name: PAID GIG
+    description: Someone paid you to be funny
+    requires: stand_10
+  - id: stand_feature
+    name: FEATURED ACT
+    description: 20+ minute set, opening for a headliner
+    requires: stand_paid
+  - id: stand_headline
+    name: HEADLINER
+    description: Closing the show, carrying the room
+    requires: stand_feature
+  - id: stand_special
+    name: SPECIAL / ALBUM
+    description: Recorded and released a comedy special
+    requires: stand_headline
+  - id: stand_fest
+    name: COMEDY FESTIVAL
+    description: Performed at a major comedy festival
+    requires: stand_feature
+- id: magic
+  name: MAGIC & ILLUSION
+  children:
+  - id: magic_50h
+    name: 50 HOURS
+    description: Learned sleights, misdirection, and presentation
+  - id: magic_250h
+    name: 250 HOURS
+    description: Developing a repertoire and style
+    requires: magic_50h
+  - id: magic_1000h
+    name: 1,000 HOURS
+    description: Magician as identity
+    requires: magic_250h
+  - id: magic_5000h
+    name: 5,000 HOURS
+    description: Master of mystery
+    requires: magic_1000h
+  - id: magic_cards
+    name: CARD MAGIC
+    description: Sleight of hand with a deck
+    requires: magic_50h
+  - id: magic_coins
+    name: COIN MAGIC
+    description: Sleight of hand with small objects
+    requires: magic_50h
+  - id: magic_mentalism
+    name: MENTALISM
+    description: Mind reading, predictions, psychological magic
+    requires: magic_250h
+  - id: magic_stage
+    name: STAGE MAGIC
+    description: Parlor and stage illusions
+    requires: magic_250h
+  - id: magic_paid
+    name: PAID PERFORMANCE
+    description: Hired to perform magic
+    requires: magic_250h
+  - id: magic_lecture
+    name: LECTURED
+    description: Taught magic to other magicians
+    requires: magic_1000h
+description: Commanding attention and moving an audience

@@ -1,0 +1,202 @@
+id: nature
+name: NATURE
+skills:
+- id: gardening
+  name: GARDENING
+  children:
+  - id: garden_50h
+    name: 50 HOURS
+    description: Planted, watered, and nurtured
+  - id: garden_250h
+    name: 250 HOURS
+    description: A flourishing green space
+    requires: garden_50h
+  - id: garden_1000h
+    name: 1,000 HOURS
+    description: Gardener for life
+    requires: garden_250h
+  - id: garden_5000h
+    name: 5,000 HOURS
+    description: Master horticulturist
+    requires: garden_1000h
+  - id: garden_veg
+    name: VEGETABLE GARDEN
+    description: Grew food you ate
+    requires: garden_50h
+  - id: garden_orchard
+    name: FRUIT TREES
+    description: Long-term investment in harvest
+    requires: garden_250h
+  - id: garden_flowers
+    name: CUT FLOWERS
+    description: Grew blooms for beauty and bouquets
+    requires: garden_50h
+  - id: garden_bonsai
+    name: BONSAI
+    description: The art of miniature trees
+    requires: garden_250h
+  - id: garden_landscape
+    name: LANDSCAPE DESIGN
+    description: Designed an outdoor space
+    requires: garden_250h
+  - id: garden_compost
+    name: COMPOSTING
+    description: Closed the loop with organic waste
+    requires: garden_50h
+- id: birdwatching
+  name: BIRDWATCHING
+  children:
+  - id: bird_50
+    name: 50 SPECIES
+    description: Started noticing feathered friends
+  - id: bird_200
+    name: 200 SPECIES
+    description: Developing a life list
+    requires: bird_50
+  - id: bird_500
+    name: 500 SPECIES
+    description: Serious birder
+    requires: bird_200
+  - id: bird_1000
+    name: 1,000 SPECIES
+    description: Master birder
+    requires: bird_500
+  - id: bird_calls
+    name: BIRDING BY EAR
+    description: Identified birds by song alone
+    requires: bird_50
+  - id: bird_photo
+    name: BIRD PHOTOGRAPHY
+    description: Captured birds in their habitat
+    requires: bird_200
+  - id: bird_migrate
+    name: MIGRATION WATCHING
+    description: Witnessed mass migration events
+    requires: bird_200
+  - id: bird_rare
+    name: RARE BIRD
+    description: Spotted a vagrant or endangered species
+    requires: bird_200
+  - id: bird_big_day
+    name: BIG DAY
+    description: 100+ species in a single day
+    requires: bird_500
+- id: fishing
+  name: FISHING
+  children:
+  - id: fish_50h
+    name: 50 HOURS
+    description: Learned to cast, read water, and land fish
+  - id: fish_250h
+    name: 250 HOURS
+    description: Consistently catching, understanding patterns
+    requires: fish_50h
+  - id: fish_1000h
+    name: 1,000 HOURS
+    description: Angler for life
+    requires: fish_250h
+  - id: fish_5000h
+    name: 5,000 HOURS
+    description: Master angler
+    requires: fish_1000h
+  - id: fish_fly
+    name: FLY FISHING
+    description: The art of the cast and the drift
+    requires: fish_50h
+  - id: fish_spear
+    name: SPEARFISHING
+    description: Hunted fish underwater
+    requires: fish_50h
+  - id: fish_ice
+    name: ICE FISHING
+    description: Caught fish through a frozen lake
+    requires: fish_50h
+  - id: fish_trophy
+    name: TROPHY CATCH
+    description: Landed a fish worth bragging about
+    requires: fish_250h
+  - id: fish_catch
+    name: CATCH & COOK
+    description: Ate what you caught, same day
+    requires: fish_50h
+  - id: fish_guide
+    name: GUIDED OTHERS
+    description: Took someone else fishing
+    requires: fish_250h
+- id: beekeeping
+  name: BEEKEEPING
+  children:
+  - id: bee_50h
+    name: 50 HOURS
+    description: Learned to work with bees safely
+  - id: bee_250h
+    name: 250 HOURS
+    description: Managing hives through seasons
+    requires: bee_50h
+  - id: bee_1000h
+    name: 1,000 HOURS
+    description: Beekeeper for life
+    requires: bee_250h
+  - id: bee_harvest
+    name: FIRST HONEY HARVEST
+    description: Extracted honey from your own hive
+    requires: bee_50h
+  - id: bee_wax
+    name: BEESWAX PRODUCTS
+    description: Candles, balms, wraps from your bees
+    requires: bee_harvest
+  - id: bee_split
+    name: SPLIT A HIVE
+    description: Successfully divided and expanded
+    requires: bee_250h
+  - id: bee_queen
+    name: RAISED A QUEEN
+    description: Bred or reared your own queen bee
+    requires: bee_250h
+  - id: bee_multi
+    name: 5+ HIVES
+    description: Running an apiary
+    requires: bee_250h
+  - id: bee_sell
+    name: SOLD HONEY
+    description: Commercial beekeeping
+    requires: bee_harvest
+- id: foraging
+  name: FORAGING & WILD FOOD
+  children:
+  - id: forage_50h
+    name: 50 HOURS
+    description: Learned to identify wild edibles
+  - id: forage_250h
+    name: 250 HOURS
+    description: Seasonal foraging across habitats
+    requires: forage_50h
+  - id: forage_1000h
+    name: 1,000 HOURS
+    description: Forager as identity
+    requires: forage_250h
+  - id: forage_mushroom
+    name: WILD MUSHROOMS
+    description: Safely identified and ate fungi
+    requires: forage_50h
+  - id: forage_berry
+    name: WILD FRUITS & BERRIES
+    description: Found nature's candy
+    requires: forage_50h
+  - id: forage_greens
+    name: WILD GREENS
+    description: Salads from the forest floor
+    requires: forage_50h
+  - id: forage_sea
+    name: SEAWEED & COASTAL
+    description: Tide-pool and shoreline harvest
+    requires: forage_50h
+  - id: forage_meal
+    name: 100% WILD MEAL
+    description: Cooked an entire meal from foraged food
+    requires: forage_250h
+  - id: forage_pres
+    name: PRESERVING WILD FOOD
+    description: Fermented, dried, or canned foraged goods
+    requires: forage_250h
+description: Tending to and learning from the living world

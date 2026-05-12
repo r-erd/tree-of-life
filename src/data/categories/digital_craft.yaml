@@ -1,0 +1,238 @@
+id: digital_craft
+name: DIGITAL CRAFT
+skills:
+- id: programming
+  name: PROGRAMMING
+  children:
+  - id: prog_50h
+    name: 50 HOURS
+    description: First scripts, first bugs, first fixes
+  - id: prog_250h
+    name: 250 HOURS
+    description: Built complete small projects
+    requires: prog_50h
+  - id: prog_1000h
+    name: 1,000 HOURS
+    description: Professional-level developer
+    requires: prog_250h
+  - id: prog_5000h
+    name: 5,000 HOURS
+    description: Senior engineer, systems thinker
+    requires: prog_1000h
+  - id: prog_web
+    name: WEB DEV
+    description: Built sites and web apps
+    requires: prog_50h
+  - id: prog_mobile
+    name: MOBILE APPS
+    description: Published an app to a store
+    requires: prog_250h
+  - id: prog_game
+    name: GAME DEV
+    description: Built an interactive game
+    requires: prog_250h
+  - id: prog_data
+    name: DATA SCIENCE
+    description: Analysis, ML, visualization
+    requires: prog_250h
+  - id: prog_os
+    name: SYSTEMS / EMBEDDED
+    description: Close to the metal
+    requires: prog_250h
+  - id: prog_contrib
+    name: OPEN SOURCE
+    description: Merged code into a public project
+    requires: prog_250h
+  - id: prog_lang
+    name: 5+ LANGUAGES
+    description: Polyglot programmer
+    requires: prog_1000h
+  - id: prog_talk
+    name: CONFERENCE TALK
+    description: Spoke about tech at an event
+    requires: prog_1000h
+- id: digitalcraft_video
+  name: VIDEO PRODUCTION
+  children:
+  - id: dcvid_50h
+    name: 50 HOURS
+    description: First edits, cuts, and exports
+  - id: dcvid_250h
+    name: 250 HOURS
+    description: Color grading, sound design, storytelling
+    requires: dcvid_50h
+  - id: dcvid_1000h
+    name: 1,000 HOURS
+    description: Filmmaker / video creator
+    requires: dcvid_250h
+  - id: dcvid_5000h
+    name: 5,000 HOURS
+    description: Professional filmmaker
+    requires: dcvid_1000h
+  - id: dcvid_short
+    name: SHORT FILM
+    description: Completed a narrative or documentary short
+    requires: dcvid_250h
+  - id: dcvid_feature
+    name: FEATURE-LENGTH
+    description: A project over 40 minutes
+    requires: dcvid_short
+  - id: dcvid_yt
+    name: YOUTUBE / ONLINE
+    description: Built a video channel with audience
+    requires: dcvid_250h
+  - id: dcvid_commercial
+    name: PAID WORK
+    description: Client or brand video production
+    requires: dcvid_250h
+  - id: dcvid_drone
+    name: AERIAL / DRONE
+    description: Cinematic drone cinematography
+    requires: dcvid_50h
+  - id: dcvid_360
+    name: 360 / VR VIDEO
+    description: Immersive video production
+    requires: dcvid_250h
+- id: photo_editing
+  name: PHOTO EDITING & COMPOSITING
+  children:
+  - id: photoed_50h
+    name: 50 HOURS
+    description: Learned exposure, color, retouching
+  - id: photoed_250h
+    name: 250 HOURS
+    description: Consistent professional-quality edits
+    requires: photoed_50h
+  - id: photoed_1000h
+    name: 1,000 HOURS
+    description: Retoucher / digital artist
+    requires: photoed_250h
+  - id: photoed_5000h
+    name: 5,000 HOURS
+    description: Master digital artist
+    requires: photoed_1000h
+  - id: photoed_raw
+    name: RAW PROCESSING
+    description: Full control from sensor to screen
+    requires: photoed_50h
+  - id: photoed_retouch
+    name: PORTRAIT RETOUCHING
+    description: Skin, eyes, hair, flawless finish
+    requires: photoed_50h
+  - id: photoed_comp
+    name: PHOTO COMPOSITING
+    description: Multiple images merged into one
+    requires: photoed_250h
+  - id: photoed_color
+    name: COLOR GRADING
+    description: Cinematic, consistent looks
+    requires: photoed_50h
+  - id: photoed_3d
+    name: 3D INTEGRATION
+    description: Rendered objects in photographs
+    requires: photoed_comp
+  - id: photoed_publish
+    name: PUBLISHED / SOLD
+    description: Your edited images in print or market
+    requires: photoed_250h
+- id: music_production
+  name: MUSIC PRODUCTION
+  children:
+  - id: musicprod_50h
+    name: 50 HOURS
+    description: First tracks, first mix, first bounce
+  - id: musicprod_250h
+    name: 250 HOURS
+    description: Professional-sounding productions
+    requires: musicprod_50h
+  - id: musicprod_1000h
+    name: 1,000 HOURS
+    description: Producer identity
+    requires: musicprod_250h
+  - id: musicprod_5000h
+    name: 5,000 HOURS
+    description: Veteran producer
+    requires: musicprod_1000h
+  - id: musicprod_daw
+    name: DAW MASTERY
+    description: Know your software inside out
+    requires: musicprod_50h
+  - id: musicprod_mix
+    name: MIXING
+    description: Balanced, punchy, wide mixes
+    requires: musicprod_250h
+  - id: musicprod_master
+    name: MASTERING
+    description: Final polish for release
+    requires: musicprod_mix
+  - id: musicprod_beats
+    name: BEATMAKING
+    description: Drum programming, sampling, grooves
+    requires: musicprod_50h
+  - id: musicprod_orchestral
+    name: ORCHESTRAL MOCKUP
+    description: Convincing orchestral production
+    requires: musicprod_250h
+  - id: musicprod_ep
+    name: RELEASED EP
+    description: Published a 3-5 track project
+    requires: musicprod_250h
+  - id: musicprod_album
+    name: RELEASED ALBUM
+    description: A full-length body of work
+    requires: musicprod_ep
+  - id: musicprod_credits
+    name: PRODUCED FOR OTHERS
+    description: Credits on someone else's release
+    requires: musicprod_250h
+- id: digitalcraft_print
+  name: 3D PRINTING
+  children:
+  - id: dcprint_50h
+    name: 50 HOURS
+    description: First prints, first calibrations, first fails
+  - id: dcprint_250h
+    name: 250 HOURS
+    description: Consistent quality, troubleshooting mastered
+    requires: dcprint_50h
+  - id: dcprint_1000h
+    name: 1,000 HOURS
+    description: 3D printing as primary tool
+    requires: dcprint_250h
+  - id: dcprint_5000h
+    name: 5,000 HOURS
+    description: 3D printing wizard
+    requires: dcprint_1000h
+  - id: dcprint_fdm
+    name: FDM PRINTING
+    description: Fused deposition, most common tech
+    requires: dcprint_50h
+  - id: dcprint_resin
+    name: RESIN / SLA
+    description: High detail, smooth surfaces
+    requires: dcprint_50h
+  - id: dcprint_design
+    name: DESIGNED OWN MODELS
+    description: CAD from scratch, not just downloads
+    requires: dcprint_250h
+  - id: dcprint_multimaterial
+    name: MULTI-MATERIAL
+    description: Dual extrusion or resin mixing
+    requires: dcprint_250h
+  - id: dcprint_large
+    name: LARGE FORMAT
+    description: Printed something over 30cm
+    requires: dcprint_250h
+  - id: dcprint_functional
+    name: FUNCTIONAL ENGINEERING
+    description: Parts that bear load or move
+    requires: dcprint_design
+  - id: dcprint_art
+    name: 3D PRINTED ART
+    description: Sculptural or aesthetic objects
+    requires: dcprint_design
+  - id: dcprint_sell
+    name: SOLD PRINTS
+    description: Commercial 3D printing
+    requires: dcprint_250h
+description: Building in bits, pixels, and code

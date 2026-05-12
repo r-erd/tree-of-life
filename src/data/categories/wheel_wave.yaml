@@ -1,0 +1,210 @@
+id: wheel_wave
+name: WHEEL & WAVE
+skills:
+- id: skateboarding
+  name: SKATEBOARDING
+  children:
+  - id: skate_50h
+    name: 50 HOURS
+    description: Learned to push, turn, and stop
+  - id: skate_250h
+    name: 250 HOURS
+    description: Comfortable on the board, trying tricks
+    requires: skate_50h
+  - id: skate_1000h
+    name: 1,000 HOURS
+    description: Skater for life
+    requires: skate_250h
+  - id: skate_5000h
+    name: 5,000 HOURS
+    description: Veteran skater
+    requires: skate_1000h
+  - id: skate_ollie
+    name: OLLIE
+    description: The fundamental trick, landed
+    requires: skate_50h
+  - id: skate_kickflip
+    name: KICKFLIP
+    description: The iconic flip trick
+    requires: skate_ollie
+  - id: skate_grind
+    name: GRIND / SLIDE
+    description: Slid along a rail or ledge
+    requires: skate_ollie
+  - id: skate_bowl
+    name: BOWL / VERT
+    description: Dropping in and carving transition
+    requires: skate_50h
+  - id: skate_long
+    name: LONGBOARDING
+    description: Cruising, sliding, downhill
+    requires: skate_50h
+  - id: skate_downhill
+    name: DOWNHILL
+    description: High-speed descent on a longboard
+    requires: skate_long
+  - id: skate_video
+    name: VIDEO PART
+    description: Filmed a part for a skate video
+    requires: skate_250h
+- id: wheelwave_surfing
+  name: SURFING
+  children:
+  - id: wwsurf_50h
+    name: 50 HOURS
+    description: Caught your first waves, learned to read the ocean
+  - id: wwsurf_250h
+    name: 250 HOURS
+    description: Riding down the line, turning
+    requires: wwsurf_50h
+  - id: wwsurf_1000h
+    name: 1,000 HOURS
+    description: Surfer for life
+    requires: wwsurf_250h
+  - id: wwsurf_5000h
+    name: 5,000 HOURS
+    description: Local legend status
+    requires: wwsurf_1000h
+  - id: wwsurf_short
+    name: SHORTBOARD
+    description: Performance surfing, aerials, cutbacks
+    requires: wwsurf_50h
+  - id: wwsurf_long
+    name: LONGBOARD
+    description: Nose rides, cross-steps, style
+    requires: wwsurf_50h
+  - id: wwsurf_big
+    name: BIG WAVE
+    description: Faced waves that could kill you
+    requires: wwsurf_250h
+  - id: wwsurf_tube
+    name: BARREL RIDE
+    description: Ridden inside the hollow of a wave
+    requires: wwsurf_250h
+  - id: wwsurf_travel
+    name: SURF TRIP
+    description: Traveled for waves, not just convenience
+    requires: wwsurf_50h
+- id: wheelwave_kayaking
+  name: KAYAKING & CANOEING
+  children:
+  - id: wwkayak_50h
+    name: 50 HOURS
+    description: Learned strokes, rolls, and river reading
+  - id: wwkayak_250h
+    name: 250 HOURS
+    description: Comfortable in moving water
+    requires: wwkayak_50h
+  - id: wwkayak_1000h
+    name: 1,000 HOURS
+    description: Paddler for life
+    requires: wwkayak_250h
+  - id: wwkayak_5000h
+    name: 5,000 HOURS
+    description: Expedition paddler
+    requires: wwkayak_1000h
+  - id: wwkayak_roll
+    name: ESKIMO ROLL
+    description: Self-rescue without exiting the boat
+    requires: wwkayak_50h
+  - id: wwkayak_ww3
+    name: CLASS III WHITEWATER
+    description: Moderate rapids, confident lines
+    requires: wwkayak_50h
+  - id: wwkayak_ww5
+    name: CLASS V WHITEWATER
+    description: Expert-level extreme rapids
+    requires: wwkayak_ww3
+  - id: wwkayak_sea
+    name: SEA KAYAKING
+    description: Open water, tides, crossings
+    requires: wwkayak_50h
+  - id: wwkayak_tour
+    name: MULTI-DAY PADDLE
+    description: Expedition kayaking with camping
+    requires: wwkayak_sea
+  - id: wwkayak_falls
+    name: WATERFALL DROP
+    description: Ran a significant waterfall
+    requires: wwkayak_ww5
+- id: wheelwave_sailing
+  name: SAILING
+  children:
+  - id: wwsail_50h
+    name: 50 HOURS
+    description: Learned points of sail, tacking, gybing
+  - id: wwsail_250h
+    name: 250 HOURS
+    description: Competent crew, maybe day skipper
+    requires: wwsail_50h
+  - id: wwsail_1000h
+    name: 1,000 HOURS
+    description: Sailor for life
+    requires: wwsail_250h
+  - id: wwsail_5000h
+    name: 5,000 HOURS
+    description: Bluewater veteran
+    requires: wwsail_1000h
+  - id: wwsail_dinghy
+    name: DINGHY SAILING
+    description: Small boat, direct feel
+    requires: wwsail_50h
+  - id: wwsail_cruise
+    name: CRUISING
+    description: Multi-day trips on a keelboat
+    requires: wwsail_250h
+  - id: wwsail_offshore
+    name: OFFSHORE PASSAGE
+    description: Out of sight of land for days
+    requires: wwsail_cruise
+  - id: wwsail_ocean
+    name: OCEAN CROSSING
+    description: Crossed an ocean under sail
+    requires: wwsail_offshore
+  - id: wwsail_race
+    name: REGATTA
+    description: Competed in a sailing race
+    requires: wwsail_250h
+  - id: wwsail_solo
+    name: SOLO SAILING
+    description: Handled the boat alone
+    requires: wwsail_cruise
+- id: wheelwave_motorcycling
+  name: MOTORCYCLING
+  children:
+  - id: wwmoto_50h
+    name: 50 HOURS
+    description: Learned to ride safely and smoothly
+  - id: wwmoto_250h
+    name: 250 HOURS
+    description: Confident in traffic and weather
+    requires: wwmoto_50h
+  - id: wwmoto_1000h
+    name: 1,000 HOURS
+    description: Rider for life
+    requires: wwmoto_250h
+  - id: wwmoto_5000h
+    name: 5,000 HOURS
+    description: Veteran rider
+    requires: wwmoto_1000h
+  - id: wwmoto_tour
+    name: MULTI-DAY TOUR
+    description: Traveled far on two wheels
+    requires: wwmoto_50h
+  - id: wwmoto_offroad
+    name: OFF-ROAD / DUAL-SPORT
+    description: Dirt, gravel, adventure riding
+    requires: wwmoto_50h
+  - id: wwmoto_track
+    name: TRACK DAY
+    description: Knee down on a circuit
+    requires: wwmoto_250h
+  - id: wwmoto_stunt
+    name: STUNT RIDING
+    description: Wheelies, stoppies, tricks
+    requires: wwmoto_250h
+  - id: wwmoto_custom
+    name: CUSTOM BUILD
+    description: Built or heavily modified your bike
+    requires: wwmoto_250h
+description: Riding boards, water, wind, and roads
