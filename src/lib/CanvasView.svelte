@@ -168,28 +168,26 @@
   function toggleNode(node) {
     if (isViewMode || node.isRoot) return
 
-    const isLeaf = (!node.children || node.children.length === 0) && !node._hasHidden
+    const isMeta = node.isCategory || node.isGroup
 
-    // Touch: first tap selects leaf nodes, second tap toggles
-    if (isLeaf && isTouch && selectedNodeId !== node.id) {
+    // Meta nodes (categories, groups): click to expand/collapse
+    if (isMeta) {
+      if (node._hasHidden) {
+        expandNodeId(node.id)
+      } else if (node.children && node.children.length > 0) {
+        collapseNodeId(node.id)
+      }
+      return
+    }
+
+    // Skill nodes: toggle skilled
+    if (isTouch && selectedNodeId !== node.id) {
       selectedNodeId = node.id
       showTooltip(node)
       return
     }
 
     selectedNodeId = null
-
-    // Nodes with children: click to expand/collapse
-    if (node._hasHidden) {
-      expandNodeId(node.id)
-      return
-    }
-    if (node.children && node.children.length > 0) {
-      collapseNodeId(node.id)
-      return
-    }
-
-    // Leaf node: toggle skilled
     const before = get(skilled)
     skilled.toggle(node.id)
     const after = get(skilled)
@@ -287,10 +285,10 @@
     collapseNodeId(node.id)
   }
 
-  // A node can be collapsed by the user if it has visible children right now
+  // Only meta nodes (categories, groups) can be manually collapsed
   function canCollapse(node) {
     return (node.children && node.children.length > 0) &&
-      !node.isRoot
+      (node.isCategory || node.isGroup)
   }
 
   // ── Text Wrapping ──
@@ -542,8 +540,6 @@
     <!-- Nodes -->
     {#each layoutData.nodes as node (node.id)}
       {@const state = nodeState(node)}
-      {@const isLeaf = (!node.children || node.children.length === 0) && !node._hasHidden}
-      {@const isClickable = !node.isRoot && !(isLeaf && state === 'locked')}
       {@const hasVisibleChildren = node.children && node.children.length > 0}
       {@const isMeta = node.isRoot || node.isCategory || node.isGroup}
       {@const textLines = wrapText(node.name, isMeta ? 24 : 18)}
@@ -554,6 +550,7 @@
 
       {@const isPulsing = pulseMap.has(node.id)}
       {@const isSelected = selectedNodeId === node.id}
+      {@const isClickable = !node.isRoot && (isMeta || state !== 'locked')}
       <g
         class="node-g"
         class:clickable={isClickable}
@@ -612,8 +609,8 @@
             class:dot-locked={state === 'locked'} />
         {/if}
 
-        <!-- Collapse button (top-right corner, only for expanded nodes with children) -->
-        {#if canCollapse(node) && !node.isRoot}
+        <!-- Collapse button (top-right corner, only for meta nodes) -->
+        {#if canCollapse(node)}
           <g
             class="collapse-btn"
             onclick={(e) => collapseNode(e, node)}
@@ -645,7 +642,7 @@
       </g>
 
       <!-- Expand button (rendered outside node-g to avoid click conflict) -->
-      {#if node._hasHidden}
+      {#if node._hasHidden && (node.isCategory || node.isGroup)}
         <!-- Dashed connector from node bottom to expand button -->
         <line
           x1={node.x + NODE_W / 2}
