@@ -492,6 +492,33 @@
     tx = rect.width  / 2 - (minX + treeW / 2) * scale
     ty = pad - minY * scale
   }
+
+  function collectMetaIds() {
+    const ids = new Set()
+    function walk(nodes) {
+      for (const n of nodes || []) {
+        if (n.isCategory || n.isGroup) ids.add(n.id)
+        walk(n.children)
+      }
+    }
+    for (const cat of $categories) {
+      ids.add(cat.id)
+      walk(cat.skills)
+    }
+    return ids
+  }
+
+  function collapseAll() {
+    collapsedNodes = collectMetaIds()
+    expandedNodes = new Set()
+    requestAnimationFrame(() => fitToScreen())
+  }
+
+  function expandAll() {
+    expandedNodes = collectMetaIds()
+    collapsedNodes = new Set()
+    requestAnimationFrame(() => fitToScreen())
+  }
 </script>
 
 <!-- Toolbar -->
@@ -524,6 +551,20 @@
     title="Fit tree to screen"
   >
     ⊡ FIT
+  </button>
+  <button
+    class="btn-ghost btn-ghost-dim toolbar-btn"
+    onclick={collapseAll}
+    title="Collapse all categories"
+  >
+    − ALL
+  </button>
+  <button
+    class="btn-ghost btn-ghost-dim toolbar-btn"
+    onclick={expandAll}
+    title="Expand all categories"
+  >
+    + ALL
   </button>
 </div>
 
