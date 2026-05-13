@@ -115,7 +115,10 @@ export const displaySkilled = derived(
 export const stats = derived(
   [nodeIndex, displaySkilled],
   ([$nodeIndex, $displaySkilled]) => {
-    const total = $nodeIndex.size
+    let total = 0
+    for (const [, node] of $nodeIndex) {
+      if (!node.isRoot && !node.isCategory && !node.isGroup) total++
+    }
     const unlocked = $displaySkilled.size
     return { total, unlocked, pct: total > 0 ? Math.round((unlocked / total) * 100) : 0 }
   }

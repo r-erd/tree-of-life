@@ -11,12 +11,23 @@
 
 const BASE62_CHARS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 
+let _cachedOrder = null
+let _cachedCategoriesKey = null
+
+function categoriesKey(categories) {
+  // Simple hash of category IDs + skill counts
+  return categories.map(c => `${c.id}:${c.skills?.length ?? 0}`).join('|')
+}
+
 /**
  * Walk all nodes in canonical DFS order and return array of IDs.
  * @param {Array} categories
  * @returns {string[]}
  */
 export function getCanonicalOrder(categories) {
+  const key = categoriesKey(categories)
+  if (_cachedCategoriesKey === key) return _cachedOrder
+
   const ids = []
   function walk(nodes) {
     if (!nodes) return
@@ -26,10 +37,13 @@ export function getCanonicalOrder(categories) {
     }
   }
   for (const cat of categories) {
-    for (const skill of cat.skills) {
+    for (const skill of cat.skills || []) {
       walk([skill])
     }
   }
+
+  _cachedCategoriesKey = key
+  _cachedOrder = ids
   return ids
 }
 
@@ -77,7 +91,7 @@ export function encode(skilled, categories, version) {
  * @returns {{ version: number, skilled: Set<string> } | { error: string }}
  */
 export function decode(code, categories) {
-  const match = code.trim().match(/^V(\d+)\.([0-9A-Za-z]+)$/)
+  const match = code.trim().match(/^V(\d+)\.(.+)$/)
   if (!match) return { error: 'Invalid code format. Expected V<n>.<code>' }
 
   const version = parseInt(match[1], 10)

@@ -11,7 +11,7 @@
     buildVisualTree, computeLayout, flatten,
     filterSkilled, pruneTree, NODE_W, NODE_H, LEVEL_H, hasSkilledDescendant, countSkilledDescendants, countDescendants
   } from '../lib/layout.js'
-  import { categoryIconInner } from '../lib/icons.js'
+  import { categoryIconInner as categoryIcons } from '../lib/icons.js'
 
   // ── State ──
   let scale      = $state(1)
@@ -126,10 +126,13 @@
 
   // ── Handle Search Focus ──
   $effect(() => {
-    if ($searchFocus) {
-      const targetId = $searchFocus
-      searchFocus.set(null) // clear immediately
-      
+    const targetId = $searchFocus
+    if (!targetId) return
+
+    // Defer store mutation to avoid synchronous effect cycle
+    queueMicrotask(() => {
+      searchFocus.set(null)
+
       const nextExpanded = new Set(expandedNodes)
       const nextCollapsed = new Set(collapsedNodes)
       let currentId = parentMap.get(targetId)
@@ -145,13 +148,13 @@
         const targetNode = layoutData.nodes.find(n => n.id === targetId)
         if (targetNode && svgEl) {
           const rect = svgEl.getBoundingClientRect()
-          const newScale = Math.max(scale, 1) // ensure we are zoomed in enough to see it
+          const newScale = Math.max(scale, 1)
           scale = Math.min(MAX_SCALE, newScale)
           tx = rect.width / 2 - (targetNode.x + NODE_W / 2) * scale
           ty = rect.height / 2 - (targetNode.y + NODE_H / 2) * scale
         }
       })
-    }
+    })
   })
 
   // ── Node state ──
@@ -409,12 +412,17 @@
   }
   function onTouchEnd(e) {
     lastTouch = null
-    if (e.touches.length < 2) pinchStart = null
+    if (e.touches.length < 2) {
+      if (pinchStart) justPinched = true
+      pinchStart = null
+      setTimeout(() => { justPinched = false }, 50)
+    }
   }
 
   // ── Background click (deselect) ──
+  let justPinched = false
   function onSvgClick(e) {
-    if (isDragging) return
+    if (isDragging || justPinched) return
     if (e.target === svgEl || e.target.getAttribute('class')?.includes('canvas')) {
       selectedNodeId = null
     }
@@ -540,11 +548,10 @@
     <!-- Nodes -->
     {#each layoutData.nodes as node (node.id)}
       {@const state = nodeState(node)}
-      {@const hasVisibleChildren = node.children && node.children.length > 0}
       {@const isMeta = node.isRoot || node.isCategory || node.isGroup}
       {@const textLines = wrapText(node.name, isMeta ? 24 : 18)}
       {@const nodeAccent = accentVar(node)}
-      {@const showIcon = node.isCategory && categoryIconInner(node.id)}
+      {@const showIcon = node.isCategory && categoryIcons[node.id]}
       {@const labelX = showIcon ? 30 : (isMeta ? NODE_W / 2 : 30)}
       {@const labelAnchor = showIcon ? 'start' : (isMeta ? 'middle' : 'start')}
 
@@ -596,7 +603,7 @@
           <svg x={10} y={NODE_H / 2 - 7} width={14} height={14} viewBox="0 0 24 24"
             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
             class="cat-icon">
-            {@html categoryIconInner(node.id)}
+            {@html categoryIcons[node.id]}
           </svg>
         {/if}
 

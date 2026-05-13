@@ -113,6 +113,7 @@
   /* Typography */
   --font-display:     'Inter', 'Arial Narrow', Arial, sans-serif;
   --font-body:        'Inter', Arial, sans-serif;
+  --font-ui:          'Inter', Arial, sans-serif;
 
   /* Spacing */
   --sp-xs:  4px;

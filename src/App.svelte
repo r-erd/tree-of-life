@@ -6,11 +6,10 @@
     'wheel_wave', 'flow', 'digital_craft', 'finance', 'precision', 'spiritual'
   ]
   const categoryModules = import.meta.glob('./data/categories/*.yaml', { eager: true })
+  const rawCategories = Object.values(categoryModules).map(m => m.default)
   const skillsData = {
-    version: 5,
-    categories: Object.values(categoryModules)
-      .map(m => m.default)
-      .sort((a, b) => CATEGORY_ORDER.indexOf(a.id) - CATEGORY_ORDER.indexOf(b.id))
+    version: TREE_VERSION,
+    categories: rawCategories.sort((a, b) => CATEGORY_ORDER.indexOf(a.id) - CATEGORY_ORDER.indexOf(b.id))
   }
   import {
     categories,
@@ -24,9 +23,6 @@
   import CanvasView from "./lib/CanvasView.svelte";
   import SharePanel from "./lib/SharePanel.svelte";
 
-  // Skill data is a plain JS object (parsed from YAML at build time by Vite plugin)
-  let loading = $state(false);
-  let error = $state(null);
   let shareMode = $state(null); // null | 'export' | 'import'
   let showResetConfirm = $state(false);
 
@@ -40,12 +36,8 @@
     localStorage.setItem('tol_hint_dismissed', '1')
   }
 
-  try {
-    categories.set(skillsData.categories);
-    buildNodeIndex(skillsData.categories);
-  } catch (e) {
-    error = e.message;
-  }
+  categories.set(skillsData.categories);
+  buildNodeIndex(skillsData.categories);
 
   function openShare() {
     shareMode = "export";
@@ -68,23 +60,6 @@
   }
 </script>
 
-{#if loading}
-  <div class="loading-screen">
-    <div class="loader" aria-label="Loading passion tree…"></div>
-    <p class="label-caps" style="margin-top: 24px; color: var(--text-dim)">
-      LOADING PASSION TREE
-    </p>
-  </div>
-{:else if error}
-  <div class="loading-screen">
-    <p class="label-caps" style="color: var(--color-error)">
-      ERROR LOADING PASSIONS
-    </p>
-    <p style="color: var(--text-mute); font-size: 13px; margin-top: 8px">
-      {error}
-    </p>
-  </div>
-{:else}
   <Header onShare={openShare} onImport={openImport} />
   <CanvasView />
 
@@ -110,9 +85,8 @@
   <div class="app-footer">
     v{TREE_VERSION} · {$stats.total} passions
   </div>
-{/if}
 
-<!-- Share / Import modal -->
+  <!-- Share / Import modal -->
 {#if shareMode}
   <SharePanel mode={shareMode} onClose={closePanel} />
 {/if}

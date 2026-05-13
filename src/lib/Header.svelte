@@ -86,16 +86,15 @@
       />
       {#if suggestions.length > 0}
         <div class="suggestions-dropdown">
-          {#each suggestions as s, i}
-            <!-- svelte-ignore a11y_click_events_have_key_events -->
-            <!-- svelte-ignore a11y_no_static_element_interactions -->
-            <div 
-              class="suggestion-item" 
+          {#each suggestions as s, i (s.id)}
+            <button
+              type="button"
+              class="suggestion-item"
               class:selected={i === selectedIndex}
               onclick={() => selectSuggestion(s)}
             >
               <span class="suggestion-name">{s.name}</span>
-            </div>
+            </button>
           {/each}
         </div>
       {/if}
