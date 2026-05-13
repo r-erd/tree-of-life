@@ -204,12 +204,7 @@
   }
 
   function toggleNode(node) {
-    if (isViewMode) return
-
-    if (node.isRoot) {
-      fitToScreen()
-      return
-    }
+    if (isViewMode || node.isRoot) return
 
     const isMeta = node.isCategory || node.isGroup
 
@@ -585,7 +580,7 @@
       {@const lineHeight = 12}
 
       {@const isPulsing = pulseMap.has(node.id)}
-      {@const isClickable = node.isRoot || isMeta || state !== 'locked'}
+      {@const isClickable = isMeta || state !== 'locked'}
       <g
         class="node-g"
         class:clickable={isClickable}
