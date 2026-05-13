@@ -67,13 +67,23 @@
     // Progressive disclosure pruning (always applied, even in focus mode)
     root = pruneTree(root, $displaySkilled, expandedNodes, 0)
 
+    // Compute meta-active status from pre-collapsed tree so collapsed
+    // categories still show their highlight if descendants are skilled
+    const metaActiveMap = new Map()
+    function markMetaActive(node) {
+      const active = hasSkilledDescendant(node, $displaySkilled)
+      if (node.isCategory || node.isGroup) metaActiveMap.set(node.id, active)
+      for (const child of (node.children || [])) markMetaActive(child)
+    }
+    markMetaActive(root)
+
     // Apply manual collapses: for nodes that are auto-expanded (skilled/default-depth)
     // but the user wants to collapse, remove their children
     root = applyCollapsed(root, collapsedNodes)
 
     computeLayout(root)
     const { nodes, edges } = flatten(root)
-    return { nodes, edges, root }
+    return { nodes, edges, root, metaActiveMap }
   })
 
   /** Strip children from manually-collapsed nodes */
@@ -161,7 +171,7 @@
   // ── Node state ──
   function nodeState(node) {
     if (node.isRoot || node.isCategory || node.isGroup) {
-      if (hasSkilledDescendant(node, $displaySkilled)) return 'meta-active'
+      if (layoutData.metaActiveMap.get(node.id)) return 'meta-active'
       return 'meta'
     }
     if ($displaySkilled.has(node.id)) return 'skilled'
