@@ -165,7 +165,7 @@ export function filterSkilled(node, skilledSet) {
     .map(c => filterSkilled(c, skilledSet))
     .filter(Boolean)
 
-  if (filteredChildren.length === 0 && !node.isRoot && !node.isCategory) return null
+  if (filteredChildren.length === 0 && !node.isRoot) return null
 
   return { ...node, children: filteredChildren }
 }

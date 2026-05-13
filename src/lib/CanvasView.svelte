@@ -102,9 +102,10 @@
       requestAnimationFrame(() => fitToScreen())
     }
   })
-  // Re-center when category changes
+  // Re-center when category or focus mode changes
   $effect(() => {
     $activeCategory
+    focusMode
     centered = false
   })
 
