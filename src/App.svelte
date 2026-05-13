@@ -91,7 +91,7 @@
   {/if}
 
   <div class="app-footer">
-    v{TREE_VERSION} · {$stats.total} passions ·
+    v{TREE_VERSION} · {$stats.total} nodes ·
     <button class="privacy-link" onclick={openPrivacy}>Privacy</button>
   </div>
 

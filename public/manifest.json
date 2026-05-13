@@ -1,7 +1,7 @@
 {
   "name": "Tree of Life",
   "short_name": "TreeOfLife",
-  "description": "Track your real-world skills as an interactive skill tree",
+  "description": "An interactive passion tree for exploring what makes you come alive",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#000000",
