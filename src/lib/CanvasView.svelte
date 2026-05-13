@@ -99,7 +99,7 @@
     if (!root || !svgEl) return
     if (!centered) {
       centered = true
-      fitToScreen()
+      requestAnimationFrame(() => fitToScreen())
     }
   })
   // Re-center when category changes
