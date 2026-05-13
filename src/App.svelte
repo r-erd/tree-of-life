@@ -82,10 +82,10 @@
   <!-- Mobile notice -->
   <div class="mobile-notice">
     <div class="mobile-notice-inner">
-      <p class="mobile-notice-title">DESKTOP ONLY</p>
+      <p class="mobile-notice-title">LAPTOP / DESKTOP ONLY</p>
       <p class="mobile-notice-text">
-        Tree of Life is designed for desktop browsers.<br />
-        Please visit on a laptop or desktop computer.
+        Please open this site on a laptop or desktop computer.<br />
+        Phones and tablets are not supported.
       </p>
     </div>
   </div>

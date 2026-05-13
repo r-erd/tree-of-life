@@ -71,7 +71,7 @@
 <nav class="navbar">
   <div class="nav-inner">
     <a href="." class="wordmark" aria-label="Tree of Life">
-      <img src="/favicon.svg" alt="" class="logo-img" aria-hidden="true" />
+      <img src="./favicon.svg" alt="" class="logo-img" aria-hidden="true" />
       TREE<span class="wordmark-sep">OF</span>LIFE
     </a>
 
