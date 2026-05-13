@@ -23,9 +23,11 @@
   import CanvasView from "./lib/CanvasView.svelte";
   import SharePanel from "./lib/SharePanel.svelte";
   import PrivacyPanel from "./lib/PrivacyPanel.svelte";
+  import AboutPanel from "./lib/AboutPanel.svelte";
 
   let shareMode = $state(null); // null | 'export' | 'import'
   let showPrivacy = $state(false);
+  let showAbout = $state(false);
   let showResetConfirm = $state(false);
 
   // Empty-state hint
@@ -56,6 +58,12 @@
   function closePrivacy() {
     showPrivacy = false;
   }
+  function openAbout() {
+    showAbout = true;
+  }
+  function closeAbout() {
+    showAbout = false;
+  }
 
   function handleReset() {
     if (showResetConfirm) {
@@ -68,7 +76,7 @@
   }
 </script>
 
-  <Header onShare={openShare} onImport={openImport} />
+  <Header onShare={openShare} onImport={openImport} onAbout={openAbout} />
   <CanvasView />
 
   <!-- Empty-state hint -->
@@ -103,6 +111,11 @@
   <!-- Privacy notice modal -->
 {#if showPrivacy}
   <PrivacyPanel onClose={closePrivacy} />
+{/if}
+
+  <!-- About modal -->
+{#if showAbout}
+  <AboutPanel onClose={closeAbout} />
 {/if}
 
 <!-- Reset confirm overlay notice -->

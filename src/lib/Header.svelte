@@ -1,7 +1,7 @@
 <script>
   import { viewMode, skilled, nodeIndex, searchFocus } from '../lib/store.js'
 
-  let { onShare, onImport } = $props()
+  let { onShare, onImport, onAbout } = $props()
 
   let theme = $state('dark')
 
@@ -114,6 +114,7 @@
           <div class="toggle-thumb"></div>
         </div>
       </label>
+      <button class="btn-ghost btn-ghost-dim btn-sm" onclick={onAbout}>ABOUT</button>
       <button class="btn-ghost btn-ghost-dim btn-sm" onclick={onImport}>IMPORT</button>
       <button class="btn-ghost btn-sm" onclick={onShare}>EXPORT</button>
     </div>
