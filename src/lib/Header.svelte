@@ -202,11 +202,16 @@
     display: flex;
     align-items: center;
     gap: 12px;
+    width: 100%;
     padding: 10px 12px;
     cursor: pointer;
     font-size: 12px;
     font-family: var(--font-ui);
     color: var(--text-primary);
+    background: transparent;
+    border: none;
+    text-align: left;
+    border-radius: 0;
   }
   .suggestion-item:hover, .suggestion-item.selected {
     background: var(--canvas-inset);

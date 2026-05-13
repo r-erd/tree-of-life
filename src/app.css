@@ -81,6 +81,8 @@
   --stats-bg:         rgba(0,0,0,0.92);
   --modal-overlay:    rgba(0,0,0,0.75);
   --panel-bg:         #0a0a0a;
+  --surface:          #111113;
+  --canvas-inset:     #18181c;
   
   /* Badges & Alerts */
   --badge-view:       #ffb84d;
@@ -204,6 +206,8 @@
   --stats-bg:         rgba(255,255,255,0.92);
   --modal-overlay:    rgba(255,255,255,0.8);
   --panel-bg:         #ffffff;
+  --surface:          #ffffff;
+  --canvas-inset:     #f0f0f4;
   
   /* Badges & Alerts */
   --badge-view:       #d97706;
