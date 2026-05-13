@@ -12,7 +12,7 @@ import { writable, derived, get } from 'svelte/store'
 import { encode, decode } from './encoder.js'
 
 const LS_KEY = 'tol_state'
-export const TREE_VERSION = 5 // must match category YAML version
+export const TREE_VERSION = 6 // must match category YAML version
 
 // ── Skill tree definition (loaded once from YAML) ──
 export const categories = writable([])

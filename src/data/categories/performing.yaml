@@ -4,37 +4,37 @@ skills:
 - id: acting
   name: ACTING
   children:
-  - id: act_50h
+  - id: performing_act_50h
     name: 50 HOURS
     description: Learned to be present and truthful on stage
-  - id: act_250h
+  - id: performing_act_250h
     name: 250 HOURS
     description: Developing range and technique
-    requires: act_50h
-  - id: act_1000h
+    requires: performing_act_50h
+  - id: performing_act_1000h
     name: 1,000 HOURS
     description: Actor as identity
-    requires: act_250h
-  - id: act_5000h
+    requires: performing_act_250h
+  - id: performing_act_5000h
     name: 5,000 HOURS
     description: Veteran performer
-    requires: act_1000h
+    requires: performing_act_1000h
   - id: act_theater
     name: THEATER
     description: Performed in a stage production
-    requires: act_50h
+    requires: performing_act_50h
   - id: act_film
     name: FILM / TV
     description: Acted in a screen production
-    requires: act_250h
+    requires: performing_act_250h
   - id: act_improv
     name: IMPROV
     description: Unscripted, in-the-moment performance
-    requires: act_50h
+    requires: performing_act_50h
   - id: act_voice
     name: VOICE ACTING
     description: Character and narration with just your voice
-    requires: act_250h
+    requires: performing_act_250h
   - id: act_musical
     name: MUSICAL THEATER
     description: Sang, danced, and acted simultaneously

@@ -1,98 +1,98 @@
 id: spiritual
 name: SPIRITUAL
 skills:
-- id: meditation
+- id: spiritual_meditation
   name: MEDITATION
   children:
-  - id: med_50h
+  - id: spiritual_med_50h
     name: 50 HOURS
     description: Sat with breath, body, and mind
-  - id: med_250h
+  - id: spiritual_med_250h
     name: 250 HOURS
     description: Daily practice, noticeable shifts in awareness
-    requires: med_50h
-  - id: med_1000h
+    requires: spiritual_med_50h
+  - id: spiritual_med_1000h
     name: 1,000 HOURS
     description: Meditator for life
-    requires: med_250h
-  - id: med_5000h
+    requires: spiritual_med_250h
+  - id: spiritual_med_5000h
     name: 5,000 HOURS
     description: Deep contemplative practitioner
-    requires: med_1000h
+    requires: spiritual_med_1000h
   - id: med_mind
     name: MINDFULNESS
     description: Present-moment awareness in daily life
-    requires: med_50h
-  - id: med_vipassana
+    requires: spiritual_med_50h
+  - id: spiritual_med_vipassana
     name: VIPASSANA
     description: Insight meditation, 10-day retreat
-    requires: med_250h
-  - id: med_zen
+    requires: spiritual_med_250h
+  - id: spiritual_med_zen
     name: ZEN / ZAZEN
     description: Just sitting, shikantaza
-    requires: med_250h
+    requires: spiritual_med_250h
   - id: med_tm
     name: TRANSCENDENTAL
     description: Mantra-based practice
-    requires: med_50h
-  - id: med_retreat
+    requires: spiritual_med_50h
+  - id: spiritual_med_retreat
     name: SILENT RETREAT
     description: Multiple days of silence and practice
-    requires: med_250h
+    requires: spiritual_med_250h
   - id: med_teach
     name: TAUGHT MEDITATION
     description: Guided others in practice
-    requires: med_1000h
+    requires: spiritual_med_1000h
   - id: med_streak
     name: 365-DAY STREAK
     description: Unbroken daily practice for a year
-    requires: med_250h
-- id: yoga
+    requires: spiritual_med_250h
+- id: spiritual_yoga
   name: YOGA
   children:
-  - id: yoga_50h
+  - id: spiritual_yoga_50h
     name: 50 HOURS
     description: Learned asana, breath, and basic philosophy
-  - id: yoga_250h
+  - id: spiritual_yoga_250h
     name: 250 HOURS
     description: Regular practice, advancing poses
-    requires: yoga_50h
-  - id: yoga_1000h
+    requires: spiritual_yoga_50h
+  - id: spiritual_yoga_1000h
     name: 1,000 HOURS
     description: Yogi / yogini for life
-    requires: yoga_250h
-  - id: yoga_5000h
+    requires: spiritual_yoga_250h
+  - id: spiritual_yoga_5000h
     name: 5,000 HOURS
     description: Advanced practitioner or teacher
-    requires: yoga_1000h
+    requires: spiritual_yoga_1000h
   - id: yoga_hatha
     name: HATHA
     description: Classical posture and breath practice
-    requires: yoga_50h
-  - id: yoga_vinyasa
+    requires: spiritual_yoga_50h
+  - id: spiritual_yoga_vinyasa
     name: VINYASA / FLOW
     description: Dynamic, breath-linked movement
-    requires: yoga_50h
+    requires: spiritual_yoga_50h
   - id: yoga_iyengar
     name: IYENGAR
     description: Precision alignment, props, therapeutics
-    requires: yoga_50h
-  - id: yoga_ashtanga
+    requires: spiritual_yoga_50h
+  - id: spiritual_yoga_ashtanga
     name: ASHTANGA
     description: Mysore-style, six series, disciplined daily practice
-    requires: yoga_250h
+    requires: spiritual_yoga_250h
   - id: yoga_hot
     name: HOT / BIKRAM
     description: Practice in heated room
-    requires: yoga_50h
+    requires: spiritual_yoga_50h
   - id: yoga_invert
     name: INVERSIONS
     description: Headstand, handstand, forearm balance
-    requires: yoga_250h
+    requires: spiritual_yoga_250h
   - id: yoga_teach
     name: YOGA TEACHER
     description: Led classes for others
-    requires: yoga_1000h
+    requires: spiritual_yoga_1000h
   - id: yoga_cert
     name: RYT-200 / EQUIVALENT
     description: Completed teacher training

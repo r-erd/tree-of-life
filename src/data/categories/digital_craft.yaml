@@ -135,7 +135,7 @@ skills:
     name: PUBLISHED / SOLD
     description: Your edited images in print or market
     requires: photoed_250h
-- id: music_production
+- id: digitalcraft_music_production
   name: MUSIC PRODUCTION
   children:
   - id: musicprod_50h

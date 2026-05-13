@@ -1,48 +1,48 @@
 id: precision
 name: PRECISION
 skills:
-- id: chess
+- id: precision_chess
   name: CHESS
   children:
-  - id: chess_50h
+  - id: precision_chess_50h
     name: 50 HOURS
     description: Learned openings, tactics, and endgames
-  - id: chess_250h
+  - id: precision_chess_250h
     name: 250 HOURS
     description: Consistent strategic play
-    requires: chess_50h
-  - id: chess_1000h
+    requires: precision_chess_50h
+  - id: precision_chess_1000h
     name: 1,000 HOURS
     description: Serious chess player
-    requires: chess_250h
-  - id: chess_5000h
+    requires: precision_chess_250h
+  - id: precision_chess_5000h
     name: 5,000 HOURS
     description: Chess master candidate
-    requires: chess_1000h
-  - id: chess_blitz
+    requires: precision_chess_1000h
+  - id: precision_chess_blitz
     name: BLITZ SPECIALIST
     description: Rapid time controls under 10 minutes
-    requires: chess_50h
+    requires: precision_chess_50h
   - id: chess_rapid
     name: RAPID / CLASSICAL
     description: Longer time controls, deep thinking
-    requires: chess_50h
-  - id: chess_puzzle
+    requires: precision_chess_50h
+  - id: precision_chess_puzzle
     name: PUZZLE RUSH
     description: Solved thousands of tactical puzzles
-    requires: chess_50h
+    requires: precision_chess_50h
   - id: chess_online
     name: ONLINE RATING 1500+
     description: Strong intermediate on major platforms
-    requires: chess_250h
-  - id: chess_2000
+    requires: precision_chess_250h
+  - id: precision_chess_2000
     name: ONLINE RATING 2000+
     description: Expert-level play
     requires: chess_online
   - id: chess_tourna
     name: TOURNAMENT PLAYER
     description: Played in rated over-the-board events
-    requires: chess_250h
+    requires: precision_chess_250h
   - id: chess_title
     name: FIDE RATING / TITLE
     description: Official international rating or title
@@ -50,7 +50,7 @@ skills:
   - id: chess_coach
     name: COACHED OTHERS
     description: Taught chess to students
-    requires: chess_1000h
+    requires: precision_chess_1000h
 - id: poker
   name: POKER
   children:
@@ -143,7 +143,7 @@ skills:
     name: PRO CERTIFICATE
     description: Professional certification or equivalent
     requires: go_3d
-- id: magic
+- id: precision_magic
   name: 'MAGIC: THE GATHERING'
   children:
   - id: mtg_50h
