@@ -4,8 +4,14 @@
    ghost pills, futuristic minimal.
    ═══════════════════════════════════════════ */
 
-/* Google Fonts: Inter (D-DIN substitute) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+/* Inter — self-hosted variable font (covers weights 400–900) */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/Inter-Variable.woff2') format('woff2');
+}
 
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

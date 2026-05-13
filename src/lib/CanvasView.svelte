@@ -44,6 +44,29 @@
   // Pulse animation state
   let pulseMap = $state(new Map())
 
+  // Root node accent cycling
+  let rootAccentIndex = $state(0)
+  const rootAccentColors = $derived.by(() => {
+    const colors = []
+    for (const cat of $categories) {
+      if (layoutData.metaActiveMap.get(cat.id)) {
+        colors.push(`var(--accent-${cat.id})`)
+      }
+    }
+    return colors
+  })
+  $effect(() => {
+    const colors = rootAccentColors
+    if (colors.length <= 1) {
+      rootAccentIndex = 0
+      return
+    }
+    const interval = setInterval(() => {
+      rootAccentIndex = (rootAccentIndex + 1) % colors.length
+    }, 3000)
+    return () => clearInterval(interval)
+  })
+
   // Detect touch capability
   $effect(() => {
     isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0
@@ -73,7 +96,7 @@
     const descendantWeightMap = new Map()
     function markMetaActive(node) {
       const active = hasSkilledDescendant(node, $displaySkilled)
-      if (node.isCategory || node.isGroup) metaActiveMap.set(node.id, active)
+      if (node.isRoot || node.isCategory || node.isGroup) metaActiveMap.set(node.id, active)
       for (const child of (node.children || [])) markMetaActive(child)
     }
     function markWeight(node) {
@@ -190,7 +213,12 @@
   }
 
   function toggleNode(node) {
-    if (isViewMode || node.isRoot) return
+    if (isViewMode) return
+
+    if (node.isRoot) {
+      fitToScreen()
+      return
+    }
 
     const isMeta = node.isCategory || node.isGroup
 
@@ -241,14 +269,6 @@
       after.delete(nodeId)
       pulseMap = after
     }, 600)
-  }
-
-  function categoryProgress(node) {
-    if (!node.isCategory) return 0
-    const total = countDescendants(node)
-    if (total === 0) return 0
-    const skilledCount = countSkilledDescendants(node, $displaySkilled)
-    return skilledCount / total
   }
 
   // ── Zoom buttons ──
@@ -625,15 +645,18 @@
       {@const state = nodeState(node)}
       {@const isMeta = node.isRoot || node.isCategory || node.isGroup}
       {@const textLines = wrapText(node.name, isMeta ? 24 : 18)}
-      {@const nodeAccent = accentVar(node)}
+      {@const nodeAccent = node.isRoot && rootAccentColors.length > 0
+        ? rootAccentColors[rootAccentIndex]
+        : accentVar(node)}
       {@const showIcon = node.isCategory && categoryIcons[node.id]}
       {@const labelX = showIcon ? 30 : (isMeta ? NODE_W / 2 : 30)}
       {@const labelAnchor = showIcon ? 'start' : (isMeta ? 'middle' : 'start')}
-      {@const centerY = NODE_H / 2 + 1}
+      {@const textBlockCenter = NODE_H / 2 + 2}
+      {@const lineHeight = 12}
 
       {@const isPulsing = pulseMap.has(node.id)}
       {@const isSelected = selectedNodeId === node.id}
-      {@const isClickable = !node.isRoot && (isMeta || state !== 'locked')}
+      {@const isClickable = node.isRoot || isMeta || state !== 'locked'}
       <g
         class="node-g"
         class:clickable={isClickable}
@@ -655,6 +678,7 @@
           class:node-unskilled={state === 'unskilled'}
           class:node-locked={state === 'locked'}
           class:node-meta={state === 'meta'}
+          class:node-root={node.isRoot}
           class:node-pulse={isPulsing}
           onclick={() => toggleNode(node)}
           onkeydown={(e) => (e.key === 'Enter' || e.key === ' ') && toggleNode(node)}
@@ -666,17 +690,9 @@
           tabindex={isClickable ? 0 : undefined}
         />
 
-        <!-- Category progress bar -->
-        {#if node.isCategory}
-          {@const progress = categoryProgress(node)}
-          {#if progress > 0}
-            <rect x={0} y={NODE_H - 2} width={NODE_W * progress} height={2} rx="1" class="cat-progress" />
-          {/if}
-        {/if}
-
         <!-- Category icon -->
         {#if showIcon}
-          <svg x={10} y={centerY - 7} width={14} height={14} viewBox="0 0 24 24"
+          <svg x={10} y={NODE_H / 2 - 7} width={14} height={14} viewBox="0 0 24 24"
             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
             class="cat-icon">
             {@html categoryIcons[node.id]}
@@ -685,10 +701,10 @@
 
         <!-- Status indicator -->
         {#if state === 'skilled'}
-          <circle cx={16} cy={centerY} r={6} class="check-bg" />
-          <text x={16} y={centerY + 4} text-anchor="middle" class="check-mark">✓</text>
+          <circle cx={16} cy={NODE_H / 2} r={6} class="check-bg" />
+          <text x={16} y={NODE_H / 2 + 4} text-anchor="middle" class="check-mark">✓</text>
         {:else if !node.isRoot && !node.isCategory && !node.isGroup}
-          <circle cx={16} cy={centerY} r={5} class="dot-empty"
+          <circle cx={16} cy={NODE_H / 2} r={5} class="dot-empty"
             class:dot-locked={state === 'locked'} />
         {/if}
 
@@ -710,15 +726,15 @@
         <!-- Label -->
         <text
           x={labelX}
-          y={centerY}
           text-anchor={labelAnchor}
           class="node-label"
           class:node-label-dim={state === 'locked'}
         >
           {#each textLines as line, i}
+            {@const lineY = textBlockCenter + (i - (textLines.length - 1) / 2) * lineHeight}
             <tspan
               x={labelX}
-              dy={i === 0 ? `-${(textLines.length - 1) * 6}px` : '12px'}
+              y={lineY}
             >{line}</tspan>
           {/each}
         </text>
@@ -823,7 +839,10 @@
     stroke: var(--node-accent, var(--node-glow-stroke));
     stroke-width: 1;
     filter: blur(4px);
+    transition: stroke 2.5s ease, filter 2.5s ease;
   }
+  :global(.node-root.node-skilled) { stroke-width: 2; }
+  :global(.node-root) .node-glow { filter: blur(6px); stroke-width: 1.5; }
 
   /* Category icon */
   :global(.cat-icon) { color: var(--node-accent, var(--text-mute)); pointer-events: none; }
@@ -843,9 +862,6 @@
     30% { stroke-width: 3; filter: brightness(1.4); }
     100% { stroke-width: 1.5; filter: brightness(1); }
   }
-
-  /* Category progress bar */
-  :global(.cat-progress) { fill: var(--node-accent, var(--text-mute)); pointer-events: none; }
 
   /* ── Labels ── */
   :global(.node-icon) { font-size: 14px; dominant-baseline: auto; }

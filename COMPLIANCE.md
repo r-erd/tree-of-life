@@ -57,7 +57,27 @@ To delete all data, use your browser's developer tools or site data clearing fea
 ## Attribution
 
 - Icons embedded in the application are simple geometric SVG paths.
-- The application uses the [Inter](https://rsms.me/inter/) font family (via system font stack or CDN if configured).
+- The [Inter](https://rsms.me/inter/) font family is self-hosted from `public/fonts/` — no external font CDN requests are made.
+- Inter is licensed under the **SIL Open Font License 1.1** (`public/fonts/LICENSE-Inter.txt`).
+  OFL §2 explicitly permits bundling fonts with any software. The font remains
+  under OFL while the application remains under GPL-2.0; there is no license
+  conflict.
+
+## No Impressum Required
+
+Under German law (Telemediengesetz § 5), an **Impressum** is required for
+*geschäftsmäßige Online-Dienste* (commercial online services offered in the
+course of business).
+
+Tree of Life is **not a commercial service**:
+
+- It is a free, open-source personal tool distributed under GPL-2.0.
+- There is no payment, no advertising, no revenue model, and no business activity.
+- It is not operated in the course of a trade, business, or profession.
+- There is no journalistic or editorial content.
+
+Because the application is **non-commercial and non-business**, the Impressum
+requirement under § 5 TMG does not apply.
 
 ## Contributing
 
