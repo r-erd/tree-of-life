@@ -539,7 +539,7 @@
     onclick={() => { focusMode = !focusMode }}
     title="Show only active branches"
   >
-    {focusMode ? '✦ PASSIONS ONLY' : '◇ ALL PASSIONS'}
+    PASSIONS ONLY
   </button>
   <button
     class="btn-ghost btn-ghost-dim toolbar-btn"
