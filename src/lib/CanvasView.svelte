@@ -37,10 +37,6 @@
   let unlockToast = $state(null)
   let unlockToastTimer = $state(null)
 
-  // Touch / selection state
-  let selectedNodeId = $state(null)
-  let isTouch = $state(false)
-
   // Pulse animation state
   let pulseMap = $state(new Map())
 
@@ -65,11 +61,6 @@
       rootAccentIndex = (rootAccentIndex + 1) % colors.length
     }, 3000)
     return () => clearInterval(interval)
-  })
-
-  // Detect touch capability
-  $effect(() => {
-    isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0
   })
 
   // Reset expansions when category or focus mode changes
@@ -233,13 +224,6 @@
     }
 
     // Skill nodes: toggle skilled
-    if (isTouch && selectedNodeId !== node.id) {
-      selectedNodeId = node.id
-      showTooltip(node)
-      return
-    }
-
-    selectedNodeId = null
     const before = get(skilled)
     skilled.toggle(node.id)
     const after = get(skilled)
@@ -423,62 +407,11 @@
   }
   function onMouseUp() { isDragging = false }
 
-  // ── Pan (touch) ──
-  let lastTouch = null
-  let pinchStart = $state(null)
-
-  function onTouchStart(e) {
-    if (e.touches.length === 1) {
-      lastTouch = { x: e.touches[0].clientX, y: e.touches[0].clientY, tx, ty }
-    } else if (e.touches.length === 2) {
-      lastTouch = null
-      const dx = e.touches[0].clientX - e.touches[1].clientX
-      const dy = e.touches[0].clientY - e.touches[1].clientY
-      const rect = svgEl?.getBoundingClientRect()
-      pinchStart = {
-        distance: Math.sqrt(dx * dx + dy * dy),
-        scale,
-        tx,
-        ty,
-        midX: ((e.touches[0].clientX + e.touches[1].clientX) / 2) - (rect?.left ?? 0),
-        midY: ((e.touches[0].clientY + e.touches[1].clientY) / 2) - (rect?.top ?? 0),
-      }
-    }
-  }
-  function onTouchMove(e) {
-    e.preventDefault()
-    if (e.touches.length === 1 && lastTouch) {
-      tx = lastTouch.tx + (e.touches[0].clientX - lastTouch.x)
-      ty = lastTouch.ty + (e.touches[0].clientY - lastTouch.y)
-    } else if (e.touches.length === 2 && pinchStart) {
-      const dx = e.touches[0].clientX - e.touches[1].clientX
-      const dy = e.touches[0].clientY - e.touches[1].clientY
-      const newDistance = Math.sqrt(dx * dx + dy * dy)
-      const newScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE,
-        pinchStart.scale * (newDistance / pinchStart.distance)))
-
-      const mx = pinchStart.midX
-      const my = pinchStart.midY
-      tx = mx - (mx - pinchStart.tx) * (newScale / pinchStart.scale)
-      ty = my - (my - pinchStart.ty) * (newScale / pinchStart.scale)
-      scale = newScale
-    }
-  }
-  function onTouchEnd(e) {
-    lastTouch = null
-    if (e.touches.length < 2) {
-      if (pinchStart) justPinched = true
-      pinchStart = null
-      setTimeout(() => { justPinched = false }, 50)
-    }
-  }
-
   // ── Background click (deselect) ──
-  let justPinched = false
   function onSvgClick(e) {
-    if (isDragging || justPinched) return
+    if (isDragging) return
     if (e.target === svgEl || e.target.getAttribute('class')?.includes('canvas')) {
-      selectedNodeId = null
+      hideTooltip()
     }
   }
 
@@ -612,9 +545,6 @@
   onmousemove={onMouseMove}
   onmouseup={onMouseUp}
   onmouseleave={onMouseUp}
-  ontouchstart={onTouchStart}
-  ontouchmove={onTouchMove}
-  ontouchend={onTouchEnd}
   onclick={onSvgClick}
 >
   <g transform="translate({tx},{ty}) scale({scale})">
@@ -655,12 +585,10 @@
       {@const lineHeight = 12}
 
       {@const isPulsing = pulseMap.has(node.id)}
-      {@const isSelected = selectedNodeId === node.id}
       {@const isClickable = node.isRoot || isMeta || state !== 'locked'}
       <g
         class="node-g"
         class:clickable={isClickable}
-        class:node-selected={isSelected}
         transform="translate({node.x},{node.y})"
         style="--node-accent: {nodeAccent}"
       >
@@ -772,22 +700,19 @@
 </svg>
 
 <!-- Tooltip -->
-{#if (tooltipVisible && tooltipNode) || selectedNodeId}
-  {@const node = tooltipNode || layoutData.nodes.find(n => n.id === selectedNodeId)}
-  {#if node}
-    <div class="tooltip" style="left: {tooltipX}px; top: {tooltipY}px;">
-      <div class="tooltip-title">{node.name}</div>
-      {#if node.description}
-        <div class="tooltip-desc">{node.description}</div>
+{#if tooltipVisible && tooltipNode}
+  <div class="tooltip" style="left: {tooltipX}px; top: {tooltipY}px;">
+    <div class="tooltip-title">{tooltipNode.name}</div>
+    {#if tooltipNode.description}
+      <div class="tooltip-desc">{tooltipNode.description}</div>
+    {/if}
+    {#if nodeState(tooltipNode) === 'locked' && tooltipNode.requires}
+      {@const reqNode = get(nodeIndex).get(tooltipNode.requires)}
+      {#if reqNode}
+        <div class="tooltip-locked">Requires {reqNode.name}</div>
       {/if}
-      {#if nodeState(node) === 'locked' && node.requires}
-        {@const reqNode = get(nodeIndex).get(node.requires)}
-        {#if reqNode}
-          <div class="tooltip-locked">Requires {reqNode.name}</div>
-        {/if}
-      {/if}
-    </div>
-  {/if}
+    {/if}
+  </div>
 {/if}
 
 {#if unlockToast}
@@ -852,8 +777,7 @@
   :global(.node-g.clickable:hover .node-unskilled) { fill: var(--node-unskilled-hover-bg); stroke: var(--node-unskilled-hover-stroke); }
   :global(.node-g.clickable:hover .node-skilled)   { fill: var(--node-skilled-hover-bg); }
 
-  /* Selected state (mobile tap) */
-  :global(.node-selected .node-rect) { stroke: var(--node-accent, var(--border-bright)); stroke-width: 2; }
+
 
   /* Unlock pulse */
   :global(.node-pulse) { animation: node-pulse 0.5s ease-out; }

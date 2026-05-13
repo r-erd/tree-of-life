@@ -79,6 +79,17 @@
   <Header onShare={openShare} onImport={openImport} onAbout={openAbout} />
   <CanvasView />
 
+  <!-- Mobile notice -->
+  <div class="mobile-notice">
+    <div class="mobile-notice-inner">
+      <p class="mobile-notice-title">DESKTOP ONLY</p>
+      <p class="mobile-notice-text">
+        Tree of Life is designed for desktop browsers.<br />
+        Please visit on a laptop or desktop computer.
+      </p>
+    </div>
+  </div>
+
   <!-- Empty-state hint -->
   {#if $skilled.size === 0 && $viewMode === null && !hintDismissed}
     <!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -263,5 +274,39 @@
     font-weight: 700;
     color: var(--text-dim);
     margin-right: 10px;
+  }
+
+  /* ── Mobile notice ── */
+  .mobile-notice {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    background: var(--canvas);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--sp-xl);
+  }
+  .mobile-notice-inner {
+    max-width: 320px;
+  }
+  .mobile-notice-title {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: var(--sp-md);
+  }
+  .mobile-notice-text {
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-mute);
+  }
+  @media (hover: none) and (pointer: coarse), (max-width: 768px) {
+    .mobile-notice { display: flex; }
   }
 </style>
