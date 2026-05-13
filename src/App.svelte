@@ -82,7 +82,7 @@
         <p class="hint-title">START YOUR TREE</p>
         <div class="hint-steps">
           <p><span class="hint-num">1</span> Search for a passion</p>
-          <p><span class="hint-num">2</span> Click to mark it achieved</p>
+          <p><span class="hint-num">2</span> Click a node that speaks to you</p>
           <p><span class="hint-num">3</span> Watch your tree grow</p>
         </div>
         <button class="btn-ghost btn-sm" onclick={dismissHint}>GOT IT</button>
