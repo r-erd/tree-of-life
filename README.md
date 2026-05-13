@@ -41,3 +41,17 @@ Edit the relevant category file to add, modify, or remove passions.
 
 Note: Changing a passion's `id` will break existing share codes, but renaming the `name` is safe.
 When adding or removing nodes, increment the tree version in `src/lib/store.js`.
+
+## License & Compliance
+
+This project is licensed under the **GNU General Public License v2.0** (GPL-2.0).
+See [`LICENSE`](LICENSE) for the full text.
+
+For dependency audit, privacy policy, and attribution details, see [`COMPLIANCE.md`](COMPLIANCE.md).
+
+### Privacy at a Glance
+
+- **No server, no tracking, no cookies.**
+- All data stays in your browser's `localStorage`.
+- No account or personal information is required.
+- You can export or delete your data at any time.

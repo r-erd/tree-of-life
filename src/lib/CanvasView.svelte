@@ -629,6 +629,7 @@
       {@const showIcon = node.isCategory && categoryIcons[node.id]}
       {@const labelX = showIcon ? 30 : (isMeta ? NODE_W / 2 : 30)}
       {@const labelAnchor = showIcon ? 'start' : (isMeta ? 'middle' : 'start')}
+      {@const centerY = NODE_H / 2 + 1}
 
       {@const isPulsing = pulseMap.has(node.id)}
       {@const isSelected = selectedNodeId === node.id}
@@ -675,7 +676,7 @@
 
         <!-- Category icon -->
         {#if showIcon}
-          <svg x={10} y={NODE_H / 2 - 7} width={14} height={14} viewBox="0 0 24 24"
+          <svg x={10} y={centerY - 7} width={14} height={14} viewBox="0 0 24 24"
             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
             class="cat-icon">
             {@html categoryIcons[node.id]}
@@ -684,10 +685,10 @@
 
         <!-- Status indicator -->
         {#if state === 'skilled'}
-          <circle cx={16} cy={NODE_H / 2} r={6} class="check-bg" />
-          <text x={16} y={NODE_H / 2 + 4} text-anchor="middle" class="check-mark">✓</text>
+          <circle cx={16} cy={centerY} r={6} class="check-bg" />
+          <text x={16} y={centerY + 4} text-anchor="middle" class="check-mark">✓</text>
         {:else if !node.isRoot && !node.isCategory && !node.isGroup}
-          <circle cx={16} cy={NODE_H / 2} r={5} class="dot-empty"
+          <circle cx={16} cy={centerY} r={5} class="dot-empty"
             class:dot-locked={state === 'locked'} />
         {/if}
 
@@ -709,7 +710,7 @@
         <!-- Label -->
         <text
           x={labelX}
-          y={NODE_H / 2}
+          y={centerY}
           text-anchor={labelAnchor}
           class="node-label"
           class:node-label-dim={state === 'locked'}

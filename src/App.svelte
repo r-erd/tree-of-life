@@ -22,8 +22,10 @@
   import Header from "./lib/Header.svelte";
   import CanvasView from "./lib/CanvasView.svelte";
   import SharePanel from "./lib/SharePanel.svelte";
+  import PrivacyPanel from "./lib/PrivacyPanel.svelte";
 
   let shareMode = $state(null); // null | 'export' | 'import'
+  let showPrivacy = $state(false);
   let showResetConfirm = $state(false);
 
   // Empty-state hint
@@ -47,6 +49,12 @@
   }
   function closePanel() {
     shareMode = null;
+  }
+  function openPrivacy() {
+    showPrivacy = true;
+  }
+  function closePrivacy() {
+    showPrivacy = false;
   }
 
   function handleReset() {
@@ -83,12 +91,18 @@
   {/if}
 
   <div class="app-footer">
-    v{TREE_VERSION} · {$stats.total} passions
+    v{TREE_VERSION} · {$stats.total} passions ·
+    <button class="privacy-link" onclick={openPrivacy}>Privacy</button>
   </div>
 
   <!-- Share / Import modal -->
 {#if shareMode}
   <SharePanel mode={shareMode} onClose={closePanel} />
+{/if}
+
+  <!-- Privacy notice modal -->
+{#if showPrivacy}
+  <PrivacyPanel onClose={closePrivacy} />
 {/if}
 
 <!-- Reset confirm overlay notice -->
@@ -160,6 +174,26 @@
     letter-spacing: 0.1em;
     pointer-events: none;
     z-index: 100;
+  }
+
+  .privacy-link {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    cursor: pointer;
+    pointer-events: auto;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.15s;
+  }
+  .privacy-link:hover {
+    color: var(--text-primary);
   }
 
   /* ── Empty-state hint ── */
