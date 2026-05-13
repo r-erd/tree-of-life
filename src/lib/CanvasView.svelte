@@ -67,15 +67,25 @@
     // Progressive disclosure pruning (always applied, even in focus mode)
     root = pruneTree(root, $displaySkilled, expandedNodes, 0)
 
-    // Compute meta-active status from pre-collapsed tree so collapsed
-    // categories still show their highlight if descendants are skilled
+    // Compute meta-active status and descendant weights from pre-collapsed
+    // tree so collapsed nodes still show correct glow and edge thickness
     const metaActiveMap = new Map()
+    const descendantWeightMap = new Map()
     function markMetaActive(node) {
       const active = hasSkilledDescendant(node, $displaySkilled)
       if (node.isCategory || node.isGroup) metaActiveMap.set(node.id, active)
       for (const child of (node.children || [])) markMetaActive(child)
     }
+    function markWeight(node) {
+      let count = $displaySkilled.has(node.id) ? 1 : 0
+      for (const child of (node.children || [])) {
+        count += markWeight(child)
+      }
+      descendantWeightMap.set(node.id, count)
+      return count
+    }
     markMetaActive(root)
+    markWeight(root)
 
     // Apply manual collapses: for nodes that are auto-expanded (skilled/default-depth)
     // but the user wants to collapse, remove their children
@@ -83,7 +93,7 @@
 
     computeLayout(root)
     const { nodes, edges } = flatten(root)
-    return { nodes, edges, root, metaActiveMap }
+    return { nodes, edges, root, metaActiveMap, descendantWeightMap }
   })
 
   /** Strip children from manually-collapsed nodes */
@@ -597,7 +607,7 @@
         ((n.isCategory || n.isGroup) && layoutData.metaActiveMap.get(n.id))
       }
       {@const bothSkilled = isNodeActive(edge.from) && isNodeActive(edge.to)}
-      {@const weight = bothSkilled ? countSkilledDescendants(edge.to, $displaySkilled) : 0}
+      {@const weight = bothSkilled ? (layoutData.descendantWeightMap.get(edge.to.id) || 0) : 0}
       {@const ratio = bothSkilled && $displaySkilled.size > 0 ? weight / $displaySkilled.size : 0}
       {@const thickness = bothSkilled ? 1.5 + (ratio * 6.5) : 1.5}
       {@const edgeAccent = bothSkilled ? accentVar(edge.to) : ''}
