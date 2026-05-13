@@ -276,6 +276,7 @@
       c.delete(nodeId)
       collapsedNodes = c
     }
+    centerOnNodeId(nodeId)
   }
 
   function collapseNodeId(nodeId) {
@@ -287,6 +288,18 @@
       ex.delete(nodeId)
       expandedNodes = ex
     }
+    centerOnNodeId(nodeId)
+  }
+
+  function centerOnNodeId(nodeId) {
+    tick().then(() => {
+      const node = layoutData.nodes.find(n => n.id === nodeId)
+      if (node && svgEl) {
+        const rect = svgEl.getBoundingClientRect()
+        tx = rect.width / 2 - (node.x + NODE_W / 2) * scale
+        ty = rect.height / 2 - (node.y + NODE_H / 2) * scale
+      }
+    })
   }
 
   function expandNode(e, node) {
