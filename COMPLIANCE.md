@@ -2,13 +2,13 @@
 
 ## License
 
-This project is licensed under the **GNU General Public License v2.0** (GPL-2.0).
+This project is licensed under the **GNU General Public License v3.0** (GPL-3.0).
 See the [`LICENSE`](LICENSE) file for the full license text.
 
 ## Dependency Audit
 
 All direct and transitive dependencies used in the production build are compatible
-with GPL-2.0:
+with GPL-3.0:
 
 | Package | License | Notes |
 |---------|---------|-------|
@@ -30,7 +30,8 @@ with GPL-2.0:
 
 Build-time dependencies carrying the Apache-2.0 license (`aria-query`,
 `axobject-query`, `detect-libc`, `expect-type`) are used only during compilation
-and do not appear in the distributed application bundle.
+and do not appear in the distributed application bundle.  Apache-2.0 is
+explicitly compatible with GPL-3.0, whereas it was incompatible with GPL-2.0.
 
 ## Privacy
 
@@ -60,7 +61,7 @@ To delete all data, use your browser's developer tools or site data clearing fea
 - The [Inter](https://rsms.me/inter/) font family is self-hosted from `public/fonts/` — no external font CDN requests are made.
 - Inter is licensed under the **SIL Open Font License 1.1** (`public/fonts/LICENSE-Inter.txt`).
   OFL §2 explicitly permits bundling fonts with any software. The font remains
-  under OFL while the application remains under GPL-2.0; there is no license
+  under OFL while the application remains under GPL-3.0; there is no license
   conflict.
 
 ## No Impressum Required
@@ -71,7 +72,7 @@ course of business).
 
 Tree of Life is **not a commercial service**:
 
-- It is a free, open-source personal tool distributed under GPL-2.0.
+- It is a free, open-source personal tool distributed under GPL-3.0.
 - There is no payment, no advertising, no revenue model, and no business activity.
 - It is not operated in the course of a trade, business, or profession.
 - There is no journalistic or editorial content.
@@ -82,4 +83,4 @@ requirement under § 5 TMG does not apply.
 ## Contributing
 
 By contributing to this project, you agree that your contributions will be
-licensed under the same GPL-2.0 license.
+licensed under the same GPL-3.0 license.

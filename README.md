@@ -66,7 +66,7 @@ When adding or removing nodes, increment `TREE_VERSION` in `src/lib/store.js` to
 
 ## License & Compliance
 
-This project is licensed under the **GNU General Public License v2.0** (GPL-2.0).
+This project is licensed under the **GNU General Public License v3.0** (GPL-3.0).
 See [`LICENSE`](LICENSE) for the full text.
 
 For dependency audit, privacy policy, and attribution details, see [`COMPLIANCE.md`](COMPLIANCE.md).

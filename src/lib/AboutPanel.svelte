@@ -52,7 +52,7 @@
     <div class="about-section">
       <h3 class="about-heading">Open Source</h3>
       <p class="about-text">
-        Built with Svelte 5 and licensed under GPL 2.0. Source code and contribution guidelines are on <a href="https://github.com/r-erd/tree-of-life" target="_blank" rel="noopener noreferrer">GitHub</a>.
+        Built with Svelte 5 and licensed under GPL 3.0. Source code and contribution guidelines are on <a href="https://github.com/r-erd/tree-of-life" target="_blank" rel="noopener noreferrer">GitHub</a>.
       </p>
     </div>
   </div>
