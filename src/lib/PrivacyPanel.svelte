@@ -55,6 +55,13 @@
     </div>
 
     <div class="privacy-section">
+      <h3 class="privacy-heading">Hosting</h3>
+      <p class="privacy-text">
+        The site is hosted on GitHub Pages. GitHub processes technical connection data (IP address, browser type, request time) in server logs to deliver the page. This is necessary for hosting and cannot be disabled. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub's Privacy Statement</a> for details.
+      </p>
+    </div>
+
+    <div class="privacy-section">
       <h3 class="privacy-heading">Deleting Your Data</h3>
       <p class="privacy-text">
         To remove all stored data, use your browser's site data clearing features or click the reset button in the application.
