@@ -594,7 +594,7 @@
       {@const isNodeActive = (n) =>
         n.isRoot ||
         $displaySkilled.has(n.id) ||
-        ((n.isCategory || n.isGroup) && hasSkilledDescendant(n, $displaySkilled))
+        ((n.isCategory || n.isGroup) && layoutData.metaActiveMap.get(n.id))
       }
       {@const bothSkilled = isNodeActive(edge.from) && isNodeActive(edge.to)}
       {@const weight = bothSkilled ? countSkilledDescendants(edge.to, $displaySkilled) : 0}
