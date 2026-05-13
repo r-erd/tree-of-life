@@ -159,13 +159,14 @@ export function flatten(root) {
 
 /** Returns a new tree keeping only nodes that are skilled or have skilled descendants. */
 export function filterSkilled(node, skilledSet) {
-  if (skilledSet.has(node.id)) return { ...node, children: [] }
-
   const filteredChildren = (node.children || [])
     .map(c => filterSkilled(c, skilledSet))
     .filter(Boolean)
 
-  if (filteredChildren.length === 0 && !node.isRoot) return null
+  const hasSkilled = skilledSet.has(node.id)
+  const hasSkilledChildren = filteredChildren.length > 0
+
+  if (!hasSkilled && !hasSkilledChildren && !node.isRoot) return null
 
   return { ...node, children: filteredChildren }
 }
