@@ -4,7 +4,7 @@
   <img src="treeoflife.svg" alt="Tree of Life logo" width="220" />
 </p>
 
-A visual passion tree built with Svelte 5. Explore what makes you come alive across different domains of life, mark the paths you've walked, and share your tree with others.
+A visual tree built with Svelte 5. Explore what makes you come alive across different domains of life, mark the paths you've walked, and share your tree with others.
 
 ## Features
 

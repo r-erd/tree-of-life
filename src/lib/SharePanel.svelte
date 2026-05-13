@@ -64,7 +64,7 @@
 
   {#if mode === 'export'}
     <p class="panel-desc">
-      Share this code with anyone. They can import it to view your passion tree.
+      Share this code with anyone. They can import it to view your tree.
     </p>
 
     <div class="code-block">

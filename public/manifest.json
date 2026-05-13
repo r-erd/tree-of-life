@@ -1,7 +1,7 @@
 {
   "name": "Tree of Life",
   "short_name": "TreeOfLife",
-  "description": "An interactive passion tree for exploring what makes you come alive",
+  "description": "Explore what makes you come alive, mark the paths you've walked, and discover what still awaits.",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#000000",

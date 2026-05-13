@@ -2,7 +2,7 @@
  * store.js — Central Svelte 5 state store
  *
  * Manages:
- *  - The parsed skill tree (from YAML)
+ *  - The parsed tree (from YAML)
  *  - The set of skilled node IDs (persisted to localStorage)
  *  - Active category filter
  *  - Import/view mode (when viewing someone else's code)
@@ -14,7 +14,7 @@ import { encode, decode } from './encoder.js'
 const LS_KEY = 'tol_state'
 export const TREE_VERSION = 6 // must match category YAML version
 
-// ── Skill tree definition (loaded once from YAML) ──
+// ── Tree definition (loaded once from YAML) ──
 export const categories = writable([])
 
 // ── Node index: Map<id, node> for fast lookup ──

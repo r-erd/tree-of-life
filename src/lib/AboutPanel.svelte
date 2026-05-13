@@ -25,7 +25,7 @@
 
   <div class="panel-body">
     <p class="panel-lead">
-      Tree of Life is a visual passion tree — an interactive map of everything that makes you come alive.
+      Tree of Life is an interactive map of everything that makes you come alive.
     </p>
 
     <div class="about-section">

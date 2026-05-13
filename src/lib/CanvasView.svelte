@@ -1,6 +1,6 @@
 <script>
   /**
-   * CanvasView.svelte — Zoomable/pannable SVG skill tree canvas.
+   * CanvasView.svelte — Zoomable/pannable SVG tree canvas.
    * Progressive disclosure: shows one level past the skilled frontier by default.
    * Users can expand/collapse individual branches.
    */
@@ -539,7 +539,7 @@
   class:dragging={isDragging}
   bind:this={svgEl}
   role="img"
-  aria-label="Passion tree canvas"
+  aria-label="Tree canvas"
   onwheel={onWheel}
   onmousedown={onMouseDown}
   onmousemove={onMouseMove}
